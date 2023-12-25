@@ -1,0 +1,93 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "next",
+    "prettier",
+    "next/core-web-vitals",
+    "plugin:import/recommended",
+    "plugin:tailwindcss/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["import", "@typescript-eslint"],
+  "rules": {
+    "no-nested-ternary": 0,
+    "import/order": [
+      "error",
+      {
+        "alphabetize": { "order": "asc", "caseInsensitive": true },
+        "newlines-between": "always",
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "*.css",
+            "group": "index",
+            "position": "before"
+          },
+          {
+            "pattern": "@assets/**",
+            "group": "parent",
+            "position": "before"
+          },
+          {
+            "pattern": "@ui/**",
+            "group": "parent",
+            "position": "before"
+          },
+          {
+            "pattern": "@providers/**",
+            "group": "parent",
+            "position": "before"
+          },
+          {
+            "pattern": "@lib/**",
+            "group": "parent",
+            "position": "before"
+          },
+          {
+            "pattern": "@components/**",
+            "group": "parent",
+            "position": "before"
+          },
+          {
+            "pattern": "@api-hooks/**",
+            "group": "parent",
+            "position": "before"
+          }
+        ],
+        "groups": [
+          "builtin",
+          "external",
+          "index",
+          "parent",
+          ["internal", "sibling"]
+        ]
+      }
+    ],
+    "react/no-array-index-key": 0,
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-sort-props": [
+      "error",
+      {
+        "ignoreCase": true,
+        "reservedFirst": true,
+        "callbacksLast": true,
+        "shorthandFirst": true
+      }
+    ],
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/no-explicit-any": "off"
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  }
+}
