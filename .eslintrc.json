@@ -84,6 +84,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/no-explicit-any": "off"
   },
+  "ignorePatterns": ["src/components/ui"],
   "settings": {
     "react": {
       "pragma": "React",
