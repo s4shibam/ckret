@@ -45,6 +45,10 @@ module.exports = {
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
+        },
+        ckret: {
+          primary: '#ff8a00',
+          secondary: '#e52e71'
         }
       },
       borderRadius: {
@@ -65,8 +69,11 @@ module.exports = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out'
+      },
+      width: {
+        '9/10': '90%'
       }
     }
   },
-  plugins: [require('tailwindcss-animate')]
-};
+  plugins: [require('tailwindcss-animated')]
+}
