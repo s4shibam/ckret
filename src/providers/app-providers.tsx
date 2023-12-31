@@ -1,5 +1,6 @@
 'use client'
 
+import { ReactLenis } from '@studio-freight/react-lenis'
 import { SessionProvider } from 'next-auth/react'
 import { QueryClientProvider } from 'react-query'
 
@@ -11,7 +12,7 @@ const AppProviders = ({ children }: { children: React.ReactNode }) => {
   return (
     <SessionProvider>
       <QueryClientProvider client={queryClient}>
-        {children}
+        <ReactLenis root>{children}</ReactLenis>
         <ToasterProvider />
       </QueryClientProvider>
     </SessionProvider>
