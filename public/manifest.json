@@ -1,13 +1,12 @@
 {
-  "name": "Ckret - Anonymous Messaging Platform",
+  "name": "Ckret",
   "short_name": "Ckret",
   "description": "Ckret is an anonymous messaging platform. Exchange anonymous questions, feedback, suggestions, dares, and challenges with your friends, families, and coworkers.",
   "icons": [
     {
       "src": "/logo-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
       "src": "/logo-512.png",
@@ -18,5 +17,5 @@
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#FF8A00",
-  "background_color": "#FF8A00"
+  "background_color": "#F3F4F6"
 }
