@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="flex flex-col gap-8 md:mr-10 md:flex-row md:justify-between">
         <div>
           <Branding />
-          <p className="max-w-96">
+          <p className="mt-4 max-w-96">
             Ckret <em>(pronounced secret)</em> allows its users to receive
             anonymous messages via personalized <em>Ckret Link</em> from your
             friends, families, neighbors, coworkers, fans and many more.

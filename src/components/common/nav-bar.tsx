@@ -1,25 +1,20 @@
 'use client'
 
 import { LayoutDashboard, LogIn } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 
-import LOGO from '@assets/animated-logo.svg'
-
 import { Button } from '@components/ui/button'
 
+import Branding from './branding'
 import SignInModal from './signin-modal'
 
 const NavBar = () => {
   const session = useSession()
   return (
-    <div className="fixed inset-x-0 top-0 z-10 h-16 border-b bg-white px-5 shadow-sm">
-      <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between">
-        <Link className="flex items-center gap-1" href="/">
-          <Image alt="" height={50} src={LOGO} width={50} />
-          <p className="text-2xl font-bold tracking-wide">Ckret</p>
-        </Link>
+    <div className="fixed inset-x-0 top-0 z-10 h-16 border-b bg-white shadow-sm">
+      <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between px-5">
+        <Branding />
         {(session.status === 'loading' ||
           session.status === 'unauthenticated') && (
           <SignInModal>

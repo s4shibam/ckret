@@ -1,8 +1,8 @@
+import Footer from '@components/common/footer'
 import NavBar from '@components/common/nav-bar'
 import CallToAction from '@components/landing/call-to-action'
 import FAQs from '@components/landing/faqs'
 import Features from '@components/landing/features'
-import Footer from '@components/common/footer'
 import Guide from '@components/landing/guide'
 import Hero from '@components/landing/hero'
 
