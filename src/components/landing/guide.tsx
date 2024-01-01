@@ -1,4 +1,4 @@
-import { GUIDE_HEADING, GUIDE_NOTE, GUIDE_STEPS } from "@lib/constants"
+import { GUIDE_HEADING, GUIDE_NOTE, GUIDE_STEPS } from '@lib/constants'
 
 const Guide = () => {
   return (
@@ -15,7 +15,7 @@ const Guide = () => {
             key={step.id}
             className="rounded-lg bg-gradient-to-br from-ckret-primary to-ckret-secondary p-1 drop-shadow-md"
           >
-            <div className="w-full rounded-md bg-gradient-to-br from-orange-100 via-white to-white p-4">
+            <div className="h-full w-full rounded-md bg-gradient-to-br from-orange-100 via-white to-white p-4">
               <div className="mb-4 flex w-fit items-center justify-center rounded-lg bg-black p-3">
                 <step.Icon className="h-8 w-8 text-white xl:h-10 xl:w-10" />
               </div>
