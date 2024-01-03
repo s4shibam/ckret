@@ -7,6 +7,7 @@
     "next",
     "prettier",
     "next/core-web-vitals",
+    "plugin:import/typescript",
     "plugin:import/recommended",
     "plugin:tailwindcss/recommended",
     "plugin:@typescript-eslint/recommended"
@@ -28,6 +29,11 @@
           {
             "pattern": "*.css",
             "group": "index",
+            "position": "before"
+          },
+          {
+            "pattern": "@_types/**",
+            "group": "parent",
             "position": "before"
           },
           {
