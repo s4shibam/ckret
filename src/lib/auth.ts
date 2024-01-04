@@ -49,25 +49,20 @@ export const authOptions: NextAuthOptions = {
             return true
           }
         } catch (error: any) {
-          console.log('Signin Error: ', error)
+          console.error('Signin Error: ', error)
         }
       }
       return false
     },
-    async jwt({ user, token }) {
-      if (user) {
-        token.token = user.token
-        token._id = user._id
-        token.name = user.name
-        token.email = user.email
-        token.image = user.image
-        token.auth_provider = user.auth_provider
-        token.message_max_length = user.message_max_length
-        token.feedback_message = user.feedback_message
-        token.inbox_max_size = user.inbox_max_size
-        token.is_inbox_enabled = user.is_inbox_enabled
-        token.username = user.username
+    async jwt({ user, token, session, trigger }) {
+      if (trigger === 'update' && session) {
+        return { ...token, ...user, ...session }
       }
+
+      if (user) {
+        return { ...token, ...user }
+      }
+
       return token
     },
     session({ session, token }) {
