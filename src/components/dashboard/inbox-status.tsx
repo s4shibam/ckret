@@ -1,12 +1,12 @@
 'use client'
 
-import { Loader, Undo2 } from 'lucide-react'
+import { Loader } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import toast from 'react-hot-toast'
 
 import { cn } from '@lib/utils'
 
-import { Button } from '@components/ui/button'
+import { Switch } from '@components/ui/switch'
 
 import { useToggleInboxStatus } from '@api-hooks/user'
 
@@ -31,27 +31,26 @@ const InboxStatus = () => {
         <div className="flex items-center gap-2">
           <p
             className={cn(
-              'cursor-default truncate rounded-md px-4 py-1 text-xl font-semibold tracking-wider xl:text-2xl',
+              'cursor-default truncate rounded-md border px-4 py-1 text-xl font-semibold tracking-wider xl:text-2xl',
               {
-                'bg-green-300': data?.user?.is_inbox_enabled,
-                'bg-red-300': !data?.user?.is_inbox_enabled
+                'border-green-500 bg-green-300': data?.user?.is_inbox_enabled,
+                'border-red-500 bg-red-300': !data?.user?.is_inbox_enabled
               }
             )}
           >
             {data?.user?.is_inbox_enabled ? 'Enabled' : 'Disabled'}
           </p>
-          <Button
-            disabled={isToggleInboxStatusLoading}
-            size="icon"
-            variant="outline"
-            onClick={() => toggleInboxStatusMutate()}
-          >
+
+          <div className="grid w-11">
             {isToggleInboxStatusLoading ? (
-              <Loader className="h-5 w-5 animate-spin" />
+              <Loader className="m-auto h-8 w-8 animate-spin" />
             ) : (
-              <Undo2 className="h-5 w-5" />
+              <Switch
+                checked={data?.user?.is_inbox_enabled}
+                onClick={() => toggleInboxStatusMutate()}
+              />
             )}
-          </Button>
+          </div>
         </div>
       </div>
       <p className="rounded-md bg-white px-3 py-2 drop-shadow-md">
