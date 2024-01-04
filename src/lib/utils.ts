@@ -9,5 +9,6 @@ export const isInvalidLength = (
   text: string,
   LIMIT: { MAX: number; MIN: number }
 ) => {
-  return text.length < LIMIT.MIN || text.length > LIMIT.MAX
+  const trimmedText = text.trim()
+  return trimmedText.length < LIMIT.MIN || trimmedText.length > LIMIT.MAX
 }
