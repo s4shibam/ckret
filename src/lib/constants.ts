@@ -27,9 +27,20 @@ export const FEEDBACK_FORM_URL = process.env.NEXT_PUBLIC_FEEDBACK_FORM_URL
 export const SUPPORT_EMAIL = process.env.NEXT_PUBLIC_SUPPORT_EMAIL
 
 // Others
-export const INBOX_STORAGE_LIMIT = 50
-
-export const MAX_CHAR_LIMIT_FOR_MESSAGE = 150
+export const CHAR_SIZE_LIMIT = {
+  USERNAME: {
+    MAX: 20,
+    MIN: 5
+  },
+  FEEDBACK_MESSAGE: {
+    MAX: 100,
+    MIN: 1
+  },
+  NAME: {
+    MAX: 100,
+    MIN: 1
+  }
+}
 
 // Features
 export const FEATURE_HEADING =
