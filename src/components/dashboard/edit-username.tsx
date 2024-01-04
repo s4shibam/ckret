@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
+import { CHAR_SIZE_LIMIT } from '@lib/constants'
+import { isInvalidLength } from '@lib/utils'
+
 import { Button } from '@components/ui/button'
 import {
   Dialog,
@@ -43,6 +46,27 @@ const EditUsername = ({ children }: { children: React.ReactNode }) => {
           <DialogDescription className="text-lg/5">
             Make changes to your username here. Click save when you&apos;re
             done.
+            <div className="mt-4 flex flex-col gap-2 rounded-lg bg-gray-100 px-4 py-2">
+              <p className="font-medium">Usernames can only have:</p>
+              <ul className="list-inside list-disc text-base/5">
+                <li>
+                  Lowercase Letters <code>[a - z]</code>
+                </li>
+                <li>
+                  Uppercase Letters <code>[A - Z]</code>
+                </li>
+                <li>
+                  Numbers <code>[0 - 9]</code>
+                </li>
+                <li>
+                  Dots <code>[.]</code>
+                </li>
+                <li>
+                  Underscores <code>[_]</code>
+                </li>
+                <li>Length: Minimum 5, Maximum 20 characters</li>
+              </ul>
+            </div>
           </DialogDescription>
         </DialogHeader>
         <div className="my-2 flex w-full flex-col gap-2">
@@ -61,7 +85,10 @@ const EditUsername = ({ children }: { children: React.ReactNode }) => {
         <DialogFooter>
           <Button
             className="text-xl"
-            disabled={isUpdateUsernameMutationLoading}
+            disabled={
+              isUpdateUsernameMutationLoading ||
+              isInvalidLength(username, CHAR_SIZE_LIMIT.USERNAME)
+            }
             type="submit"
             onClick={() => updateUsernameMutation({ username })}
           >

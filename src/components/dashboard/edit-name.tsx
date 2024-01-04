@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
+import { CHAR_SIZE_LIMIT } from '@lib/constants'
+import { isInvalidLength } from '@lib/utils'
+
 import { Button } from '@components/ui/button'
 import {
   Dialog,
@@ -40,6 +43,10 @@ const EditName = ({ children }: { children: React.ReactNode }) => {
           </DialogTitle>
           <DialogDescription className="text-lg/5">
             Make changes to your name here. Click save when you&apos;re done.
+            <p className="mt-2 text-base/5">
+              Note: Name length can not be more than{' '}
+              <span className="font-medium">100</span> characters.
+            </p>
           </DialogDescription>
         </DialogHeader>
         <div className="my-2 flex w-full flex-col gap-2">
@@ -58,7 +65,10 @@ const EditName = ({ children }: { children: React.ReactNode }) => {
         <DialogFooter>
           <Button
             className="text-xl"
-            disabled={isUpdateNameMutationLoading}
+            disabled={
+              isUpdateNameMutationLoading ||
+              isInvalidLength(name, CHAR_SIZE_LIMIT.NAME)
+            }
             type="submit"
             onClick={() => updateNameMutation({ name })}
           >
