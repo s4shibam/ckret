@@ -1,7 +1,7 @@
 'use client'
 
 import { Watermark } from '@hirohe/react-watermark'
-import { CheckCircle, Dice5, Loader, Send } from 'lucide-react'
+import { CheckCircle, Dice5, Frown, Loader, Send } from 'lucide-react'
 import Link from 'next/link'
 import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 import React, { useState } from 'react'
@@ -24,10 +24,13 @@ const SendMessage = ({ params }: { params: { username: string } }) => {
   const messageStatus = useSearchParams().get('message_status')
   const [message, setMessage] = useState('')
 
-  const { data: recipient, isLoading: isRecipientLoading }: any =
-    useGetUserDetailsByUsername({
-      username: params.username
-    })
+  const {
+    data: recipient,
+    isLoading: isRecipientLoading,
+    error: recipientError
+  }: any = useGetUserDetailsByUsername({
+    username: params.username
+  })
 
   const { mutate: submitMessageMutation, isLoading: isSubmitMessageLoading } =
     useSubmitMessage({
@@ -55,6 +58,24 @@ const SendMessage = ({ params }: { params: { username: string } }) => {
     return <AnimatedLoader type="fullscreen" />
   }
 
+  if (recipientError?.error) {
+    return (
+      <div className="flex min-h-screen w-full flex-col items-center justify-center gap-4 bg-gray-50 p-5 pb-20">
+        <Branding />
+        <div className="z-10 flex h-[90%] w-full max-w-[500px] flex-col items-center gap-8 rounded-lg bg-gradient-to-br from-ckret-primary to-ckret-secondary p-5">
+          <div className="mb-10 flex flex-col items-center gap-2">
+            <Frown className="h-28 w-28 text-white" />
+            <p className="text-2xl font-medium">{recipientError.message}</p>
+            <p className="text-center text-xl text-white">
+              Check the link again and give it another shot!
+            </p>
+          </div>
+          <CreateLink />
+        </div>
+      </div>
+    )
+  }
+
   if (messageStatus === 'sent') {
     return (
       <div className="flex min-h-screen w-full flex-col items-center gap-4 bg-gray-50 p-5">
@@ -66,11 +87,11 @@ const SendMessage = ({ params }: { params: { username: string } }) => {
           </div>
 
           <div className="flex w-full flex-col gap-2">
-            <p className="bg-gradient-to-r from-transparent via-white to-transparent px-4 py-2 text-center text-xl font-medium">
+            <p className="bg-gradient-to-r from-transparent via-white to-transparent px-4 py-2 text-center text-xl font-medium tracking-wide">
               {recipient?.data?.feedback_message}
             </p>
             <p className="text-center text-sm text-white">
-              From {recipient?.data?.name}
+              From <span className="font-medium">{recipient?.data?.name}</span>
             </p>
           </div>
 
