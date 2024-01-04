@@ -1,3 +1,4 @@
+import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
@@ -20,6 +21,7 @@ import { Label } from '@components/ui/label'
 import { useUpdateFeedbackMessage } from '@api-hooks/user'
 
 const EditFeedbackMessage = ({ children }: { children: React.ReactNode }) => {
+  const { update } = useSession()
   const [feedbackMessage, setFeedbackMessage] = useState('')
   const [open, setOpen] = useState(false)
 
@@ -31,6 +33,7 @@ const EditFeedbackMessage = ({ children }: { children: React.ReactNode }) => {
 
     onSuccess: (success: any) => {
       setOpen(false)
+      update({ feedback_message: success?.data?.feedback_message })
       toast.success(success.message)
     }
   })
@@ -46,11 +49,11 @@ const EditFeedbackMessage = ({ children }: { children: React.ReactNode }) => {
           <DialogDescription className="text-lg/5">
             Make changes to your feedback message here. Click save when
             you&apos;re done.
-            <p className="mt-2 text-base/5">
-              Note: Feedback message length can not be more than{' '}
-              <span className="font-medium">100</span> characters.
-            </p>
           </DialogDescription>
+          <p className="mt-2 text-base/5">
+            Note: Feedback message length can not be more than{' '}
+            <span className="font-medium">100</span> characters.
+          </p>
         </DialogHeader>
         <div className="my-2 flex w-full flex-col gap-2">
           <Label className="text-lg" htmlFor="message">
@@ -73,7 +76,11 @@ const EditFeedbackMessage = ({ children }: { children: React.ReactNode }) => {
               isInvalidLength(feedbackMessage, CHAR_SIZE_LIMIT.FEEDBACK_MESSAGE)
             }
             type="submit"
-            onClick={() => updateFeedbackMessageMutation({ feedbackMessage })}
+            onClick={() =>
+              updateFeedbackMessageMutation({
+                feedbackMessage: feedbackMessage.trim()
+              })
+            }
           >
             {isUpdateFeedbackMessageMutationLoading
               ? 'Saving...'

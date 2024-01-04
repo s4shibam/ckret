@@ -12,7 +12,7 @@ import { Button } from '@components/ui/button'
 import { useToggleInboxStatus } from '@api-hooks/user'
 
 const Settings = () => {
-  const { data } = useSession()
+  const { data, update } = useSession()
   const {
     mutate: toggleInboxStatusMutate,
     isLoading: isToggleInboxStatusLoading
@@ -20,6 +20,7 @@ const Settings = () => {
     onError: (error: any) => toast.error(error.message),
 
     onSuccess: (success: any) => {
+      update({ is_inbox_enabled: success?.data?.is_inbox_enabled })
       toast.success(success.message)
     }
   })

@@ -1,3 +1,4 @@
+import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
@@ -20,6 +21,7 @@ import { Label } from '@components/ui/label'
 import { useUpdateName } from '@api-hooks/user'
 
 const EditName = ({ children }: { children: React.ReactNode }) => {
+  const { update } = useSession()
   const [name, setName] = useState('')
   const [open, setOpen] = useState(false)
 
@@ -29,6 +31,7 @@ const EditName = ({ children }: { children: React.ReactNode }) => {
 
       onSuccess: (success: any) => {
         setOpen(false)
+        update({ name: success?.data?.name })
         toast.success(success.message)
       }
     })
@@ -70,7 +73,7 @@ const EditName = ({ children }: { children: React.ReactNode }) => {
               isInvalidLength(name, CHAR_SIZE_LIMIT.NAME)
             }
             type="submit"
-            onClick={() => updateNameMutation({ name })}
+            onClick={() => updateNameMutation({ name: name.trim() })}
           >
             {isUpdateNameMutationLoading ? 'Saving...' : 'Save changes'}
           </Button>
