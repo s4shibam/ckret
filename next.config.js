@@ -12,7 +12,7 @@ const withPWA = require('@ducanh2912/next-pwa').default({
   }
 })
 
-const allowedImageDomains = []
+const allowedImageDomains = ['lh3.googleusercontent.com']
 
 const nextConfig = {
   eslint: {
