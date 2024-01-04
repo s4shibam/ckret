@@ -1,18 +1,29 @@
 'use client'
 
-import { Pencil, Undo2 } from 'lucide-react'
+import { Loader, Pencil, Undo2 } from 'lucide-react'
+import { useSession } from 'next-auth/react'
 import toast from 'react-hot-toast'
 
-import { INBOX_STORAGE_LIMIT, MAX_CHAR_LIMIT_FOR_MESSAGE } from '@lib/constants'
+import { cn } from '@lib/utils'
 
 import EditFeedbackMessage from '@components/dashboard/edit-feedback-message'
 import { Button } from '@components/ui/button'
 
+import { useToggleInboxStatus } from '@api-hooks/user'
+
 const Settings = () => {
-  const toggleInboxStatus = () => {
-    toast.success('Inbox status changed')
-  }
-  
+  const { data } = useSession()
+  const {
+    mutate: toggleInboxStatusMutate,
+    isLoading: isToggleInboxStatusLoading
+  } = useToggleInboxStatus({
+    onError: (error: any) => toast.error(error.message),
+
+    onSuccess: (success: any) => {
+      toast.success(success.message)
+    }
+  })
+
   return (
     <div className="h-full w-full">
       <div className="flex w-full max-w-[800px] flex-col gap-4 text-lg xl:text-xl">
@@ -22,7 +33,7 @@ const Settings = () => {
               Message Character Limit
             </p>
             <p className="cursor-default truncate rounded-md bg-gray-200 px-4 py-1 text-xl font-semibold tracking-wider xl:text-2xl">
-              {MAX_CHAR_LIMIT_FOR_MESSAGE}
+              {data?.user?.message_max_length}
             </p>
           </div>
           <p className="rounded-md bg-white px-3 py-2 drop-shadow-md">
@@ -38,7 +49,7 @@ const Settings = () => {
             <p className="whitespace-nowrap font-medium">Feedback Message</p>
             <div className="flex items-center gap-2">
               <p className="cursor-default truncate rounded-md bg-gray-200 px-4 py-1 text-xl font-semibold tracking-wider xl:text-2xl">
-                Thank You
+                {data?.user?.feedback_message}
               </p>
               <EditFeedbackMessage>
                 <Button size="icon" variant="outline">
@@ -56,7 +67,7 @@ const Settings = () => {
           <div className="flex w-full flex-wrap items-center justify-between gap-4">
             <p className="whitespace-nowrap font-medium">Inbox Storage Limit</p>
             <p className="cursor-default truncate rounded-md bg-gray-200 px-4 py-1 text-xl font-semibold tracking-wider xl:text-2xl">
-              {INBOX_STORAGE_LIMIT} Messages
+              {data?.user?.inbox_max_size} Messages
             </p>
           </div>
           <p className="rounded-md bg-white px-3 py-2 drop-shadow-md">
@@ -72,13 +83,27 @@ const Settings = () => {
             <p className="whitespace-nowrap font-medium">Inbox Status</p>
             <div className="flex items-center gap-2">
               <p
-                className="cursor-default truncate rounded-md bg-green-300 px-4 py-1 text-xl font-semibold tracking-wider xl:text-2xl"
-                onClick={() => {}}
+                className={cn(
+                  'cursor-default truncate rounded-md px-4 py-1 text-xl font-semibold tracking-wider xl:text-2xl',
+                  {
+                    'bg-green-300': data?.user?.is_inbox_enabled,
+                    'bg-red-300': !data?.user?.is_inbox_enabled
+                  }
+                )}
               >
-                Enabled
+                {data?.user?.is_inbox_enabled ? 'Enabled' : 'Disabled'}
               </p>
-              <Button size="icon" variant="outline" onClick={toggleInboxStatus}>
-                <Undo2 className="h-5 w-5" />
+              <Button
+                disabled={isToggleInboxStatusLoading}
+                size="icon"
+                variant="outline"
+                onClick={() => toggleInboxStatusMutate()}
+              >
+                {isToggleInboxStatusLoading ? (
+                  <Loader className="h-5 w-5 animate-spin" />
+                ) : (
+                  <Undo2 className="h-5 w-5" />
+                )}
               </Button>
             </div>
           </div>

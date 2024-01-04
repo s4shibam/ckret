@@ -9,10 +9,14 @@ import {
   Twitter
 } from 'lucide-react'
 import Image from 'next/image'
+import { useSession } from 'next-auth/react'
+import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
 import SNAPCHAT from '@assets/snapchat.svg'
 import WHATSAPP from '@assets/whatsapp.svg'
+
+import { CKRET_URL } from '@lib/constants'
 
 import { Button } from '@components/ui/button'
 
@@ -56,9 +60,14 @@ const socialMediaPlatforms = [
 ]
 
 const MyLink = () => {
-  const myLink = 'https://example.com/cl/abcde'
+  const { data } = useSession()
+  const [myLink, setMyLink] = useState('')
   const shareText = 'Send me anonymous messages.'
   const hashtags = 'ckret,anonymous'
+
+  useEffect(() => {
+    setMyLink(`${CKRET_URL}/cl/${data?.user?.username}`)
+  }, [data?.user?.username])
 
   const handleShare = (platform: string) => {
     let shareUrl = ''
@@ -83,7 +92,7 @@ const MyLink = () => {
         break
       case 'instagram':
         toast.error(
-          'To share on Instagram, open the app and paste the link in your post.'
+          'To share on Instagram, open the app and paste the ckret link in your post.'
         )
         break
       case 'snapchat':

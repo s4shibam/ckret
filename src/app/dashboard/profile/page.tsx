@@ -51,7 +51,7 @@ const Profile = () => {
             <p className="whitespace-nowrap font-medium">Username</p>
             <div className="flex items-center gap-2">
               <p className="cursor-default truncate rounded-md bg-gray-200 px-4 py-1 text-xl font-semibold tracking-wider xl:text-2xl">
-                {data?.user?.name || '-'}
+                {data?.user?.username || '-'}
               </p>
               <EditUsername>
                 <Button size="icon" variant="outline">
