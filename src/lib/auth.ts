@@ -60,6 +60,7 @@ export const authOptions: NextAuthOptions = {
         token._id = user._id
         token.name = user.name
         token.email = user.email
+        token.image = user.image
         token.auth_provider = user.auth_provider
         token.message_max_length = user.message_max_length
         token.feedback_message = user.feedback_message
@@ -80,5 +81,9 @@ export const authOptions: NextAuthOptions = {
         return `${baseUrl}/dashboard/profile`
       }
     }
-  }
+  },
+  session: {
+    strategy: 'jwt'
+  },
+  debug: process.env.NODE_ENV !== 'production'
 }
