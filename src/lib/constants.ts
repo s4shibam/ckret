@@ -42,6 +42,10 @@ export const CHAR_SIZE_LIMIT = {
   }
 }
 
+export const MESSAGE_INSTRUCTION = {
+  AM: 'Send Me Anonymous Messages'
+}
+
 // Features
 export const FEATURE_HEADING =
   'Ckret is a popular anonymous messaging platform for the next generation.'

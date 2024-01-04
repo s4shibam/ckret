@@ -7,6 +7,7 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 
+import { MESSAGE_INSTRUCTION } from '@lib/constants'
 import { getRandomMessage } from '@lib/sample-messages'
 import { cn } from '@lib/utils'
 
@@ -49,7 +50,7 @@ const SendMessage = ({ params }: { params: { username: string } }) => {
 
   const handleSubmit = () => {
     submitMessageMutation({
-      messageContent: message,
+      messageContent: message.trim(),
       recipientUsername: params.username
     })
   }
@@ -119,7 +120,7 @@ const SendMessage = ({ params }: { params: { username: string } }) => {
         <div className="z-10 flex h-[90%] w-full max-w-[500px] flex-col gap-4 rounded-lg bg-gradient-to-br from-ckret-primary to-ckret-secondary p-5 shadow-xl">
           <div className="flex flex-col items-center gap-2 rounded-lg border-2 border-black bg-white p-4 shadow-inner shadow-ckret-primary">
             <p className="text-center text-2xl font-semibold capitalize tracking-wide">
-              Send me anonymous messages
+              {MESSAGE_INSTRUCTION?.[recipient?.data?.message_type as 'AM']}
             </p>
 
             <p className="text-center">
@@ -172,7 +173,11 @@ const SendMessage = ({ params }: { params: { username: string } }) => {
 
           <Button
             className="mb-10 mt-4 h-12 text-xl md:mb-20"
-            disabled={recipient?.data?.is_inbox_full || isSubmitMessageLoading}
+            disabled={
+              recipient?.data?.is_inbox_full ||
+              isSubmitMessageLoading ||
+              message.length === 0
+            }
             size="lg"
             onClick={handleSubmit}
           >
