@@ -18,14 +18,14 @@ const NavBar = () => {
         {(session.status === 'loading' ||
           session.status === 'unauthenticated') && (
           <SignInModal>
-            <Button className="text-xl">
+            <Button className="h-11 text-xl">
               <LogIn className="mr-2" />
               Sign In
             </Button>
           </SignInModal>
         )}
         {session.status === 'authenticated' && (
-          <Button asChild className="text-xl">
+          <Button asChild className="h-11 text-xl">
             <Link href="/dashboard/profile">
               <LayoutDashboard className="mr-2" />
               Dashboard
