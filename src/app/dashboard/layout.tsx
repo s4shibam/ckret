@@ -1,12 +1,10 @@
 'use client'
 
-import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import toast from 'react-hot-toast'
 
-import LOADER from '@assets/loader.svg'
-
+import AnimatedLoader from '@components/common/animated-loader'
 import Branding from '@components/common/branding'
 import DashboardMenu from '@components/dashboard/dashboard-menu'
 import ProfileMenu from '@components/dashboard/profile-menu'
@@ -21,11 +19,7 @@ export default function DashboardLayout({
   const currentPage = usePathname().split('/').pop()
 
   if (session.status === 'loading') {
-    return (
-      <div className="grid h-screen w-full place-items-center bg-gray-50 ">
-        <Image alt="Loading..." height={200} src={LOADER} width={200} />
-      </div>
-    )
+    return <AnimatedLoader type="fullscreen" />
   }
 
   if (session.status === 'unauthenticated') {
