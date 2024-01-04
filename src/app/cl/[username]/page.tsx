@@ -79,35 +79,38 @@ const SendMessage = ({ params }: { params: { username: string } }) => {
 
   if (messageStatus === 'sent') {
     return (
-      <div className="flex min-h-screen w-full flex-col items-center gap-4 bg-gray-50 p-5">
-        <Branding />
-        <div className="z-10 flex h-[90%] w-full max-w-[500px] flex-col items-center gap-8 rounded-lg bg-gradient-to-br from-ckret-primary to-ckret-secondary p-5">
-          <div className="mb-10 flex flex-col items-center gap-2">
-            <CheckCircle className="h-28 w-28 text-white" />
-            <p className="text-2xl font-medium">Message Sent Successfully!</p>
+      <Watermark gutter={50} text={recipient?.data?.username} textColor="#BBB">
+        <div className="flex min-h-screen w-full flex-col items-center gap-4 bg-gray-50 p-5">
+          <Branding />
+          <div className="z-10 flex h-[90%] w-full max-w-[500px] flex-col items-center gap-8 rounded-lg bg-gradient-to-br from-ckret-primary to-ckret-secondary p-5 shadow-xl">
+            <div className="flex flex-col items-center gap-2">
+              <CheckCircle className="h-28 w-28 text-white" />
+              <p className="text-2xl font-medium">Message Sent Successfully!</p>
+            </div>
+
+            <div className="my-10 flex w-full flex-col gap-2">
+              <p className="bg-gradient-to-r from-transparent via-white to-transparent px-4 py-2 text-center text-xl font-medium tracking-wide">
+                {recipient?.data?.feedback_message}
+              </p>
+              <p className="text-center text-sm text-white">
+                From{' '}
+                <span className="font-medium">{recipient?.data?.name}</span>
+              </p>
+            </div>
+
+            <CreateLink />
+
+            <Button
+              className="mt-4 h-12 w-full text-xl text-white underline-offset-8"
+              size="lg"
+              variant="link"
+              onClick={() => router.back()}
+            >
+              Send Another Message
+            </Button>
           </div>
-
-          <div className="flex w-full flex-col gap-2">
-            <p className="bg-gradient-to-r from-transparent via-white to-transparent px-4 py-2 text-center text-xl font-medium tracking-wide">
-              {recipient?.data?.feedback_message}
-            </p>
-            <p className="text-center text-sm text-white">
-              From <span className="font-medium">{recipient?.data?.name}</span>
-            </p>
-          </div>
-
-          <CreateLink />
-
-          <Button
-            className="mt-4 h-12 w-full text-xl text-white underline-offset-8"
-            size="lg"
-            variant="link"
-            onClick={() => router.back()}
-          >
-            Send Another Message
-          </Button>
         </div>
-      </div>
+      </Watermark>
     )
   }
 
