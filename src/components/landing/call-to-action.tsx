@@ -37,7 +37,7 @@ const CallToAction = () => {
             className="h-14 w-60 text-2xl drop-shadow-xl"
             size="lg"
           >
-            <Link href="/dashboard">Dashboard</Link>
+            <Link href="/dashboard/profile">Dashboard</Link>
           </Button>
         ) : (
           <SignInModal>
