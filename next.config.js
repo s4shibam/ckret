@@ -12,14 +12,19 @@ const withPWA = require('@ducanh2912/next-pwa').default({
   }
 })
 
-const allowedImageDomains = ['lh3.googleusercontent.com']
+const allowedImageRemotePatterns = [
+  {
+    protocol: 'https',
+    hostname: 'lh3.googleusercontent.com'
+  }
+]
 
 const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true
   },
   images: {
-    domains: allowedImageDomains
+    remotePatterns: allowedImageRemotePatterns
   },
   reactStrictMode: false,
   typescript: {
