@@ -1,40 +1,60 @@
+import { useState } from 'react'
 import toast from 'react-hot-toast'
 
+import { invalidateQueries } from '@lib/query-client'
+
+import { Button } from '@components/ui/button'
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger
-} from '@components/ui/alert-dialog'
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
+} from '@components/ui/dialog'
+
+import { useDeleteAllMessages } from '@api-hooks/message'
 
 const AllMessageDeleteModal = ({ children }: { children: React.ReactNode }) => {
-  const handleDelete = () => {
-    toast.success('All messages deleted')
-  }
+  const [open, setOpen] = useState(false)
+  const {
+    mutate: deleteAllMessagesMutation,
+    isLoading: isDeleteAllMessagesLoading
+  } = useDeleteAllMessages({
+    onError: (error: any) => toast.error(error.message),
+    onSuccess: (success: any) => {
+      toast.success(success.message)
+      setOpen(false)
+      invalidateQueries('get-all-messages')
+    }
+  })
+
   return (
-    <AlertDialog>
-      <AlertDialogTrigger>{children}</AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle className="text-xl">
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger>{children}</DialogTrigger>
+      <DialogContent className="top-10 translate-y-0 sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle className="text-xl tracking-wide">
             Are you absolutely sure?
-          </AlertDialogTitle>
-          <AlertDialogDescription>
+          </DialogTitle>
+          <DialogDescription className="text-lg/5">
             This action cannot be undone. This will permanently delete all your
             messages and remove them from our servers.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={handleDelete}>Continue</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button
+            className="mt-4 text-xl"
+            disabled={isDeleteAllMessagesLoading}
+            type="submit"
+            onClick={() => deleteAllMessagesMutation()}
+          >
+            {isDeleteAllMessagesLoading ? 'Deleting...' : 'Continue'}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   )
 }
 

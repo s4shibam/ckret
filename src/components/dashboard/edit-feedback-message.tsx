@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import toast from 'react-hot-toast'
 
 import { Button } from '@components/ui/button'
@@ -13,17 +14,30 @@ import {
 import { Input } from '@components/ui/input'
 import { Label } from '@components/ui/label'
 
+import { useUpdateFeedbackMessage } from '@api-hooks/user'
+
 const EditFeedbackMessage = ({ children }: { children: React.ReactNode }) => {
-  const handleEdit = () => {
-    toast.success('Feedback message updated successfully')
-  }
+  const [feedbackMessage, setFeedbackMessage] = useState('')
+  const [open, setOpen] = useState(false)
+
+  const {
+    mutate: updateFeedbackMessageMutation,
+    isLoading: isUpdateFeedbackMessageMutationLoading
+  } = useUpdateFeedbackMessage({
+    onError: (error: any) => toast.error(error.message),
+
+    onSuccess: (success: any) => {
+      setOpen(false)
+      toast.success(success.message)
+    }
+  })
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="top-10 translate-y-0 sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="text-xl">
+          <DialogTitle className="text-xl tracking-wide">
             Edit Your Feedback Message
           </DialogTitle>
           <DialogDescription className="text-lg/5">
@@ -40,11 +54,20 @@ const EditFeedbackMessage = ({ children }: { children: React.ReactNode }) => {
             id="message"
             placeholder="Write the message"
             type="text"
+            value={feedbackMessage}
+            onChange={(e) => setFeedbackMessage(e.target.value)}
           />
         </div>
         <DialogFooter>
-          <Button className="text-xl" type="submit" onClick={handleEdit}>
-            Save changes
+          <Button
+            className="text-xl"
+            disabled={isUpdateFeedbackMessageMutationLoading}
+            type="submit"
+            onClick={() => updateFeedbackMessageMutation({ feedbackMessage })}
+          >
+            {isUpdateFeedbackMessageMutationLoading
+              ? 'Saving...'
+              : 'Save changes'}
           </Button>
         </DialogFooter>
       </DialogContent>

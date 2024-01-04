@@ -1,26 +1,49 @@
 import { formatDistanceToNow } from 'date-fns'
-import { BookLock, Expand, Delete } from 'lucide-react'
+import { Expand, Delete, Loader } from 'lucide-react'
+import Image from 'next/image'
+import toast from 'react-hot-toast'
+
+import { IMessage } from '@_types/types'
+
+import LOGO_SECONDARY from '@assets/logo-secondary.svg'
+
+import { invalidateQueries } from '@lib/query-client'
+
+import { useDeleteSingleMessage } from '@api-hooks/message'
 
 import MessageFullScreenView from './message-fullscreen-view'
 
 type Props = {
-  message: {
-    _id: string
-    content: string
-    createdAt: string
-  }
+  message: IMessage
 }
+
 const MessageCard = ({ message }: Props) => {
+  const {
+    mutate: deleteSingleMessageMutation,
+    isLoading: isDeleteSingleMessageLoading
+  } = useDeleteSingleMessage({
+    onError: (error: any) => toast.error(error.message),
+
+    onSuccess: (success: any) => {
+      toast.success(success.message)
+      invalidateQueries('get-all-messages')
+    }
+  })
+
   return (
     <div
       key={message._id}
       className="group relative flex flex-col justify-between gap-4 rounded-lg bg-gray-200 p-4"
     >
       <div className="grid grid-cols-[60px_1fr] items-center gap-4">
-        <div className="grid aspect-square w-full place-items-center rounded-md bg-gradient-to-br from-ckret-primary to-ckret-secondary">
-          <BookLock className="h-10 w-10 text-white" />
-        </div>
-        <p className="line-clamp-2 w-full pr-5">{message.content}</p>
+        <Image
+          alt=""
+          className="rounded-md"
+          height={60}
+          src={LOGO_SECONDARY}
+          width={60}
+        />
+        <p className="line-clamp-2 w-full pr-6">{message.content}</p>
       </div>
       <div className="flex items-center justify-between">
         <p className="mt-auto rounded-md bg-gray-300 px-2 py-1 capitalize">
@@ -32,10 +55,14 @@ const MessageCard = ({ message }: Props) => {
           </div>
         </MessageFullScreenView>
         <div title="Delete">
-          <Delete
-            className="cursor-pointer text-red-500 opacity-0 transition-opacity group-hover:opacity-100"
-            onClick={() => {}}
-          />
+          {isDeleteSingleMessageLoading ? (
+            <Loader className="animate-spin" />
+          ) : (
+            <Delete
+              className="cursor-pointer text-red-500 opacity-0 transition-opacity group-hover:opacity-100"
+              onClick={() => deleteSingleMessageMutation({ mid: message._id })}
+            />
+          )}
         </div>
       </div>
     </div>
