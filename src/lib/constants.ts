@@ -17,7 +17,7 @@ import {
 } from 'lucide-react'
 
 // URLs
-export const CKRET_URL = process.env.NEXTAUTH_URL
+export const CKRET_URL = process.env.NEXT_PUBLIC_CKRET_URL
 
 export const DEVELOPER_PORTFOLIO_URL =
   process.env.NEXT_PUBLIC_DEVELOPER_PORTFOLIO_URL
