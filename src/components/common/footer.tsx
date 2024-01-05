@@ -60,6 +60,13 @@ const Footer = () => {
             >
               Cookie Policy
             </Link>
+            <Link
+              className="decoration-white underline-offset-4 hover:underline"
+              href="/legal/privacy-policy"
+              target="_blank"
+            >
+              Privacy Policy
+            </Link>
           </div>
         </div>
       </div>
