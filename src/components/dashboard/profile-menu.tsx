@@ -20,14 +20,14 @@ const ProfileMenu = () => {
         <LogOut />
         Log Out
       </Button>
-      <div className="flex items-center gap-3 rounded-lg bg-gradient-to-br from-orange-100 to-rose-300 px-4 py-2">
+      <div className="flex w-full items-center gap-3 rounded-lg bg-gradient-to-br from-orange-100 to-rose-300 px-4 py-2">
         <Avatar>
           <AvatarImage alt="" src={data?.user?.image || ''} />
           <AvatarFallback>{data?.user?.name?.[0] || '@'}</AvatarFallback>
         </Avatar>
-        <div>
+        <div className="w-full">
           <p className="leading-5">{data?.user?.name}</p>
-          <p className="leading-5 blur-sm hover:blur-none">
+          <p className="w-full max-w-[175px] truncate leading-5 blur-sm hover:blur-none">
             {data?.user?.email}
           </p>
         </div>
