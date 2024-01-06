@@ -52,7 +52,10 @@ const EditFeedbackMessage = ({ children }: { children: React.ReactNode }) => {
           </DialogDescription>
           <p className="mt-2 text-base/5">
             Note: Feedback message length can not be more than{' '}
-            <span className="font-medium">100</span> characters.
+            <span className="font-medium">
+              {CHAR_SIZE_LIMIT.FEEDBACK_MESSAGE.MAX}
+            </span>{' '}
+            characters.
           </p>
         </DialogHeader>
         <div className="my-2 flex w-full flex-col gap-2">

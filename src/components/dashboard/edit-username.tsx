@@ -52,8 +52,8 @@ const EditUsername = ({ children }: { children: React.ReactNode }) => {
             done.
           </DialogDescription>
           <div className="mt-4 flex flex-col gap-2 rounded-lg bg-gray-100 px-4 py-2">
-            <p className="font-medium">Usernames can only have:</p>
-            <ul className="list-inside list-disc text-base/5">
+            <p className="text-left font-medium">Usernames can only have:</p>
+            <ul className="list-inside list-disc text-left text-base/5">
               <li>
                 Lowercase Letters <code>[a - z]</code>
               </li>
@@ -69,7 +69,10 @@ const EditUsername = ({ children }: { children: React.ReactNode }) => {
               <li>
                 Underscores <code>[_]</code>
               </li>
-              <li>Length: Minimum 5, Maximum 20 characters</li>
+              <li>
+                Length: Minimum {CHAR_SIZE_LIMIT.USERNAME.MIN}, Maximum{' '}
+                {CHAR_SIZE_LIMIT.USERNAME.MAX} characters
+              </li>
             </ul>
           </div>
         </DialogHeader>

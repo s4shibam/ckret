@@ -46,11 +46,12 @@ const EditName = ({ children }: { children: React.ReactNode }) => {
           </DialogTitle>
           <DialogDescription className="text-lg/5">
             Make changes to your name here. Click save when you&apos;re done.
-            <p className="mt-2 text-base/5">
-              Note: Name length can not be more than{' '}
-              <span className="font-medium">100</span> characters.
-            </p>
           </DialogDescription>
+          <p className="mt-2 text-base/5">
+            Note: Name length can not be more than{' '}
+            <span className="font-medium">{CHAR_SIZE_LIMIT.NAME.MAX}</span>{' '}
+            characters.
+          </p>
         </DialogHeader>
         <div className="my-2 flex w-full flex-col gap-2">
           <Label className="text-lg" htmlFor="message">
