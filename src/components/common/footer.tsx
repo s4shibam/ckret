@@ -15,28 +15,28 @@ const Footer = () => {
         <div>
           <Branding />
           <p className="mt-4 max-w-96">
-            Ckret <em>(pronounced secret)</em> allows its users to receive
-            anonymous messages via personalized <em>Ckret Link</em> from your
-            friends, families, neighbors, coworkers, fans and many more.
+            Ckret <em>(pronounced secret)</em> allows its users to send and
+            receive anonymous messages via personalized <em>Ckret Link</em> from
+            their friends, families, neighbors, coworkers, fans etc.
           </p>
         </div>
         <div className="grid gap-8 md:grid-cols-2">
           <div className="flex flex-col gap-3 text-lg">
             <p className="text-xl font-medium">Useful Links</p>
             <Link
-              className="decoration-white underline-offset-4 hover:underline"
+              className="w-fit decoration-white underline-offset-4 hover:underline"
               href="/dashboard/profile"
             >
               Profile
             </Link>
             <Link
-              className="decoration-white underline-offset-4 hover:underline"
+              className="w-fit decoration-white underline-offset-4 hover:underline"
               href="/dashboard/messages"
             >
               Messages
             </Link>
             <Link
-              className="decoration-white underline-offset-4 hover:underline"
+              className="w-fit decoration-white underline-offset-4 hover:underline"
               href={FEEDBACK_FORM_URL || '#'}
               target="_blank"
             >
@@ -47,21 +47,21 @@ const Footer = () => {
           <div className="flex flex-col gap-3 text-lg">
             <p className="text-xl font-medium">Legal</p>
             <Link
-              className="decoration-white underline-offset-4 hover:underline"
+              className="w-fit decoration-white underline-offset-4 hover:underline"
               href="/legal/disclaimer"
               target="_blank"
             >
               Disclaimer
             </Link>
             <Link
-              className="decoration-white underline-offset-4 hover:underline"
+              className="w-fit decoration-white underline-offset-4 hover:underline"
               href="/legal/cookie-policy"
               target="_blank"
             >
               Cookie Policy
             </Link>
             <Link
-              className="decoration-white underline-offset-4 hover:underline"
+              className="w-fit decoration-white underline-offset-4 hover:underline"
               href="/legal/privacy-policy"
               target="_blank"
             >
