@@ -26,8 +26,16 @@ const ProfileMenu = () => {
           <AvatarFallback>{data?.user?.name?.[0] || '@'}</AvatarFallback>
         </Avatar>
         <div className="w-full">
-          <p className="leading-5">{data?.user?.name}</p>
-          <p className="w-full max-w-[175px] truncate leading-5 blur-sm hover:blur-none">
+          <p
+            className="w-full max-w-[175px] truncate font-medium leading-5 tracking-wide"
+            title={data?.user?.name || '-'}
+          >
+            {data?.user?.name}
+          </p>
+          <p
+            className="w-full max-w-[175px] truncate leading-5 blur-sm hover:blur-none"
+            title={data?.user?.email || '-'}
+          >
             {data?.user?.email}
           </p>
         </div>
