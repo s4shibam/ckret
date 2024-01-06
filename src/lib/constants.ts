@@ -28,17 +28,17 @@ export const SUPPORT_EMAIL = process.env.NEXT_PUBLIC_SUPPORT_EMAIL
 
 // Others
 export const CHAR_SIZE_LIMIT = {
+  NAME: {
+    MIN: 1,
+    MAX: 50
+  },
   USERNAME: {
-    MAX: 20,
-    MIN: 5
+    MIN: 5,
+    MAX: 20
   },
   FEEDBACK_MESSAGE: {
-    MAX: 100,
-    MIN: 1
-  },
-  NAME: {
-    MAX: 100,
-    MIN: 1
+    MIN: 1,
+    MAX: 50
   }
 }
 
