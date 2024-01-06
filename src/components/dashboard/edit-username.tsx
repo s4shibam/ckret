@@ -21,9 +21,9 @@ import { Label } from '@components/ui/label'
 import { useUpdateUsername } from '@api-hooks/user'
 
 const EditUsername = ({ children }: { children: React.ReactNode }) => {
-  const { update } = useSession()
+  const { data: session, update } = useSession()
 
-  const [username, setUsername] = useState('')
+  const [username, setUsername] = useState(session?.user?.username || '')
   const [open, setOpen] = useState(false)
 
   const {

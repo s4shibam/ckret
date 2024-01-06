@@ -21,8 +21,10 @@ import { Label } from '@components/ui/label'
 import { useUpdateFeedbackMessage } from '@api-hooks/user'
 
 const EditFeedbackMessage = ({ children }: { children: React.ReactNode }) => {
-  const { update } = useSession()
-  const [feedbackMessage, setFeedbackMessage] = useState('')
+  const { data: session, update } = useSession()
+  const [feedbackMessage, setFeedbackMessage] = useState(
+    session?.user?.feedback_message || ''
+  )
   const [open, setOpen] = useState(false)
 
   const {
