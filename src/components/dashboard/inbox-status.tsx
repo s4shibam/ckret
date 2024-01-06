@@ -34,7 +34,7 @@ const InboxStatus = () => {
 
         {isToggleInboxStatusLoading ? (
           <div className="grid h-6 w-11 rounded-full bg-secondary">
-            <Loader className="animate-spin" />
+            <Loader className="animate-spin-slow" />
           </div>
         ) : (
           <Switch

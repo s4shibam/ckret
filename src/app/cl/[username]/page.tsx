@@ -161,7 +161,7 @@ const SendMessage = ({ params }: { params: { username: string } }) => {
                 title="Random Question"
                 onClick={setRandomMessage}
               >
-                <Dice5 className="h-7 w-7 animate-[spin_5s_linear_infinite] text-white group-hover:animate-pause" />
+                <Dice5 className="h-7 w-7 animate-spin-slow text-white group-hover:animate-pause" />
               </Button>
             )}
           </div>
