@@ -1,6 +1,6 @@
 'use client'
 
-import { Loader } from 'lucide-react'
+import { Loader, Settings } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import toast from 'react-hot-toast'
 
@@ -25,38 +25,42 @@ const InboxStatus = () => {
   })
 
   return (
-    <div className="flex flex-col gap-5 rounded-lg border-2 p-4">
-      <div className="flex w-full flex-wrap items-center justify-between gap-4">
-        <p className="whitespace-nowrap font-medium">Inbox Status</p>
-        <div className="flex items-center gap-2">
-          <p
-            className={cn(
-              'cursor-default truncate rounded-md border px-4 py-1 text-xl font-semibold tracking-wider xl:text-2xl',
-              {
-                'border-green-500 bg-green-300': data?.user?.is_inbox_enabled,
-                'border-red-500 bg-red-300': !data?.user?.is_inbox_enabled
-              }
-            )}
-          >
-            {data?.user?.is_inbox_enabled ? 'Enabled' : 'Disabled'}
-          </p>
+    <div className="left-border-card">
+      <div className="flex items-center gap-3">
+        <p className="left-border-card-heading">
+          <Settings className="h-5 w-5" />
+          Inbox Status
+        </p>
 
-          <div className="grid w-11">
-            {isToggleInboxStatusLoading ? (
-              <Loader className="m-auto h-8 w-8 animate-spin" />
-            ) : (
-              <Switch
-                checked={data?.user?.is_inbox_enabled}
-                onClick={() => toggleInboxStatusMutate()}
-              />
-            )}
+        {isToggleInboxStatusLoading ? (
+          <div className="grid h-6 w-11 rounded-full bg-secondary">
+            <Loader className="animate-spin" />
           </div>
-        </div>
+        ) : (
+          <Switch
+            checked={data?.user?.is_inbox_enabled}
+            onClick={() => toggleInboxStatusMutate()}
+          />
+        )}
       </div>
-      <p className="rounded-md bg-white px-3 py-2 drop-shadow-md">
-        Toggle the visibility of the inbox. When enabled, users can send
-        messages to your inbox. When disabled, your link will not work.
-      </p>
+      <span
+        className={cn('left-border-card-value', {
+          '!bg-green-800': data?.user?.is_inbox_enabled,
+          '!bg-red-800': !data?.user?.is_inbox_enabled
+        })}
+      >
+        {data?.user?.is_inbox_enabled ? 'Enabled' : 'Disabled'}
+      </span>
+
+      <ul>
+        <li>
+          Enabled status allows users to send you messages, while disabled
+          prevents that.
+        </li>
+        <li className="text-blue-700">
+          Toggle the switch to change status of the inbox.
+        </li>
+      </ul>
     </div>
   )
 }

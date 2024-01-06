@@ -100,3 +100,15 @@
 .animate-pause {
   animation-play-state: paused;
 }
+
+.left-border-card {
+  @apply flex flex-col gap-4 border-l-8 border-ckret-primary bg-gradient-to-r from-orange-100 via-rose-50 to-transparent p-4;
+}
+
+.left-border-card-heading {
+  @apply flex items-center gap-2 text-xl font-medium;
+}
+
+.left-border-card-value {
+  @apply w-fit rounded-md bg-primary px-3 py-1.5 text-xl font-semibold tracking-wider text-muted;
+}
