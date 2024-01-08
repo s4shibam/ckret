@@ -87,10 +87,10 @@
   @apply bg-ckret-primary;
 }
 
-.graph-paper {
-  background-size: 80px 80px;
-  background-image: linear-gradient(to right, #10101010 1px, transparent 1px),
-    linear-gradient(to bottom, #10101010 1px, transparent 1px);
+.doodle {
+  background-size: 750px auto;
+  background-image: url('../assets/background.svg');
+  @apply h-screen bg-repeat;
 }
 
 .heading {
