@@ -130,7 +130,7 @@ const CookiePolicy = () => {
 
         <li>
           We use adverts to offset the costs of running this site and provide
-          funding for further development. The behavioural advertising cookies
+          funding for further development. The behavioral advertising cookies
           used by this site are designed to ensure that we provide you with the
           most relevant adverts where possible by anonymously tracking your
           interests and presenting similar things that may be of interest.
@@ -153,7 +153,7 @@ const CookiePolicy = () => {
 
       <p className="mt-4 text-lg">
         By clicking on this{' '}
-        <a className="text-blue-500" href={SUPPORT_EMAIL || '#'}>
+        <a className="text-blue-500" href={`mailto:${SUPPORT_EMAIL}`}>
           link
         </a>
         .
