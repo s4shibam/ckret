@@ -8,7 +8,7 @@ import Hero from '@components/landing/hero'
 
 const LandingPage = () => {
   return (
-    <main className="flex min-h-screen w-full flex-col pt-16">
+    <main className="flex min-h-screen w-full flex-col">
       <NavBar />
 
       <Hero />
