@@ -4,6 +4,8 @@ import { Fredoka } from 'next/font/google'
 import './globals.css'
 import AppProviders from '@providers/app-providers'
 
+import GoogleAnalytics from '@components/analytics/google-analytics'
+
 const fredoka = Fredoka({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -25,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={fredoka.className}>
+        <GoogleAnalytics />
         <AppProviders>{children}</AppProviders>
       </body>
     </html>

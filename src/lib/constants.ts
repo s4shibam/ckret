@@ -17,34 +17,19 @@ import {
 } from 'lucide-react'
 
 // URLs
-export const CKRET_URL = process.env.NEXT_PUBLIC_CKRET_URL
+export const CKRET_URL = process.env.NEXT_PUBLIC_CKRET_URL || ''
 
 export const DEVELOPER_PORTFOLIO_URL =
-  process.env.NEXT_PUBLIC_DEVELOPER_PORTFOLIO_URL
+  process.env.NEXT_PUBLIC_DEVELOPER_PORTFOLIO_URL || ''
 
-export const FEEDBACK_FORM_URL = process.env.NEXT_PUBLIC_FEEDBACK_FORM_URL
+export const FEEDBACK_FORM_URL = process.env.NEXT_PUBLIC_FEEDBACK_FORM_URL || ''
 
-export const SUPPORT_EMAIL = process.env.NEXT_PUBLIC_SUPPORT_EMAIL
+export const SUPPORT_EMAIL = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || ''
 
-// Others
-export const CHAR_SIZE_LIMIT = {
-  NAME: {
-    MIN: 1,
-    MAX: 50
-  },
-  USERNAME: {
-    MIN: 5,
-    MAX: 20
-  },
-  FEEDBACK_MESSAGE: {
-    MIN: 1,
-    MAX: 50
-  }
-}
+// Analytics
+export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || ''
 
-export const MESSAGE_INSTRUCTION = {
-  AM: 'Send Me Anonymous Messages'
-}
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''
 
 // Features
 export const FEATURE_HEADING =
@@ -190,3 +175,23 @@ export const FAQS = [
     answer: `It's great that you want to share your feedback with us.<br/>Visit the <span class='font-medium'>Profile</span> page (<a href='${CKRET_URL}/dashboard/profile' class='text-blue-500'>${CKRET_URL}/dashboard/profile</a>), where you'll find a <span class='font-medium'>Share Feedback</span> button. Clicking on it will open a Google form where you can share your thoughts.`
   }
 ]
+
+// Others
+export const CHAR_SIZE_LIMIT = {
+  NAME: {
+    MIN: 1,
+    MAX: 50
+  },
+  USERNAME: {
+    MIN: 5,
+    MAX: 20
+  },
+  FEEDBACK_MESSAGE: {
+    MIN: 1,
+    MAX: 50
+  }
+}
+
+export const MESSAGE_INSTRUCTION = {
+  AM: 'Send Me Anonymous Messages'
+}
