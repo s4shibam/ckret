@@ -9,7 +9,7 @@ const Guide = () => {
       <p className="mx-auto w-fit border-x-8 border-ckret-primary px-4 text-center text-4xl font-semibold sm:px-8 xl:text-6xl">
         {GUIDE_HEADING}
       </p>
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
         {GUIDE_STEPS.map((step) => (
           <div
             key={step.id}
