@@ -43,7 +43,7 @@ const MessageCard = ({ message }: Props) => {
           src={LOGO_SECONDARY}
           width={60}
         />
-        <p className="line-clamp-2 w-full pr-6">{message.content}</p>
+        <p className="line-clamp-2 w-full pr-6 text-lg">{message.content}</p>
       </div>
       <div className="flex items-center justify-between">
         <p className="mt-auto rounded-md bg-gray-300 px-2 py-1 capitalize">
@@ -51,7 +51,7 @@ const MessageCard = ({ message }: Props) => {
         </p>
         <MessageFullScreenView messageContent={message.content}>
           <div title="Full Screen">
-            <Expand className="absolute right-4 top-4 h-5 w-5 cursor-pointer" />
+            <Expand className="absolute right-4 top-4 h-5 w-5 cursor-pointer text-ckret-secondary" />
           </div>
         </MessageFullScreenView>
         <div title="Delete">
