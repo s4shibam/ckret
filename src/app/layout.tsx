@@ -12,7 +12,10 @@ export const metadata: Metadata = {
   manifest: 'manifest.json',
   title: 'Ckret - Anonymous Messaging Platform',
   description:
-    'Ckret is an anonymous messaging platform. Exchange anonymous questions, feedback, suggestions, dares, and challenges with your friends, families, and coworkers.'
+    'Ckret is an anonymous messaging platform. Exchange anonymous questions, feedback, suggestions, dares, and challenges with your friends, families, and coworkers.',
+  openGraph: {
+    images: ['./icon.ico']
+  }
 }
 
 export const viewport: Viewport = {
