@@ -6,7 +6,8 @@ import {
   Facebook,
   Instagram,
   MessageSquareShare,
-  Twitter
+  Twitter,
+  Linkedin
 } from 'lucide-react'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react'
@@ -28,22 +29,22 @@ const socialMediaPlatforms = [
     key: 'facebook'
   },
   {
-    icon: <Image alt="" src={WHATSAPP} />,
-    bg: 'bg-green-500 hover:bg-green-500',
-    name: 'WhatsApp',
-    key: 'whatsapp'
-  },
-  {
-    icon: <Twitter />,
-    bg: 'bg-blue-400 hover:bg-blue-400',
-    name: 'Twitter',
-    key: 'twitter'
-  },
-  {
     icon: <Instagram />,
     bg: 'bg-pink-600 hover:bg-pink-600',
     name: 'Instagram',
     key: 'instagram'
+  },
+  {
+    icon: <Linkedin />,
+    bg: 'bg-blue-700 hover:bg-blue-700',
+    name: 'LinkedIn',
+    key: 'linkedin'
+  },
+  {
+    icon: <MessageSquareShare />,
+    bg: 'bg-stone-500 hover:bg-stone-500',
+    name: 'SMS',
+    key: 'sms'
   },
   {
     icon: <Image alt="" src={SNAPCHAT} />,
@@ -52,10 +53,16 @@ const socialMediaPlatforms = [
     key: 'snapchat'
   },
   {
-    icon: <MessageSquareShare />,
-    bg: 'bg-stone-500 hover:bg-stone-500',
-    name: 'SMS',
-    key: 'sms'
+    icon: <Twitter />,
+    bg: 'bg-blue-400 hover:bg-blue-400',
+    name: 'Twitter',
+    key: 'twitter'
+  },
+  {
+    icon: <Image alt="" src={WHATSAPP} />,
+    bg: 'bg-green-500 hover:bg-green-500',
+    name: 'WhatsApp',
+    key: 'whatsapp'
   }
 ]
 
@@ -63,7 +70,7 @@ const MyLink = () => {
   const { data } = useSession()
   const [myLink, setMyLink] = useState('')
   const shareText = 'Send me anonymous messages.'
-  const hashtags = 'ckret,anonymous'
+  const hashtags = 'ckret,anonymous,messageme'
 
   useEffect(() => {
     setMyLink(`${CKRET_URL}/cl/${data?.user?.username}`)
@@ -78,9 +85,22 @@ const MyLink = () => {
           myLink
         )}`
         break
-      case 'whatsapp':
-        shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(
+      case 'instagram':
+        toast.error(
+          'To share on Instagram, open the app and paste the ckret link in your post.'
+        )
+        break
+      case 'linkedin':
+        shareUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(
           `${myLink}\n${shareText}`
+        )}`
+        break
+      case 'sms':
+        shareUrl = `sms:?body=${encodeURIComponent(`${myLink}\n${shareText}`)}`
+        break
+      case 'snapchat':
+        shareUrl = `https://www.snapchat.com/scan?attachmentUrl=${encodeURIComponent(
+          myLink
         )}`
         break
       case 'twitter':
@@ -90,24 +110,17 @@ const MyLink = () => {
           hashtags
         )}`
         break
-      case 'instagram':
-        toast.error(
-          'To share on Instagram, open the app and paste the ckret link in your post.'
-        )
-        break
-      case 'snapchat':
-        shareUrl = `https://www.snapchat.com/scan?attachmentUrl=${encodeURIComponent(
-          myLink
+      case 'whatsapp':
+        shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(
+          `${myLink}\n${shareText}`
         )}`
-        break
-      case 'sms':
-        shareUrl = `sms:?body=${encodeURIComponent(`${myLink}\n${shareText}`)}`
         break
       default:
         break
     }
 
     if (shareUrl) {
+      console.log(shareUrl)
       window.open(shareUrl, '_blank')
     }
   }
@@ -121,7 +134,7 @@ const MyLink = () => {
     <div className="flex w-full max-w-[500px] flex-col gap-4 text-xl">
       <div className="flex flex-col items-center gap-2 rounded-lg border-2 border-gray-500 p-4">
         <p>The link to message you is: </p>
-        <code className="w-full break-words rounded-md bg-gray-300 px-2 py-1 text-center font-semibold">
+        <code className="w-full break-words rounded-md bg-gray-300 px-2 py-1 text-center text-base font-semibold sm:text-xl">
           {myLink}
         </code>
       </div>
