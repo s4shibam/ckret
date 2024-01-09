@@ -23,8 +23,7 @@ const imagesArray = [
     width: OG_IMAGE.width,
     height: OG_IMAGE.height,
     alt: 'Ckret'
-  },
-  './icon.ico'
+  }
 ]
 
 export const metadata: Metadata = {
