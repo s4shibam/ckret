@@ -16,6 +16,28 @@ import {
   MessageCircle
 } from 'lucide-react'
 
+// Metadata
+export const META_TITLE = 'Ckret - Anonymous Messaging Platform'
+
+export const META_DESCRIPTION =
+  'Ckret is an anonymous messaging platform. Exchange anonymous questions, feedback, suggestions, dares, and challenges with your friends, families, and coworkers.'
+
+export const META_KEYWORDS = [
+  'ckret',
+  'secret',
+  'secret chat',
+  'chatting app',
+  'secret message',
+  'secret options',
+  'honest feelings',
+  'secret challenges',
+  'anonymous message',
+  'anonymous feedback',
+  'messaging platform',
+  'secret text message',
+  'anonymous message website'
+]
+
 // URLs
 export const CKRET_URL = process.env.NEXT_PUBLIC_CKRET_URL || ''
 
