@@ -58,9 +58,9 @@ Ckret is an anonymous messaging platform, where users can send and receive messa
 
 ## 🖼️ Screenshots
 
-![Landing Page](./readme_assets/screenshot_1.png)
-![Features](./readme_assets/screenshot_2.png)
-![How to use Ckret](./readme_assets/screenshot_3.png)
+![Landing Page](./.readme/screenshot_1.png)
+![Features](./.readme/screenshot_2.png)
+![How to use Ckret](./.readme/screenshot_3.png)
 
 ## 👋🏻 Contact
 
