@@ -22,8 +22,7 @@ export const authOptions: NextAuthOptions = {
     async signIn({ user, account }) {
       if (account?.provider === 'google') {
         const payload = {
-          name: user.name || '',
-          email: user.email || ''
+          token: account.id_token
         }
 
         try {
