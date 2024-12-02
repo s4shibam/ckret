@@ -5,12 +5,12 @@
   },
   "extends": [
     "next",
-    "prettier",
     "next/core-web-vitals",
     "plugin:import/typescript",
     "plugin:import/recommended",
     "plugin:tailwindcss/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
   "plugins": ["import", "@typescript-eslint"],
   "rules": {
