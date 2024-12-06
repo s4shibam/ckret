@@ -24,6 +24,9 @@ const toggleInboxStatus = () => ckretConnect.put('user/inbox-status')
 const getUserDetailsByUsername = (username: string) =>
   ckretConnect.get(`user/details/${username}`)
 
+const anonymousSignUp = (payload: { username: string; password: string }) =>
+  ckretConnect.post('/user/auth/anonymous-signup', payload)
+
 // User Hooks
 export const useUpdateName = ({ ...options }) =>
   useMutation(updateName, options)
@@ -41,3 +44,6 @@ export const useGetUserDetailsByUsername = (params: { username: string }) =>
   useQuery(['user-details-by-username', params], () =>
     getUserDetailsByUsername(params.username)
   )
+
+export const useAnonymousSignUp = ({ ...options }) =>
+  useMutation(anonymousSignUp, options)
