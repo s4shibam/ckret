@@ -1,11 +1,10 @@
 'use client'
 
-import { Cable } from 'lucide-react'
+import { SquareArrowOutUpRight } from 'lucide-react'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 import { Button } from '@components/ui/button'
-
-import SignInModal from './signin-modal'
 
 const CreateLink = () => {
   const [createdCount, setCreatedCount] = useState(169)
@@ -32,11 +31,14 @@ const CreateLink = () => {
         <span className="font-medium">{createdCount}+</span> people tapped the
         button in the last <span className="font-medium">3 hours</span>
       </p>
-      <SignInModal>
-        <Button className="h-12 text-xl capitalize" variant="secondary">
-          <Cable className="mr-2" /> Create your own link
-        </Button>
-      </SignInModal>
+      <Button
+        asChild
+        className="h-12 bg-white text-xl capitalize text-black hover:bg-white/90"
+      >
+        <Link href="/create-account">
+          <SquareArrowOutUpRight className="mr-2" /> Create your own link
+        </Link>
+      </Button>
     </div>
   )
 }

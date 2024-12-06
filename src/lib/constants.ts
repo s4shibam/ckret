@@ -12,7 +12,7 @@ import {
   Wifi,
   Flag,
   UserRoundPlus,
-  Cable,
+  SquareArrowOutUpRight,
   MessageCircle
 } from 'lucide-react'
 
@@ -93,11 +93,11 @@ export const GUIDE_STEPS = [
     Icon: UserRoundPlus,
     heading: 'Create Ckret Account',
     description:
-      'Sign up for an account using your Gmail address to get started.'
+      'Sign up for an account using your Gmail address or anonymously to get started.'
   },
   {
     id: 2,
-    Icon: Cable,
+    Icon: SquareArrowOutUpRight,
     heading: 'Claim Your Personalized Link',
     description:
       'Create a unique and personalized link that you can share with others.'

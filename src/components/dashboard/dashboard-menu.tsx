@@ -1,6 +1,11 @@
 'use client'
 
-import { Cable, MessageCircle, Settings, User } from 'lucide-react'
+import {
+  MessageCircle,
+  Settings,
+  SquareArrowOutUpRight,
+  User
+} from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -27,7 +32,7 @@ const DashboardMenu = () => {
     },
     {
       title: 'My Link',
-      icon: <Cable />,
+      icon: <SquareArrowOutUpRight />,
       route: '/dashboard/my-link'
     }
   ]
