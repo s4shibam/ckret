@@ -7,8 +7,6 @@ import { CTA_HEADING, CTA_SUB_HEADING } from '@lib/constants'
 
 import { Button } from '@components/ui/button'
 
-import SignInModal from '../common/signin-modal'
-
 const CallToAction = () => {
   const { status } = useSession()
 
@@ -40,11 +38,9 @@ const CallToAction = () => {
             <Link href="/dashboard/profile">Dashboard</Link>
           </Button>
         ) : (
-          <SignInModal>
-            <Button className="h-14 w-60 text-2xl drop-shadow-xl">
-              Be Anonymous
-            </Button>
-          </SignInModal>
+          <Button className="h-14 w-60 text-2xl drop-shadow-xl">
+            <Link href="/sign-in">Be Anonymous</Link>
+          </Button>
         )}
       </div>
     </div>

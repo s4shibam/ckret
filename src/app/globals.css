@@ -90,7 +90,7 @@
 .doodle {
   background-size: 750px auto;
   background-image: url('../assets/background.svg');
-  @apply h-screen bg-repeat;
+  @apply min-h-screen bg-repeat;
 }
 
 .heading {

@@ -1,4 +1,5 @@
-import { NextAuthOptions } from 'next-auth'
+import { NextAuthOptions, User } from 'next-auth'
+import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 
 import ckretConnect from './api'
@@ -14,6 +15,50 @@ export const authOptions: NextAuthOptions = {
           prompt: 'consent',
           access_type: 'offline',
           response_type: 'code'
+        }
+      }
+    }),
+    CredentialsProvider({
+      name: 'Anonymous',
+      credentials: {
+        username: { label: 'Username', type: 'text' },
+        password: { label: 'Password', type: 'password' }
+      },
+      async authorize(
+        credentials: Record<'username' | 'password', string> | undefined
+      ): Promise<User | null> {
+        if (!credentials?.username || !credentials?.password) {
+          throw new Error('Username and password are required')
+        }
+
+        try {
+          const response = await ckretConnect.post(
+            '/user/auth/anonymous-signin',
+            {
+              username: credentials.username,
+              password: credentials.password
+            }
+          )
+
+          if (response.data?.data) {
+            const userData = response.data.data
+            return {
+              id: userData._id,
+              name: userData.name,
+              email: userData.email,
+              token: userData.token,
+              auth_provider: userData.auth_provider,
+              message_max_length: userData.message_max_length,
+              feedback_message: userData.feedback_message,
+              inbox_max_size: userData.inbox_max_size,
+              is_inbox_enabled: userData.is_inbox_enabled,
+              username: userData.username
+            } as User
+          }
+          return null
+        } catch (error) {
+          console.error('Anonymous signin error:', error)
+          return null
         }
       }
     })
@@ -50,6 +95,9 @@ export const authOptions: NextAuthOptions = {
         } catch (error: any) {
           console.error('Signin Error: ', error)
         }
+      }
+      if (account?.provider === 'credentials') {
+        return true
       }
       return false
     },
