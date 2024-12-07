@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react'
 import { Button } from '@components/ui/button'
 
 import Branding from './branding'
-import SignInModal from './signin-modal'
 
 const NavBar = () => {
   const session = useSession()
@@ -41,12 +40,12 @@ const NavBar = () => {
         <Branding />
         {(session.status === 'loading' ||
           session.status === 'unauthenticated') && (
-          <SignInModal>
-            <Button className="h-11 text-xl">
+          <Button asChild className="h-11 text-xl">
+            <Link href="/sign-in">
               <LogIn className="mr-2" />
               Sign In
-            </Button>
-          </SignInModal>
+            </Link>
+          </Button>
         )}
         {session.status === 'authenticated' && (
           <Button asChild className="h-11 text-xl">
