@@ -27,7 +27,7 @@
     "html-react-parser": "^5.0.11",
     "html2canvas": "^1.4.1",
     "lucide-react": "^0.464.0",
-    "next": "14.0.4",
+    "next": "^14.2.20",
     "next-auth": "^4.24.5",
     "react": "^18",
     "react-dom": "^18",
