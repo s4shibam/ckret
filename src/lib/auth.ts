@@ -40,8 +40,10 @@ export const authOptions: NextAuthOptions = {
             }
           )
 
-          if (response.data?.data) {
-            const userData = response.data.data
+          console.log('response: ', response)
+
+          if (response?.data) {
+            const userData = response.data
             return {
               id: userData._id,
               name: userData.name,
