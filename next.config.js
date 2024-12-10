@@ -32,4 +32,7 @@ const nextConfig = {
   }
 }
 
-module.exports = withPWA(nextConfig)
+// Only apply PWA wrapper in production
+module.exports = process.env.NODE_ENV === 'production' 
+  ? withPWA(nextConfig)
+  : nextConfig
