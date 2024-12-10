@@ -1,15 +1,13 @@
 'use client'
 
 import { SquareArrowOutUpRight } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
-import GOOGLE from '@assets/google.svg'
-
+import { GoogleSignInButton } from '@components/common/google-signin-button'
 import { Button } from '@components/ui/button'
 import {
   Card,
@@ -30,16 +28,7 @@ export default function SignInPage() {
     password: ''
   })
 
-  const handleGoogleSignIn = async () => {
-    setIsLoading(true)
-    try {
-      await signIn('google', { callbackUrl: '/dashboard/profile' })
-    } catch (error) {
-      toast.error('Failed to sign in with Google. Please try again.')
-    } finally {
-      setIsLoading(false)
-    }
-  }
+
 
   const handleAnonymousSignIn = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -49,6 +38,7 @@ export default function SignInPage() {
       const result = await signIn('credentials', {
         username: formData.username,
         password: formData.password,
+        callbackUrl: '/dashboard/profile',
         redirect: false
       })
 
@@ -74,22 +64,8 @@ export default function SignInPage() {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
-        <Button
-          className="w-full"
-          disabled={isLoading}
-          size="lg"
-          variant="outline"
-          onClick={handleGoogleSignIn}
-        >
-          <Image
-            alt="Google"
-            className="mr-2 h-8 w-8"
-            height={65}
-            src={GOOGLE}
-            width={65}
-          />
-          <span className="text-xl">Sign In with Google</span>
-        </Button>
+        
+        <GoogleSignInButton text="Sign In with Google" />
 
         <div className="relative">
           <div className="absolute inset-0 flex items-center">

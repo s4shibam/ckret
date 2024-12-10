@@ -19,7 +19,7 @@ export function GoogleSignInButton({ text }: GoogleSignInButtonProps) {
   const handleGoogleSignIn = async () => {
     setIsLoading(true)
     try {
-      await signIn('google', { callbackUrl: '/dashboard/profile' })
+      await signIn('google', { callbackUrl: '/dashboard/profile', redirect: false })
     } catch (error) {
       toast.error('Failed to sign in with Google. Please try again.')
     } finally {
