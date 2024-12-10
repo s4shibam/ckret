@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
@@ -22,7 +21,6 @@ import { Separator } from '@components/ui/separator'
 import { useAnonymousSignUp } from '@api-hooks/user'
 
 export default function CreateAccountPage() {
-  const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     username: '',
@@ -38,8 +36,6 @@ export default function CreateAccountPage() {
       toast.error(error.message)
     }
   })
-
-  
 
   const handleCreateAccount = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -65,10 +61,8 @@ export default function CreateAccountPage() {
         toast.error('Failed to sign in after account creation')
         return
       }
-
-      toast.success('Account created successfully!')
-      router.push('/dashboard/profile')
     } catch (error) {
+      console.log(error)
       toast.error('Failed to create account. Please try again.')
     } finally {
       setIsLoading(false)
