@@ -130,6 +130,20 @@ export const FAQS = [
       "<span class='font-medium'>Ckret</span> <em>(pronounced <span class='font-medium'>secret</span>)</em> allows you to receive anonymous messages from your friends, families, co-workers, fans and many more. Use it for fun or discover your strengths and areas for improvement by getting feedback from everyone."
   },
   {
+    question: 'How can I create my account on Ckret?',
+    answer: `Visit the website (<a href='${CKRET_URL}' class='text-blue-500'>${CKRET_URL}</a>) and choose between two options: sign in with your <span class='font-medium'>Google</span> account or create an <span class='font-medium'>anonymous account</span>. Once created, you'll get an auto-generated link assigned exclusively to you. Share this link with those you want to receive messages from.`
+  },
+  {
+    question: 'Can I have multiple accounts on Ckret?',
+    answer:
+      "<span class='font-medium'>Yes</span>, you can have multiple accounts on Ckret. You can create multiple anonymous accounts or use different Gmail addresses. However, you can only create one account per Gmail address."
+  },
+  {
+    question: 'I forgot my account details, how can I recover them?',
+    answer:
+      "For <span class='font-medium'>Google Sign In</span> accounts, simply log in with your Gmail credentials. If you've forgotten your Gmail credentials, you won't be able to recover that Ckret account.<br/>For <span class='font-medium'>anonymous accounts</span>, make sure to save your login credentials as they cannot be recovered if lost. You can always create a new account if needed."
+  },
+  {
     question: 'Who developed Ckret?',
     answer: `<span class='font-medium'>Ckret</span> was developed by <span class='font-medium'>Shibam</span>, a Software Engineer from <span class='font-medium'>India</span>. Know more about him from his <a target='_blank' href='${DEVELOPER_PORTFOLIO_URL}' class='text-blue-500 font-medium'>Portfolio Website</a>.`
   },
@@ -137,20 +151,6 @@ export const FAQS = [
     question: 'Why use Ckret?',
     answer:
       "<span class='font-medium'>Ckret</span> is an anonymous messaging platform with a lots of unique features. Explore its capabilities by giving it a try. We are sure, you will not regret it."
-  },
-  {
-    question: 'How can I create my account on Ckret?',
-    answer: `Visit the website (<a href='${CKRET_URL}' class='text-blue-500'>${CKRET_URL}</a>), sign in with your <span class='font-medium'>Google</span> account. Your account is now created, and an auto-generated link is assigned exclusively to you. Share the link with those you want to receive messages from.`
-  },
-  {
-    question: 'Can I have multiple accounts on Ckret?',
-    answer:
-      "<span class='font-medium'>Yes</span>, you can have multiple accounts on Ckret, but you can create an account only once with a specific <span class='font-medium'>Gmail Address</span>. You can use multiple gmail addresses to create multiple accounts. But it is not a recommended way."
-  },
-  {
-    question: 'I forgot my account details, how can I recover them?',
-    answer:
-      "Currently, we only support <span class='font-medium'>Google Sign In</span>. If you remember the Gmail Address used to create your account, log in to that account in any browser and then sign in to <span class='font-medium'>Ckret</span> using those credentials.<br/>If you've completely forgotten your Gmail credentials, unfortunately, you can't recover your Ckret account associated with that. However, you can always create a new account on Ckret."
   },
   {
     question: 'Where can I find my Ckret Link?',
