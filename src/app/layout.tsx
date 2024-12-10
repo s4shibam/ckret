@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from 'next'
-import { Fredoka } from 'next/font/google'
+import { Outfit } from 'next/font/google'
 
 import OG_IMAGE from '@assets/og-image.png'
 
-import './globals.css'
 import AppProviders from '@providers/app-providers'
+import './globals.css'
 
 import {
   CKRET_URL,
@@ -15,7 +15,10 @@ import {
 
 import GoogleAnalytics from '@components/analytics/google-analytics'
 
-const fredoka = Fredoka({ subsets: ['latin'] })
+const outfit = Outfit({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800']
+})
 
 const imagesArray = [
   {
@@ -54,7 +57,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={fredoka.className}>
+      <body className={outfit.className}>
         <GoogleAnalytics />
         <AppProviders>{children}</AppProviders>
       </body>
