@@ -24,7 +24,7 @@ const Features = () => {
           <p className="text-center text-4xl font-semibold xl:text-6xl">
             {FEATURE_HEADING}
           </p>
-          <p className="mt-4 text-center text-2xl font-medium text-gray-700 xl:text-4xl">
+          <p className="mx-auto mt-4 max-w-xl text-center text-2xl font-medium text-gray-700 xl:text-4xl">
             {FEATURE_SUB_HEADING}
           </p>
         </div>

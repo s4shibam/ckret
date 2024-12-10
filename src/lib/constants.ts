@@ -1,19 +1,19 @@
 import {
-  MessageCircleQuestion,
-  MessageSquareQuote,
-  Lightbulb,
-  Swords,
   Activity,
   Briefcase,
-  ThumbsUp,
-  Users,
-  HeartHandshake,
-  School,
-  Wifi,
   Flag,
-  UserRoundPlus,
+  HeartHandshake,
+  Lightbulb,
+  MessageCircle,
+  MessageCircleQuestion,
+  MessageSquareQuote,
+  School,
   SquareArrowOutUpRight,
-  MessageCircle
+  Swords,
+  ThumbsUp,
+  UserRoundPlus,
+  Users,
+  Wifi
 } from 'lucide-react'
 
 // Metadata
@@ -55,9 +55,10 @@ export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''
 
 // Features
 export const FEATURE_HEADING =
-  'Ckret is a popular anonymous messaging platform for the next generation.'
+  'Ckret is a safe anonymous messaging platform for the next generation.'
 
-export const FEATURE_SUB_HEADING = 'Believe us, it will be fun!'
+export const FEATURE_SUB_HEADING =
+  'Believe us, it will be fun and secure! All messages are encrypted.'
 
 export const MESSAGE_TYPES_HEADING = 'Send and Receive'
 
@@ -158,7 +159,7 @@ export const FAQS = [
   },
   {
     question: 'Can I change my Ckret Link?',
-    answer: `<span class='font-medium'>Yes</span>, you can. Go to the <span class='font-medium'>Profile</span> page (<a href='${CKRET_URL}/dashboard/profile' class='text-blue-500'>${CKRET_URL}/dashboard/profile</a>) and change your username of choice. Your new username will serve as your link, like this - <code><strong>${CKRET_URL}/cl/username</strong></code>.`
+    answer: `<span class='font-medium'>Yes</span>, you can. Go to the <span class='font-medium'>Profile</span> page (<a href='${CKRET_URL}/dashboard/profile' class='text-blue-500'>${CKRET_URL}/dashboard/profile</a>), where you'll find a <span class='font-medium'>Share Feedback</span> button. Clicking on it will open a Google form where you can share your thoughts.`
   },
   {
     question: 'Whom can I share my Ckret Link with?',
@@ -195,6 +196,11 @@ export const FAQS = [
     question:
       'I have feedback for the developers. How can I reach out to them?',
     answer: `It's great that you want to share your feedback with us.<br/>Visit the <span class='font-medium'>Profile</span> page (<a href='${CKRET_URL}/dashboard/profile' class='text-blue-500'>${CKRET_URL}/dashboard/profile</a>), where you'll find a <span class='font-medium'>Share Feedback</span> button. Clicking on it will open a Google form where you can share your thoughts.`
+  },
+  {
+    question: 'How secure are my messages on Ckret?',
+    answer:
+      "Your privacy and security are our top priorities. All messages on Ckret are protected using <span class='font-medium'>AES encryption</span>, ensuring that your communications remain private and secure. This military-grade encryption adds an extra layer of security to our anonymous messaging platform."
   }
 ]
 
