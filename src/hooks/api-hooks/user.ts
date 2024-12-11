@@ -10,6 +10,9 @@ export const googleProviderSignIn = (payload: {
   email: string
 }) => ckretConnect.post('/user/auth/google-signin', payload)
 
+const linkGoogleAccount = (payload: { token: string }) =>
+  ckretConnect.post('/user/auth/link-google', payload)
+
 const updateName = (payload: { name: string }) =>
   ckretConnect.put('/user/name', payload)
 
@@ -28,6 +31,9 @@ const anonymousSignUp = (payload: { username: string; password: string }) =>
   ckretConnect.post('/user/auth/anonymous-signup', payload)
 
 // User Hooks
+export const useLinkGoogleAccount = ({ ...options }) =>
+  useMutation(linkGoogleAccount, options)
+
 export const useUpdateName = ({ ...options }) =>
   useMutation(updateName, options)
 
