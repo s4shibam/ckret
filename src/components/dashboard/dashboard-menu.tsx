@@ -2,6 +2,7 @@
 
 import {
   MessageCircle,
+  Paintbrush,
   Settings,
   SquareArrowOutUpRight,
   User
@@ -26,6 +27,11 @@ const DashboardMenu = () => {
       route: '/dashboard/messages'
     },
     {
+      title: 'Sketches',
+      icon: <Paintbrush />,
+      route: '/dashboard/sketches'
+    },
+    {
       title: 'Settings',
       icon: <Settings />,
       route: '/dashboard/settings'
@@ -38,7 +44,7 @@ const DashboardMenu = () => {
   ]
 
   return (
-    <div className="flex w-full justify-between gap-4 md:flex-col md:justify-start">
+    <div className="flex w-full justify-between gap-1.5 md:flex-col md:justify-start">
       {menus.map((menu) => (
         <Button
           key={menu.title}

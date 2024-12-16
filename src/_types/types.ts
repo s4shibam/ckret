@@ -16,3 +16,10 @@ export interface IMessage {
   content: string
   createdAt: string
 }
+
+export interface ISketch {
+  _id: string
+  recipient: string
+  sketch_url: string
+  createdAt: string
+}
