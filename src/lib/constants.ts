@@ -10,13 +10,15 @@ import {
   MessageCircleQuestion,
   MessageSquareQuote,
   School,
+  Shield,
   Sparkles,
   SquareArrowOutUpRight,
   Swords,
   ThumbsUp,
   UserRoundPlus,
   Users,
-  Wifi
+  Wifi,
+  Zap
 } from 'lucide-react'
 
 // Metadata
@@ -140,6 +142,45 @@ export const CTA_SUB_HEADING = {
   authenticated: 'Your dashboard is calling - check the unread messages.',
   unauthenticated: "Let's start your anonymous journey."
 }
+
+// Pricing
+export const PRICING_HEADING = 'Simple, Transparent Pricing'
+
+export const PRICING_SUB_HEADING =
+  'All features included, no hidden costs. Start using Ckret today without any payment.'
+
+export const PRICING_FEATURES = [
+  {
+    Icon: MessageCircle,
+    title: 'Inbox Control',
+    description: 'Enable or disable your message inbox whenever you want'
+  },
+  {
+    Icon: Lock,
+    title: 'AES Encryption',
+    description: 'Industry-standard encryption for your messages'
+  },
+  {
+    Icon: Brush,
+    title: 'Anonymous Sketches',
+    description: 'Create and share anonymous artwork'
+  },
+  {
+    Icon: Shield,
+    title: 'Message Privacy',
+    description: 'No tracking, no ads, complete anonymity'
+  },
+  {
+    Icon: Sparkles,
+    title: 'Message Suggestions',
+    description: 'Get creative with random message ideas'
+  },
+  {
+    Icon: Zap,
+    title: 'Instant Sharing',
+    description: 'Share your link with friends, family & more'
+  }
+]
 
 // FAQs
 export const FAQS = [

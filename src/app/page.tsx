@@ -5,6 +5,7 @@ import FAQs from '@components/landing/faqs'
 import Features from '@components/landing/features'
 import Guide from '@components/landing/guide'
 import Hero from '@components/landing/hero'
+import Pricing from '@components/landing/pricing'
 
 const LandingPage = () => {
   return (
@@ -18,6 +19,8 @@ const LandingPage = () => {
       <Guide />
 
       <CallToAction />
+
+      <Pricing />
 
       <FAQs />
 
