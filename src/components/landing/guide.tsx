@@ -13,16 +13,16 @@ const Guide = () => {
         {GUIDE_STEPS.map((step) => (
           <div
             key={step.id}
-            className="rounded-lg bg-gradient-to-br from-ckret-primary to-ckret-secondary p-1 drop-shadow-md"
+            className="cursor-default rounded-lg bg-gradient-to-br from-ckret-primary to-ckret-secondary p-1 drop-shadow-md transition-transform duration-300 hover:scale-105"
           >
-            <div className="h-full w-full rounded-md bg-gradient-to-br from-orange-100 via-white to-white p-4">
+            <div className="h-full w-full rounded-md bg-gradient-to-br from-orange-100 via-white to-white p-4 hover:bg-gradient-to-br hover:from-orange-200 hover:via-white hover:to-white">
               <div className="mb-4 flex w-fit items-center justify-center rounded-lg bg-black p-3">
                 <step.Icon className="h-8 w-8 text-white xl:h-10 xl:w-10" />
               </div>
               <p className="mb-2 text-xl font-semibold md:text-2xl">
                 {step.heading}
               </p>
-              <p className="text-gray-600 md:text-lg">{step.description}</p>
+              <p className="text-gray-600 md:text-lg/6">{step.description}</p>
             </div>
           </div>
         ))}

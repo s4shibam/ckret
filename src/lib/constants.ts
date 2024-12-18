@@ -1,13 +1,16 @@
 import {
   Activity,
   Briefcase,
+  Brush,
   Flag,
   HeartHandshake,
   Lightbulb,
+  Lock,
   MessageCircle,
   MessageCircleQuestion,
   MessageSquareQuote,
   School,
+  Sparkles,
   SquareArrowOutUpRight,
   Swords,
   ThumbsUp,
@@ -60,9 +63,24 @@ export const FEATURE_HEADING =
 export const FEATURE_SUB_HEADING =
   'Believe us, it will be fun and secure! All messages are encrypted.'
 
-export const MESSAGE_TYPES_HEADING = 'Send and Receive'
-
-export const RECIPIENT_TYPES_HEADING = 'Share with Your'
+export const MAIN_FEATURES = [
+  {
+    Icon: Lock,
+    title: 'End-to-End Encryption',
+    description:
+      'Your messages are fully encrypted and secure by AES encryption'
+  },
+  {
+    Icon: Brush,
+    title: 'Anonymous Sketches',
+    description: 'Express yourself through anonymous drawings and artwork'
+  },
+  {
+    Icon: Sparkles,
+    title: 'Rich Interactions',
+    description: 'Send messages, feedback, challenges, and more anonymously'
+  }
+]
 
 export const MESSAGE_TYPES = [
   { Icon: MessageCircleQuestion, title: 'questions' },
