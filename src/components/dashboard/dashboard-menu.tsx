@@ -1,8 +1,8 @@
 'use client'
 
 import {
+  Brush,
   MessageCircle,
-  Paintbrush,
   Settings,
   SquareArrowOutUpRight,
   User
@@ -28,7 +28,7 @@ const DashboardMenu = () => {
     },
     {
       title: 'Sketches',
-      icon: <Paintbrush />,
+      icon: <Brush />,
       route: '/dashboard/sketches'
     },
     {
@@ -39,7 +39,7 @@ const DashboardMenu = () => {
     {
       title: 'My Link',
       icon: <SquareArrowOutUpRight />,
-      route: '/dashboard/my-link'
+      route: '/dashboard/my-links'
     }
   ]
 
