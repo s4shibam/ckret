@@ -19,6 +19,7 @@ import WHATSAPP from '@assets/whatsapp.svg'
 
 import { CKRET_URL } from '@lib/constants'
 
+import Header from '@components/dashboard/header'
 import { Button } from '@components/ui/button'
 
 const socialMediaPlatforms = [
@@ -140,6 +141,8 @@ const MyLink = () => {
 
   return (
     <div className="mx-auto flex w-full max-w-[800px] flex-col gap-4 text-xl">
+      <Header title="My Links" />
+
       <div className="mb-4 flex justify-center gap-4">
         <Button
           className="text-base"
@@ -192,7 +195,7 @@ const MyLink = () => {
         ))}
       </div>
 
-      <div className="rounded-lg border-2 border-ckret-primary p-4">
+      <div className="rounded-lg border-2 border-ckret-primary p-4 text-center">
         Share the link on your social media handles and ask your friends,
         families, fans, and coworkers to send you secret messages or sketch with
         you. 🚀
