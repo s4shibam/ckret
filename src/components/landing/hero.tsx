@@ -6,13 +6,13 @@ const Hero = () => {
   return (
     <div className="doodle relative flex size-full min-h-screen flex-col items-center gap-10 overflow-hidden border-b-2 border-ckret-primary px-6 pt-28">
       <div className="mt-auto flex select-none flex-col gap-4 tracking-widest drop-shadow-xl">
-        <p className="animate-fade-up overflow-hidden text-center text-6xl font-extrabold uppercase sm:text-7xl lg:text-8xl">
+        <p className="animate-fade-up overflow-hidden text-center text-5xl font-extrabold uppercase sm:text-7xl lg:text-8xl">
           Speak Your{' '}
           <span className="bg-gradient-to-br from-orange-500 to-rose-500 bg-clip-text text-transparent">
             Mind
           </span>
         </p>
-        <p className="animate-fade-up overflow-hidden text-center text-6xl font-extrabold uppercase sm:text-7xl lg:text-8xl">
+        <p className="animate-fade-up overflow-hidden text-center text-5xl font-extrabold uppercase sm:text-7xl lg:text-8xl">
           Keep Your{' '}
           <span className="bg-gradient-to-br from-lime-500 to-teal-500 bg-clip-text text-transparent">
             Identity

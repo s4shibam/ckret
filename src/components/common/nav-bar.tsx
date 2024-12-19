@@ -1,6 +1,5 @@
 'use client'
 
-import { LayoutDashboard, LogIn } from 'lucide-react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
@@ -40,19 +39,13 @@ const NavBar = () => {
         <Branding />
         {(session.status === 'loading' ||
           session.status === 'unauthenticated') && (
-          <Button asChild className="h-11 text-xl">
-            <Link href="/sign-in">
-              <LogIn className="mr-2" />
-              Sign In
-            </Link>
+          <Button asChild className="h-11 rounded-full px-6 text-xl">
+            <Link href="/sign-in">Sign In</Link>
           </Button>
         )}
         {session.status === 'authenticated' && (
-          <Button asChild className="h-11 text-xl">
-            <Link href="/dashboard/profile">
-              <LayoutDashboard className="mr-2" />
-              Dashboard
-            </Link>
+          <Button asChild className="h-11 rounded-full px-6 text-xl">
+            <Link href="/dashboard/profile">Dashboard</Link>
           </Button>
         )}
       </div>

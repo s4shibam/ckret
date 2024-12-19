@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 
+import AnimatedLoader from '@components/common/animated-loader'
 import Branding from '@components/common/branding'
 
 export default function AuthLayout({
@@ -14,6 +15,10 @@ export default function AuthLayout({
 
   if (status === 'authenticated') {
     redirect('/dashboard/profile')
+  }
+
+  if (status === 'loading') {
+    return <AnimatedLoader type="fullscreen" />
   }
 
   return (

@@ -19,7 +19,7 @@ const CallToAction = () => {
       className="bg-gradient-to-br from-transparent via-transparent to-rose-200"
       id="color"
     >
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-20 px-5 py-14 sm:py-28">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-20 px-5 py-16 sm:py-36">
         <div>
           <p className="bg-gradient-to-br from-ckret-primary to-ckret-secondary bg-clip-text text-center text-4xl font-semibold text-transparent xl:text-6xl/[5rem]">
             {CTA_HEADING?.[status]}
@@ -32,13 +32,13 @@ const CallToAction = () => {
         {status === 'authenticated' ? (
           <Button
             asChild
-            className="h-14 w-60 text-2xl drop-shadow-xl"
+            className="h-14 w-60 rounded-full text-2xl drop-shadow-xl"
             size="lg"
           >
             <Link href="/dashboard/profile">Dashboard</Link>
           </Button>
         ) : (
-          <Button className="h-14 w-60 text-2xl drop-shadow-xl">
+          <Button className="h-14 w-60 rounded-full text-2xl drop-shadow-xl">
             <Link href="/sign-in">Be Anonymous</Link>
           </Button>
         )}

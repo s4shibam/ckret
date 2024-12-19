@@ -81,6 +81,11 @@ export const MAIN_FEATURES = [
     Icon: Sparkles,
     title: 'Rich Interactions',
     description: 'Send messages, feedback, challenges, and more anonymously'
+  },
+  {
+    Icon: Shield,
+    title: 'Complete Control',
+    description: 'Manage your inbox visibility and message access on your terms'
   }
 ]
 
@@ -105,8 +110,11 @@ export const RECIPIENT_TYPES = [
 // Guide
 export const GUIDE_HEADING = 'How To Use Ckret?'
 
+export const GUIDE_SUB_HEADING =
+  'Start your journey with these simple steps'
+
 export const GUIDE_NOTE =
-  'There is no need to create an account to send anonymous messages via any link!'
+  'No need to create an account to send anonymous messages via any link!'
 
 export const GUIDE_STEPS = [
   {
@@ -114,7 +122,7 @@ export const GUIDE_STEPS = [
     Icon: UserRoundPlus,
     heading: 'Create Ckret Account',
     description:
-      'Sign up for an account using your Gmail address or anonymously to get started.'
+      'Create an account with Gmail or anonymously to begin.'
   },
   {
     id: 2,
@@ -128,7 +136,7 @@ export const GUIDE_STEPS = [
     Icon: MessageCircle,
     heading: 'Receive Anonymous Messages',
     description:
-      'Start receiving anonymous messages from others through your personalized link.'
+      'Get anonymous messages and sketches via your custom link.'
   }
 ]
 
@@ -144,7 +152,7 @@ export const CTA_SUB_HEADING = {
 }
 
 // Pricing
-export const PRICING_HEADING = 'Simple, Transparent Pricing'
+export const PRICING_HEADING = 'Simple & Fair Pricing'
 
 export const PRICING_SUB_HEADING =
   'All features included, no hidden costs. Start using Ckret today without any payment.'

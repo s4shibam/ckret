@@ -1,36 +1,65 @@
-import { GUIDE_HEADING, GUIDE_NOTE, GUIDE_STEPS } from '@lib/constants'
+import {
+  GUIDE_HEADING,
+  GUIDE_NOTE,
+  GUIDE_STEPS,
+  GUIDE_SUB_HEADING
+} from '@lib/constants'
 
 const Guide = () => {
   return (
-    <div
-      className="mx-auto flex w-full max-w-7xl flex-col justify-center gap-16 px-5 py-14 sm:py-28"
+    <section
+      className="relative mx-auto w-full max-w-7xl px-5 py-14 sm:py-28"
       id="guide"
     >
-      <p className="mx-auto w-fit border-x-8 border-ckret-primary px-4 text-center text-4xl font-semibold sm:px-8 xl:text-6xl">
-        {GUIDE_HEADING}
-      </p>
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-        {GUIDE_STEPS.map((step) => (
+      {/* Decorative background element */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ckret-primary/5 blur-3xl" />
+      </div>
+
+      {/* Section heading */}
+      <div className="mb-16 text-center">
+        <h2 className="mx-auto inline-block border-x-8 border-ckret-primary px-4 text-4xl font-semibold sm:px-8 xl:text-6xl">
+          {GUIDE_HEADING}
+        </h2>
+        <div className="mt-6 text-gray-600 md:text-lg">{GUIDE_SUB_HEADING}</div>
+      </div>
+
+      {/* Steps grid */}
+      <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-3">
+        {GUIDE_STEPS.map((step, index) => (
           <div
             key={step.id}
-            className="cursor-default rounded-lg bg-gradient-to-br from-ckret-primary to-ckret-secondary p-1 drop-shadow-md transition-transform duration-300 hover:scale-105"
+            className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-ckret-primary to-ckret-secondary p-0.5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
           >
-            <div className="h-full w-full rounded-md bg-gradient-to-br from-orange-100 via-white to-white p-4 hover:bg-gradient-to-br hover:from-orange-200 hover:via-white hover:to-white">
-              <div className="mb-4 flex w-fit items-center justify-center rounded-lg bg-black p-3">
-                <step.Icon className="h-8 w-8 text-white xl:h-10 xl:w-10" />
+            <span className="absolute right-4 top-4 text-7xl font-bold text-ckret-primary/10">
+              {index + 1}.
+            </span>
+
+            <div className="h-full w-full rounded-[0.9rem] bg-white p-6">
+              <div className="mb-6 flex items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-ckret-secondary/10">
+                  <step.Icon className="h-6 w-6 text-ckret-secondary" />
+                </div>
               </div>
-              <p className="mb-2 text-xl font-semibold md:text-2xl">
+
+              <h3 className="mb-3 text-xl font-semibold md:text-2xl">
                 {step.heading}
+              </h3>
+              <p className="text-gray-600 md:text-lg/relaxed">
+                {step.description}
               </p>
-              <p className="text-gray-600 md:text-lg/6">{step.description}</p>
             </div>
           </div>
         ))}
       </div>
-      <p className="mx-auto bg-white text-center text-xl font-medium">
-        {GUIDE_NOTE}
-      </p>
-    </div>
+
+      {/* Bottom note */}
+      <div className="mt-16 text-center">
+        <p className="inline-block rounded-full bg-ckret-primary/5 px-6 py-3 text-xl font-medium text-gray-800">
+          {GUIDE_NOTE}
+        </p>
+      </div>
+    </section>
   )
 }
 

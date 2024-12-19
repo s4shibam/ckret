@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import {
   PRICING_FEATURES,
   PRICING_HEADING,
@@ -11,23 +13,22 @@ import { Card } from '@components/ui/card'
 const Pricing = () => {
   return (
     <section
-      className="bg-gradient-to-b from-orange-50 to-transparent"
+      className="bg-gradient-to-bl from-rose-200 via-transparent to-orange-50"
       id="pricing"
     >
       <div className="mx-auto w-full max-w-7xl px-4 py-16 md:px-6 lg:py-24">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+          <h2 className="mx-auto w-fit border-x-8 border-ckret-secondary px-4 text-center text-4xl font-semibold sm:px-8 xl:text-6xl">
             {PRICING_HEADING}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-gray-600 lg:text-xl">
             {PRICING_SUB_HEADING}
-            without any payment.
           </p>
         </div>
 
         <div className="mt-16">
           <Card className="mx-auto max-w-4xl overflow-hidden">
-            <div className="flex flex-col items-center border-b bg-orange-50/50 p-8 sm:p-10">
+            <div className="flex flex-col items-center border-b p-8 sm:p-10">
               <h3 className="text-3xl font-bold">Free Forever Plan</h3>
               <div className="mt-4 flex items-baseline text-5xl font-bold">
                 ₹0
@@ -35,12 +36,16 @@ const Pricing = () => {
                   /month
                 </span>
               </div>
-              <p className="mt-5 text-lg text-gray-500">
+              <p className="mt-5 text-center text-lg text-gray-500">
                 No credit card required. Start using all features instantly.
               </p>
               <div className="mt-6">
-                <Button className="rounded-full px-8" size="lg">
-                  Get Started Now
+                <Button
+                  asChild
+                  className="rounded-full px-8 text-base"
+                  size="lg"
+                >
+                  <Link href="/sign-in">Get Started Now</Link>
                 </Button>
               </div>
             </div>

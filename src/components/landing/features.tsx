@@ -18,25 +18,25 @@ const Features = () => {
       <div className="mx-auto w-full max-w-7xl px-4 py-16 md:px-6 lg:py-24">
         {/* Header */}
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-6xl">
+          <h2 className="mx-auto max-w-5xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             {FEATURE_HEADING}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-xl text-gray-600 lg:text-2xl">
+          <p className="mx-auto mt-4 max-w-xs text-xl text-gray-600 lg:text-xl">
             {FEATURE_SUB_HEADING}
           </p>
         </div>
 
         {/* Main Features */}
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {MAIN_FEATURES.map((feature) => (
             <Card
               key={feature.title}
-              className="group relative overflow-hidden border-2 p-8 transition-all hover:border-orange-200 hover:shadow-2xl"
+              className="group relative overflow-hidden border-2 p-8 transition-all duration-300 hover:border-orange-200 hover:shadow-2xl"
             >
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-orange-100 transition-transform group-hover:scale-110">
                 <feature.Icon className="h-8 w-8 text-orange-600" />
               </div>
-              <h3 className="mt-6 text-2xl font-semibold">{feature.title}</h3>
+              <h3 className="mt-6 text-xl font-semibold">{feature.title}</h3>
               <p className="mt-3 text-lg/6 text-gray-600">
                 {feature.description}
               </p>
