@@ -14,6 +14,7 @@ import { ISketch } from '@_types/types'
 
 import AnimatedLoader from '@components/common/animated-loader'
 import AllSketchesDeleteModal from '@components/dashboard/all-sketches-delete-modal'
+import Header from '@components/dashboard/header'
 import SketchCard from '@components/dashboard/sketch-card'
 import { Alert, AlertDescription, AlertTitle } from '@components/ui/alert'
 import { Button } from '@components/ui/button'
@@ -49,26 +50,28 @@ const SketchDashboard = () => {
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex w-full justify-end gap-5">
-        <Button
-          className="text-lg"
-          disabled={isLoadingSketches || isRefetchingSketches}
-          onClick={() => refetchSketches()}
-        >
-          {isRefetchingSketches ? (
-            <LRLoader className="animate-spin" />
-          ) : (
-            <RefreshCw />
-          )}
-          <p className="ml-2 hidden md:block">Refresh</p>
-        </Button>
-        <AllSketchesDeleteModal>
-          <Button className="text-lg" variant="destructive">
-            <Trash2 />
-            <p className="ml-2 hidden md:block">Delete All</p>
+      <Header title="Sketches">
+        <div className="flex gap-5">
+          <Button
+            className="text-lg"
+            disabled={isLoadingSketches || isRefetchingSketches}
+            onClick={() => refetchSketches()}
+          >
+            {isRefetchingSketches ? (
+              <LRLoader className="animate-spin" />
+            ) : (
+              <RefreshCw />
+            )}
+            <p className="ml-2 hidden md:block">Refresh</p>
           </Button>
-        </AllSketchesDeleteModal>
-      </div>
+          <AllSketchesDeleteModal>
+            <Button className="text-lg" variant="destructive">
+              <Trash2 />
+              <p className="ml-2 hidden md:block">Delete All</p>
+            </Button>
+          </AllSketchesDeleteModal>
+        </div>
+      </Header>
 
       {storageStatus !== 'ok' && (
         <Alert variant="destructive">

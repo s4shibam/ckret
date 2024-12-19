@@ -14,6 +14,7 @@ import { IMessage } from '@_types/types'
 
 import AnimatedLoader from '@components/common/animated-loader'
 import AllMessageDeleteModal from '@components/dashboard/all-message-delete-modal'
+import Header from '@components/dashboard/header'
 import MessageCard from '@components/dashboard/message-card'
 import { Alert, AlertDescription, AlertTitle } from '@components/ui/alert'
 import { Button } from '@components/ui/button'
@@ -46,27 +47,29 @@ const Messages = () => {
   }, [data?.user?.inbox_max_size, messages?.data?.length])
 
   return (
-    <div className="flex flex-col gap-5 ">
-      <div className="flex w-full justify-end gap-5">
-        <Button
-          className="text-lg"
-          disabled={isMessagesLoading || isMessagesRefetching}
-          onClick={() => messagesRefetch()}
-        >
-          {isMessagesRefetching ? (
-            <LRLoader className="animate-spin" />
-          ) : (
-            <RefreshCw />
-          )}
-          <p className="ml-2 hidden md:block">Refresh</p>
-        </Button>
-        <AllMessageDeleteModal>
-          <Button className="text-lg" variant="destructive">
-            <Trash2 />
-            <p className="ml-2 hidden md:block">Delete All</p>
+    <div className="flex flex-col gap-5">
+      <Header title="Messages">
+        <div className="flex gap-5">
+          <Button
+            className="text-lg"
+            disabled={isMessagesLoading || isMessagesRefetching}
+            onClick={() => messagesRefetch()}
+          >
+            {isMessagesRefetching ? (
+              <LRLoader className="animate-spin" />
+            ) : (
+              <RefreshCw />
+            )}
+            <p className="ml-2 hidden md:block">Refresh</p>
           </Button>
-        </AllMessageDeleteModal>
-      </div>
+          <AllMessageDeleteModal>
+            <Button className="text-lg" variant="destructive">
+              <Trash2 />
+              <p className="ml-2 hidden md:block">Delete All</p>
+            </Button>
+          </AllMessageDeleteModal>
+        </div>
+      </Header>
 
       {inboxStorageStatus !== 'ok' && (
         <Alert variant="destructive">

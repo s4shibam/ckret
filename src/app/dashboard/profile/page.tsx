@@ -1,13 +1,14 @@
 'use client'
 
-import { LogOut, PenSquare, Feather, MessageCircleReply } from 'lucide-react'
-import Link from 'next/link'
+import { Feather, LogOut, MessageCircleReply, PenSquare } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
+import Link from 'next/link'
 
 import { FEEDBACK_FORM_URL } from '@lib/constants'
 
 import EditName from '@components/dashboard/edit-name'
 import EditUsername from '@components/dashboard/edit-username'
+import Header from '@components/dashboard/header'
 import { Button } from '@components/ui/button'
 
 const Profile = () => {
@@ -15,6 +16,7 @@ const Profile = () => {
 
   return (
     <div className="h-full w-full">
+      <Header title="Profile" />
       <div className="flex w-full max-w-[800px] flex-col gap-10 xl:text-lg">
         <div className="left-border-card">
           <div className="left-border-card-heading">

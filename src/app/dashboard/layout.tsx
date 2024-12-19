@@ -1,6 +1,6 @@
 'use client'
 
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import toast from 'react-hot-toast'
 
@@ -16,7 +16,6 @@ export default function DashboardLayout({
 }) {
   const session = useSession()
   const router = useRouter()
-  const currentPage = usePathname().split('/').pop()
 
   if (session.status === 'loading') {
     return <AnimatedLoader type="fullscreen" />
@@ -31,7 +30,7 @@ export default function DashboardLayout({
   return (
     <section className="h-full min-h-screen w-full bg-gray-50">
       <aside
-        className="fixed inset-y-0 left-0 hidden w-[300px] flex-col items-center gap-10 overflow-auto border-r-2 border-gray-300 bg-white p-6 md:flex"
+        className="fixed inset-y-0 left-0 z-40 hidden w-[18rem] flex-col items-center gap-10 overflow-auto border-r border-gray-300 bg-white p-4 md:flex"
         id="pc-menu"
       >
         <Branding />
@@ -44,9 +43,8 @@ export default function DashboardLayout({
       >
         <DashboardMenu />
       </aside>
-      <section className="min-h-screen w-full pb-20 pt-6 md:pl-[300px]">
-        <main className="mx-auto h-full w-9/10 max-w-7xl">
-          <p className="heading">{currentPage?.split('-').join(' ')}</p>
+      <section className="min-h-screen w-full pb-20 pt-6 md:pl-[18rem]">
+        <main className="mx-auto mt-20 h-full w-full px-4 md:px-8">
           {children}
         </main>
       </section>

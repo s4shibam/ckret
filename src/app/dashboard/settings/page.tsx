@@ -4,6 +4,7 @@ import { PenSquare, Settings as SettingsIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 
 import EditFeedbackMessage from '@components/dashboard/edit-feedback-message'
+import Header from '@components/dashboard/header'
 import InboxStatus from '@components/dashboard/inbox-status'
 
 const Settings = () => {
@@ -11,6 +12,8 @@ const Settings = () => {
 
   return (
     <div className="h-full w-full">
+      <Header title="Settings" />
+
       <div className="flex w-full max-w-[800px] flex-col gap-10 xl:text-lg">
         <div className="left-border-card">
           <div className="left-border-card-heading">
