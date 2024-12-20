@@ -37,7 +37,7 @@ const DashboardMenu = () => {
       route: '/dashboard/settings'
     },
     {
-      title: 'My Link',
+      title: 'My Links',
       icon: <SquareArrowOutUpRight />,
       route: '/dashboard/my-links'
     }

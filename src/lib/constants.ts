@@ -222,7 +222,7 @@ export const FAQS = [
   },
   {
     question: 'Where can I find my Ckret Link?',
-    answer: `Navigate to the <span class='font-medium'>My Link</span> page (<a href='${CKRET_URL}/dashboard/my-links' class='text-blue-500'>${CKRET_URL}/dashboard/my-links</a>) to find your <span class='font-medium'>Ckret Link</span>.`
+    answer: `Navigate to the <span class='font-medium'>My Links</span> page (<a href='${CKRET_URL}/dashboard/my-links' class='text-blue-500'>${CKRET_URL}/dashboard/my-links</a>) to find your <span class='font-medium'>Ckret Link</span>.`
   },
   {
     question: 'Can I change my Ckret Link?',
