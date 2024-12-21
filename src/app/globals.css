@@ -93,10 +93,6 @@
   @apply min-h-screen bg-repeat;
 }
 
-.heading {
-  @apply text-2xl font-medium capitalize tracking-wider;
-}
-
 .animate-pause {
   animation-play-state: paused;
 }
