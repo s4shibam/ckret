@@ -14,7 +14,7 @@ const CreateLink = () => {
     const generateRandomInterval = () => Math.floor(Math.random() * 5000) + 3000
 
     const updateCount = () => {
-      setCreatedCount((prevCount) => prevCount + generateRandomIncrement())
+      setCreatedCount((prevCount) => Math.min(prevCount + generateRandomIncrement(), 999))
       const nextInterval = generateRandomInterval()
       setTimeout(updateCount, nextInterval)
     }
@@ -28,8 +28,14 @@ const CreateLink = () => {
   return (
     <div className="mt-auto flex w-full flex-col gap-2">
       <p className="text-center text-lg text-white">
-        <span className="font-medium">{createdCount}+</span> people tapped the
-        button in the last <span className="font-medium">3 hours</span>
+        <span
+          className="inline-block animate-jump font-medium w-10"
+          key={createdCount}
+        >
+          {createdCount}+
+        </span>{' '}
+        People tapped the button in the last{' '}
+        <span className="font-medium">3 hours</span>
       </p>
       <Button
         asChild

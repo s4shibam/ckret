@@ -17,7 +17,6 @@ const InboxStatus = () => {
     isLoading: isToggleInboxStatusLoading
   } = useToggleInboxStatus({
     onError: (error: any) => toast.error(error.message),
-
     onSuccess: (success: any) => {
       update({ is_inbox_enabled: success?.data?.is_inbox_enabled })
       toast.success(success.message)
@@ -25,16 +24,18 @@ const InboxStatus = () => {
   })
 
   return (
-    <div className="left-border-card">
-      <div className="flex items-center gap-3">
-        <p className="left-border-card-heading">
-          <Settings className="h-5 w-5" />
-          Inbox Status
-        </p>
+    <div>
+      <div className="mb-4 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Settings className="h-4 w-4 text-ckret-primary" />
+          <span className="text-base font-medium text-gray-600">
+            Inbox Status
+          </span>
+        </div>
 
         {isToggleInboxStatusLoading ? (
-          <div className="grid h-6 w-11 rounded-full bg-secondary">
-            <Loader className="animate-spin-slow" />
+          <div className="grid h-7 w-11 place-items-center rounded-full bg-gray-100">
+            <Loader className="h-4 w-4 animate-spin text-ckret-primary" />
           </div>
         ) : (
           <Switch
@@ -43,24 +44,41 @@ const InboxStatus = () => {
           />
         )}
       </div>
-      <span
-        className={cn('left-border-card-value', {
-          '!bg-green-800': data?.user?.is_inbox_enabled,
-          '!bg-red-800': !data?.user?.is_inbox_enabled
-        })}
-      >
-        {data?.user?.is_inbox_enabled ? 'Enabled' : 'Disabled'}
-      </span>
 
-      <ul>
-        <li>
-          Enabled status allows users to send you messages, while disabled
-          prevents that.
-        </li>
-        <li className="text-blue-700">
-          Toggle the switch to change status of the inbox.
-        </li>
-      </ul>
+      <div className="space-y-4">
+        <div className="flex items-center gap-3">
+          <div
+            className={cn(
+              'flex h-10 w-10 items-center justify-center rounded-full',
+              data?.user?.is_inbox_enabled
+                ? 'bg-green-100 text-green-600'
+                : 'bg-red-100 text-red-600'
+            )}
+          >
+            <span className="text-base font-medium">
+              {data?.user?.is_inbox_enabled ? 'ON' : 'OFF'}
+            </span>
+          </div>
+          <div>
+            <p className="text-lg font-medium text-gray-900">
+              {data?.user?.is_inbox_enabled ? 'Active' : 'Inactive'}
+            </p>
+            <p className="text-base text-gray-500">
+              {data?.user?.is_inbox_enabled
+                ? 'Your inbox is open to receive messages'
+                : 'Your inbox is closed to new messages'}
+            </p>
+          </div>
+        </div>
+
+        <div className="rounded-lg bg-ckret-primary/10 p-4">
+          <p className="text-base text-ckret-primary">
+            Toggle the switch above to{' '}
+            {data?.user?.is_inbox_enabled ? 'stop' : 'allow'} receiving new
+            messages
+          </p>
+        </div>
+      </div>
     </div>
   )
 }

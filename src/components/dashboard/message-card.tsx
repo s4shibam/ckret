@@ -1,5 +1,5 @@
 import { formatDistanceToNow } from 'date-fns'
-import { Expand, Delete, Loader } from 'lucide-react'
+import { Clock, Loader, Reply, X } from 'lucide-react'
 import Image from 'next/image'
 import toast from 'react-hot-toast'
 
@@ -9,21 +9,23 @@ import LOGO_SECONDARY from '@assets/logo-secondary.svg'
 
 import { invalidateQueries } from '@lib/query-client'
 
+import { Button } from '@components/ui/button'
+import { Card } from '@components/ui/card'
+
 import { useDeleteSingleMessage } from '@api-hooks/message'
 
 import MessageFullScreenView from './message-fullscreen-view'
 
-type Props = {
+interface MessageCardProps {
   message: IMessage
 }
 
-const MessageCard = ({ message }: Props) => {
+const MessageCard = ({ message }: MessageCardProps) => {
   const {
     mutate: deleteSingleMessageMutation,
     isLoading: isDeleteSingleMessageLoading
   } = useDeleteSingleMessage({
     onError: (error: any) => toast.error(error.message),
-
     onSuccess: (success: any) => {
       toast.success(success.message)
       invalidateQueries('get-all-messages')
@@ -31,41 +33,58 @@ const MessageCard = ({ message }: Props) => {
   })
 
   return (
-    <div
-      key={message._id}
-      className="group relative flex flex-col justify-between gap-4 rounded-lg bg-gray-200 p-4"
-    >
-      <div className="grid grid-cols-[60px_1fr] items-center gap-4">
-        <Image
-          alt=""
-          className="rounded-md"
-          height={60}
-          src={LOGO_SECONDARY}
-          width={60}
-        />
-        <p className="line-clamp-2 w-full pr-6 text-lg">{message.content}</p>
-      </div>
-      <div className="flex items-center justify-between">
-        <p className="mt-auto rounded-md bg-gray-300 px-2 py-1 capitalize">
-          {formatDistanceToNow(message.createdAt, { addSuffix: true })}
-        </p>
-        <MessageFullScreenView messageContent={message.content}>
-          <div title="Full Screen">
-            <Expand className="absolute right-4 top-4 h-5 w-5 cursor-pointer text-ckret-secondary" />
+    <Card className="group relative space-y-4 overflow-hidden bg-gradient-to-r from-white to-zinc-100 p-4 shadow-sm transition-all hover:shadow-md">
+      <div className="flex flex-col items-start gap-4 sm:flex-row">
+        <div className="relative shrink-0 overflow-hidden rounded-lg">
+          <Image
+            alt="Message avatar"
+            className="h-12 w-12 transition-transform duration-300 group-hover:scale-105 sm:h-14 sm:w-14"
+            height={48}
+            src={LOGO_SECONDARY}
+            width={48}
+          />
+        </div>
+        <div className="flex flex-1 flex-col justify-between space-y-2">
+          <div>
+            <p className="line-clamp-2 text-base leading-relaxed text-gray-800">
+              {message.content}
+            </p>
           </div>
-        </MessageFullScreenView>
-        <div title="Delete">
-          {isDeleteSingleMessageLoading ? (
-            <Loader className="animate-spin" />
-          ) : (
-            <Delete
-              className="cursor-pointer text-red-500 opacity-0 transition-opacity group-hover:opacity-100"
-              onClick={() => deleteSingleMessageMutation({ mid: message._id })}
-            />
-          )}
         </div>
       </div>
-    </div>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-1">
+          <Clock className="h-4 w-4 text-zinc-500" />
+          <span className="text-sm capitalize text-zinc-600">
+            {formatDistanceToNow(message.createdAt, { addSuffix: true })}
+          </span>
+        </div>
+        <div className="flex shrink-0 gap-1">
+          <MessageFullScreenView message={message}>
+            <Button
+              className="h-fit bg-zinc-200 p-1 hover:bg-zinc-300"
+              title="Reply"
+              variant="ghost"
+            >
+              <Reply className="size-5" />
+            </Button>
+          </MessageFullScreenView>
+          <Button
+            className="h-fit bg-zinc-200 p-1 hover:bg-zinc-300"
+            disabled={isDeleteSingleMessageLoading}
+            title="Delete"
+            variant="ghost"
+            onClick={() => deleteSingleMessageMutation({ mid: message._id })}
+          >
+            {isDeleteSingleMessageLoading ? (
+              <Loader className="size-5 animate-spin" />
+            ) : (
+              <X className="size-5 text-red-500" />
+            )}
+          </Button>
+        </div>
+      </div>
+    </Card>
   )
 }
 

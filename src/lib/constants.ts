@@ -288,5 +288,5 @@ export const CHAR_SIZE_LIMIT = {
 }
 
 export const MESSAGE_INSTRUCTION = {
-  AM: 'Send Me Anonymous Messages'
+  AM: 'Send Me A Secret Message'
 }

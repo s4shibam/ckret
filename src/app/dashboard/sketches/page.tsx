@@ -50,10 +50,13 @@ const SketchDashboard = () => {
 
   return (
     <div className="flex flex-col gap-5">
-      <Header title="Sketches">
-        <div className="flex gap-5">
+      <Header
+        title={`Sketches (${sketches?.data?.length ?? 0}/${
+          sessionData?.user?.inbox_max_size ?? 0
+        })`}
+      >
+        <div className="flex gap-3">
           <Button
-            className="text-lg"
             disabled={isLoadingSketches || isRefetchingSketches}
             onClick={() => refetchSketches()}
           >
@@ -65,7 +68,7 @@ const SketchDashboard = () => {
             <p className="ml-2 hidden md:block">Refresh</p>
           </Button>
           <AllSketchesDeleteModal>
-            <Button className="text-lg" variant="destructive">
+            <Button variant="destructive">
               <Trash2 />
               <p className="ml-2 hidden md:block">Delete All</p>
             </Button>
@@ -105,13 +108,9 @@ const SketchDashboard = () => {
         </div>
       )}
 
-      <div className="grid h-full w-full grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid h-full w-full grid-cols-2 gap-5 md:grid-cols-3 xl:grid-cols-4">
         {sketches?.data?.map((sketch: ISketch) => (
-          <SketchCard
-            key={sketch._id}
-            refetchSketches={refetchSketches}
-            sketch={sketch}
-          />
+          <SketchCard key={sketch._id} sketch={sketch} />
         ))}
       </div>
     </div>

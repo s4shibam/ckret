@@ -9,8 +9,8 @@ import {
   MessageSquareShare,
   Twitter
 } from 'lucide-react'
-import Image from 'next/image'
 import { useSession } from 'next-auth/react'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
@@ -140,65 +140,67 @@ const MyLink = () => {
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-[800px] flex-col gap-4 text-xl">
+    <div className="min-h-full w-full bg-slate-50/50 pb-8">
       <Header title="My Links" />
 
-      <div className="mb-4 flex justify-center gap-4">
-        <Button
-          className="text-base"
-          size="lg"
-          variant={linkType === 'message' ? 'default' : 'secondary'}
-          onClick={() => setLinkType('message')}
-        >
-          Message Link
-        </Button>
-        <Button
-          className="text-base"
-          size="lg"
-          variant={linkType === 'sketch' ? 'default' : 'secondary'}
-          onClick={() => setLinkType('sketch')}
-        >
-          Sketch Link
-        </Button>
-      </div>
-
-      <div className="flex flex-col items-center gap-2 rounded-lg border-2 border-gray-500 p-4">
-        <p>
-          The link to{' '}
-          {linkType === 'message' ? 'message' : 'share a sketch with'} you is:
-        </p>
-        <code className="w-full break-words rounded-md bg-gray-300 px-2 py-1 text-center text-base font-semibold sm:text-xl">
-          {myLink}
-        </code>
-      </div>
-
-      <div className="grid gap-4 sm:grid-cols-2">
-        <Button
-          className="justify-start"
-          size="lg"
-          variant="secondary"
-          onClick={copyLinkToClipboard}
-        >
-          <ClipboardCopy />
-          <p className="ml-4 text-xl">Copy Link to Clipboard</p>
-        </Button>
-        {socialMediaPlatforms.map((platform) => (
+      <div className="m-6 mx-auto w-full max-w-4xl space-y-6 rounded-xl bg-white p-6 shadow-sm">
+        <div className="mb-4 flex justify-center gap-4">
           <Button
-            key={platform.key}
-            className={`justify-start hover:opacity-90 ${platform.bg}`}
+            className="text-base"
             size="lg"
-            onClick={() => handleShare(platform.key)}
+            variant={linkType === 'message' ? 'default' : 'secondary'}
+            onClick={() => setLinkType('message')}
           >
-            {platform.icon}
-            <p className="ml-4 text-xl">Share on {platform.name}</p>
+            Message Link
           </Button>
-        ))}
-      </div>
+          <Button
+            className="text-base"
+            size="lg"
+            variant={linkType === 'sketch' ? 'default' : 'secondary'}
+            onClick={() => setLinkType('sketch')}
+          >
+            Sketch Link
+          </Button>
+        </div>
 
-      <div className="rounded-lg border-2 border-ckret-primary p-4 text-center">
-        Share the link on your social media handles and ask your friends,
-        families, fans, and coworkers to send you secret messages or sketch with
-        you. 🚀
+        <div className="flex flex-col items-center gap-2 rounded-lg border-2 border-gray-500 p-4">
+          <p>
+            The link to{' '}
+            {linkType === 'message' ? 'message' : 'share a sketch with'} you is:
+          </p>
+          <code className="w-full break-words rounded-md bg-gray-300 px-2 py-1 text-center text-base font-semibold sm:text-xl">
+            {myLink}
+          </code>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Button
+            className="justify-start"
+            size="lg"
+            variant="secondary"
+            onClick={copyLinkToClipboard}
+          >
+            <ClipboardCopy />
+            <p className="ml-4 text-xl">Copy Link to Clipboard</p>
+          </Button>
+          {socialMediaPlatforms.map((platform) => (
+            <Button
+              key={platform.key}
+              className={`justify-start hover:opacity-90 ${platform.bg}`}
+              size="lg"
+              onClick={() => handleShare(platform.key)}
+            >
+              {platform.icon}
+              <p className="ml-4 text-xl">Share on {platform.name}</p>
+            </Button>
+          ))}
+        </div>
+
+        <div className="rounded-lg border-2 border-ckret-primary p-4 text-center">
+          Share the link on your social media handles and ask your friends,
+          families, fans, and coworkers to send you secret messages or sketch
+          with you. 🚀
+        </div>
       </div>
     </div>
   )

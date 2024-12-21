@@ -48,10 +48,13 @@ const Messages = () => {
 
   return (
     <div className="flex flex-col gap-5">
-      <Header title="Messages">
-        <div className="flex gap-5">
+      <Header
+        title={`Messages (${messages?.data?.length ?? 0}/${
+          data?.user?.inbox_max_size ?? 0
+        })`}
+      >
+        <div className="flex gap-3">
           <Button
-            className="text-lg"
             disabled={isMessagesLoading || isMessagesRefetching}
             onClick={() => messagesRefetch()}
           >
@@ -63,7 +66,7 @@ const Messages = () => {
             <p className="ml-2 hidden md:block">Refresh</p>
           </Button>
           <AllMessageDeleteModal>
-            <Button className="text-lg" variant="destructive">
+            <Button variant="destructive">
               <Trash2 />
               <p className="ml-2 hidden md:block">Delete All</p>
             </Button>
@@ -93,13 +96,15 @@ const Messages = () => {
       )}
 
       {isMessagesLoading && <AnimatedLoader />}
+
       {messages?.data?.length === 0 && (
         <div className="grid w-full place-items-center pt-[15%] text-gray-300">
           <Eraser className="h-20 w-20" />
           <p className="text-xl font-medium tracking-wide">Inbox is empty!</p>
         </div>
       )}
-      <div className="grid h-full w-full grid-cols-1 gap-5 lg:grid-cols-2 2xl:grid-cols-3">
+
+      <div className="grid h-full w-full gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {messages?.data?.map((message: IMessage) => (
           <MessageCard key={message._id} message={message} />
         ))}

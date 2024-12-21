@@ -15,87 +15,111 @@ const Profile = () => {
   const { data } = useSession()
 
   return (
-    <div className="h-full w-full">
+    <div className="min-h-full w-full bg-slate-50/50 pb-8">
       <Header title="Profile" />
-      <div className="flex w-full max-w-[800px] flex-col gap-10 xl:text-lg">
-        <div className="left-border-card">
-          <div className="left-border-card-heading">
-            <Feather className="h-5 w-5" />
-            Name
-            <EditName>
-              <PenSquare className="h-5 w-5 cursor-pointer" />
-            </EditName>
+
+      <div className="mx-auto w-full max-w-4xl space-y-6">
+        <div className="rounded-xl bg-white p-6 shadow-sm">
+          <h2 className="mb-6 text-2xl font-semibold text-gray-900">
+            Personal Information
+          </h2>
+
+          <div className="space-y-6">
+            <div className="group relative space-y-2">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Feather className="h-4 w-4 text-ckret-primary" />
+                  <span className="text-base font-medium text-gray-600">
+                    Name
+                  </span>
+                </div>
+                <EditName>
+                  <Button className="h-8 w-8 p-0" size="sm" variant="ghost">
+                    <PenSquare className="size-5 text-gray-500 transition-colors group-hover:text-ckret-primary" />
+                  </Button>
+                </EditName>
+              </div>
+              <p className="text-xl font-medium text-gray-900">
+                {data?.user?.name || '-'}
+              </p>
+              <p className="text-base text-gray-500">
+                This is your public name, visible to all who have your ckret
+                link
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <Feather className="h-4 w-4 text-ckret-primary" />
+                <span className="text-base font-medium text-gray-600">
+                  Email Address
+                </span>
+              </div>
+              <p className="text-xl font-medium text-gray-900">
+                {data?.user?.email || '-'}
+              </p>
+              <p className="text-base text-gray-500">
+                This is your registered email address for this account
+              </p>
+            </div>
+
+            <div className="group relative space-y-2">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Feather className="h-4 w-4 text-ckret-primary" />
+                  <span className="text-base font-medium text-gray-600">
+                    Username
+                  </span>
+                </div>
+                <EditUsername>
+                  <Button className="h-8 w-8 p-0" size="sm" variant="ghost">
+                    <PenSquare className="size-5 text-gray-500 transition-colors group-hover:text-ckret-primary" />
+                  </Button>
+                </EditUsername>
+              </div>
+              <p className="text-xl font-medium text-gray-900">
+                {data?.user?.username || '-'}
+              </p>
+              <p className="text-base text-gray-500">
+                Your username is used for your ckret link
+              </p>
+            </div>
           </div>
-          <p className="left-border-card-value">{data?.user?.name || '-'}</p>
-          <ul>
-            <li>
-              This is your public name, visible to all who have your ckret link.
-            </li>
-            <li className="text-blue-700">
-              Edit your name as per your choice.
-            </li>
-          </ul>
-        </div>
-        <div className="left-border-card">
-          <div className="left-border-card-heading">
-            <Feather className="h-5 w-5" />
-            Email Address
-          </div>
-          <p className="left-border-card-value">{data?.user?.email || '-'}</p>
-          <ul>
-            <li>This is your registered email address for this account.</li>
-            <li className="text-blue-700">Email cannot be changed further.</li>
-          </ul>
-        </div>
-        <div className="left-border-card">
-          <div className="left-border-card-heading">
-            <Feather className="h-5 w-5" />
-            Username
-            <EditUsername>
-              <PenSquare className="h-5 w-5 cursor-pointer" />
-            </EditUsername>
-          </div>
-          <p className="left-border-card-value">
-            {data?.user?.username || '-'}
-          </p>
-          <ul>
-            <li>Your username is used for your ckret link.</li>
-            <li className="text-blue-700">
-              Edit the message as per your choice.
-            </li>
-          </ul>
-        </div>
-        <div className="left-border-card">
-          <div className="left-border-card-heading">
-            <Feather className="h-5 w-5" />
-            Feedback
-          </div>
-          <Button
-            asChild
-            className="w-fit gap-2 text-xl font-semibold tracking-wider"
-          >
-            <Link href={FEEDBACK_FORM_URL || '#'} target="_blank">
-              <MessageCircleReply />
-              Share Feedback
-            </Link>
-          </Button>
-          <ul>
-            <li>Share your feedback with us on a google form.</li>
-            <li className="text-blue-700">
-              Click on the above button to share your feedback.
-            </li>
-          </ul>
         </div>
 
-        <Button
-          className="my-10 w-fit gap-2 px-20 text-lg"
-          size="lg"
-          variant="destructive"
-          onClick={() => signOut({ callbackUrl: '/' })}
-        >
-          <LogOut />
-          Log Out
-        </Button>
+        <div className="rounded-xl bg-white p-6 shadow-sm">
+          <div className="mb-4 flex items-center gap-2">
+            <Feather className="h-4 w-4 text-ckret-primary" />
+            <h2 className="text-xl font-semibold text-gray-900">Feedback</h2>
+          </div>
+
+          <div className="space-y-4">
+            <Button
+              asChild
+              className="inline-flex items-center gap-2 rounded-lg bg-ckret-secondary px-4 py-2 text-sm font-medium text-white hover:bg-ckret-secondary/80"
+            >
+              <Link href={FEEDBACK_FORM_URL || '#'} target="_blank">
+                <MessageCircleReply className="h-4 w-4" />
+                Share Your Feedback
+              </Link>
+            </Button>
+            <p className="text-sm text-gray-500">
+              Help us improve by sharing your thoughts and suggestions
+            </p>
+          </div>
+        </div>
+
+        <div className="rounded-xl bg-white p-6 shadow-sm">
+          <Button
+            className="gap-2"
+            size="lg"
+            variant="destructive"
+            onClick={() => signOut({ callbackUrl: '/' })}
+          >
+            <LogOut className="h-4 w-4" />
+            Sign Out
+          </Button>
+        </div>
       </div>
     </div>
   )

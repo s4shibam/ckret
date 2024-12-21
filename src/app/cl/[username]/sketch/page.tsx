@@ -3,7 +3,7 @@
 import { Watermark } from '@hirohe/react-watermark'
 import {
   Check,
-  CheckCircle,
+  CircleCheck,
   Eraser,
   Frown,
   Loader,
@@ -21,12 +21,13 @@ import AnimatedLoader from '@components/common/animated-loader'
 import Branding from '@components/common/branding'
 import CreateLink from '@components/common/create-link'
 import { Button } from '@components/ui/button'
+import { Card } from '@components/ui/card'
 import { Popover, PopoverContent, PopoverTrigger } from '@components/ui/popover'
+import { Slider } from '@components/ui/slider'
 
 import { useSubmitSketch } from '@api-hooks/sketch'
 import { useGetUserDetailsByUsername } from '@api-hooks/user'
 
-const BRUSH_SIZE = 3
 const COLORS = [
   '#000000',
   '#FF0000',
@@ -39,7 +40,7 @@ const COLORS = [
   '#8A2BE2'
 ]
 const DEFAULT_COLOR = COLORS[0]
-const ASPECT_RATIO = 3 / 2 // 3:2 aspect ratio
+const DEFAULT_BRUSH_SIZE = 10
 
 const SendSketch = ({ params }: { params: { username: string } }) => {
   const router = useRouter()
@@ -48,7 +49,9 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+
   const [isDrawing, setIsDrawing] = useState(false)
+  const [brushSize, setBrushSize] = useState([DEFAULT_BRUSH_SIZE])
   const [currentColor, setCurrentColor] = useState(DEFAULT_COLOR)
   const [hasDrawn, setHasDrawn] = useState(false)
   const [canvasDimensions, setCanvasDimensions] = useState({
@@ -74,27 +77,23 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
       }
     })
 
-  // Handle canvas resize
   useEffect(() => {
     const updateCanvasSize = () => {
       if (containerRef.current) {
         const containerWidth = containerRef.current.offsetWidth
         const width = containerWidth
-        const height = width / ASPECT_RATIO
+        const height = width
         setCanvasDimensions({ width, height })
       }
     }
 
-    // Initial size calculation
     updateCanvasSize()
 
-    // Add resize listener
     const resizeObserver = new ResizeObserver(updateCanvasSize)
     if (containerRef.current) {
       resizeObserver.observe(containerRef.current)
     }
 
-    // Cleanup
     return () => {
       if (containerRef.current) {
         resizeObserver.unobserve(containerRef.current)
@@ -103,7 +102,6 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
     }
   }, [])
 
-  // Initialize canvas context whenever dimensions change
   useEffect(() => {
     if (
       canvasRef.current &&
@@ -113,7 +111,6 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
       const canvas = canvasRef.current
       const ctx = canvas.getContext('2d')
       if (ctx) {
-        // Save the current canvas content
         const tempCanvas = document.createElement('canvas')
         tempCanvas.width = canvas.width
         tempCanvas.height = canvas.height
@@ -122,21 +119,18 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
           tempCtx.drawImage(canvas, 0, 0)
         }
 
-        // Set new dimensions
         canvas.width = canvasDimensions.width
         canvas.height = canvasDimensions.height
 
-        // Restore the content
         ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height)
 
-        // Set drawing styles
         ctx.strokeStyle = currentColor
-        ctx.lineWidth = BRUSH_SIZE
+        ctx.lineWidth = brushSize[0]
         ctx.lineCap = 'round'
         ctx.lineJoin = 'round'
       }
     }
-  }, [canvasDimensions, currentColor])
+  }, [canvasDimensions, currentColor, brushSize])
 
   const startDrawing = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current
@@ -210,148 +204,178 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
 
   if (recipientError?.error) {
     return (
-      <div className="flex min-h-screen w-full flex-col items-center justify-center gap-4 bg-gray-50 p-5 pb-20">
-        <Branding />
-        <div className="z-10 flex h-[90%] w-full max-w-[500px] flex-col items-center gap-8 rounded-lg bg-gradient-to-br from-ckret-primary to-ckret-secondary p-5">
-          <div className="mb-10 flex flex-col items-center gap-2">
-            <Frown className="h-28 w-28 text-white" />
-            <p className="text-2xl font-medium">{recipientError.message}</p>
-            <p className="text-center text-xl text-white">
-              Check the link again and give it another shot!
-            </p>
+      <BackgroundLayout watermarkText={recipient?.data?.username || ''}>
+        <div className="mb-6 flex flex-col items-center gap-4">
+          <div className="rounded-full bg-white/10 p-6 backdrop-blur-sm">
+            <Frown className="h-20 w-20 text-white" />
           </div>
-          <CreateLink />
+          <p className="text-2xl font-medium text-white">
+            {recipientError.message}
+          </p>
+          <p className="text-center text-lg text-white/90">
+            Check the link again and give it another shot!
+          </p>
         </div>
-      </div>
+        <CreateLink />
+      </BackgroundLayout>
     )
   }
 
   if (sketchStatus === 'sent') {
     return (
-      <Watermark gutter={50} text={recipient?.data?.username} textColor="#BBB">
-        <div className="flex min-h-screen w-full flex-col items-center gap-4 bg-gray-50 p-5">
-          <Branding />
-          <div className="z-10 flex h-[90%] w-full max-w-[500px] flex-col items-center gap-8 rounded-lg bg-gradient-to-br from-ckret-primary to-ckret-secondary p-5 shadow-xl">
-            <div className="flex flex-col items-center gap-2">
-              <CheckCircle className="h-28 w-28 text-white" />
-              <p className="text-2xl font-medium">Sketch Sent Successfully!</p>
-            </div>
-
-            <div className="my-10 flex w-full flex-col gap-2">
-              <p className="bg-gradient-to-r from-transparent via-white to-transparent px-4 py-2 text-center text-xl font-medium tracking-wide">
-                {recipient?.data?.feedback_message}
-              </p>
-              <p className="text-center text-sm text-white">
-                From{' '}
-                <span className="font-medium">{recipient?.data?.name}</span>
-              </p>
-            </div>
-
-            <CreateLink />
-
-            <Button
-              className="mt-4 h-12 w-full text-xl text-white underline-offset-8"
-              size="lg"
-              variant="link"
-              onClick={() => router.back()}
-            >
-              Send Another Sketch
-            </Button>
+      <BackgroundLayout watermarkText={recipient?.data?.username || ''}>
+        <div className="flex flex-col items-center gap-5">
+          <div className="rounded-full bg-white/10 p-6 backdrop-blur-sm">
+            <CircleCheck className="h-16 w-16 text-white" />
           </div>
+          <p className="bg-gradient-to-r from-white to-white/90 bg-clip-text text-2xl font-semibold text-transparent">
+            Sketch Sent Successfully!
+          </p>
         </div>
-      </Watermark>
+
+        <div className="my-8 flex w-full flex-col gap-4">
+          <p className="rounded-xl bg-white/10 px-6 py-5 text-center text-xl font-medium tracking-wide text-white backdrop-blur-sm">
+            {recipient?.data?.feedback_message}
+          </p>
+          <p className="text-center text-sm text-white/80">
+            Sketch sent to{' '}
+            <span className="font-medium text-white">
+              {recipient?.data?.name}
+            </span>
+          </p>
+        </div>
+
+        <CreateLink />
+
+        <Button
+          className="mt-8 h-12 w-full text-lg font-medium text-white/90 underline-offset-8 hover:scale-105 hover:text-white"
+          size="lg"
+          variant="link"
+          onClick={() => router.back()}
+        >
+          Draw Another Sketch
+        </Button>
+      </BackgroundLayout>
     )
   }
 
   return (
-    <Watermark gutter={50} text={recipient?.data?.username} textColor="#BBB">
-      <div className="flex min-h-screen w-full flex-col items-center gap-4 bg-gray-50 p-5">
-        <div className="z-10 backdrop-blur-sm">
-          <Branding />
-        </div>
-        <div className="z-10 flex h-[90%] w-full max-w-[500px] flex-col gap-4 rounded-lg bg-gradient-to-br from-ckret-primary to-ckret-secondary p-5 shadow-xl">
-          <p className="rounded-lg border-2 border-black bg-white p-2 text-center text-lg font-semibold capitalize tracking-wide shadow-inner shadow-ckret-primary">
-            Draw something for {recipient?.data?.name}
-          </p>
+    <BackgroundLayout watermarkText={recipient?.data?.username || ''}>
+      <div className="flex flex-col items-center rounded-xl border border-white/30 bg-white/10 p-4 text-white backdrop-blur-md">
+        <p className="text-center text-2xl font-medium capitalize tracking-wide text-white">
+          Secret Sketch for {recipient?.data?.name}
+        </p>
+      </div>
 
-          <div
-            ref={containerRef}
-            className="relative flex flex-col items-center gap-2"
-          >
-            <div className="absolute bottom-2 right-2 flex gap-2">
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    className="border-2"
-                    size="icon"
-                    style={{ borderColor: currentColor }}
-                    variant="outline"
-                  >
-                    <Palette className="h-5 w-5" />
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-40">
-                  <div className="grid grid-cols-3 gap-2">
-                    {COLORS.map((color) => (
-                      <button
-                        key={color}
-                        className="grid aspect-square size-full place-items-center rounded-full border border-black"
-                        style={{
-                          backgroundColor: color
-                        }}
-                        onClick={() => setCurrentColor(color)}
-                      >
-                        {color === currentColor && (
-                          <Check
-                            className={cn('h-5 w-5', {
-                              'text-white': currentColor === '#000000'
-                            })}
-                          />
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </PopoverContent>
-              </Popover>
-
+      <div
+        ref={containerRef}
+        className="relative flex flex-col items-center gap-2"
+      >
+        <div className="absolute bottom-3 right-3 z-10 flex gap-2">
+          <Popover>
+            <PopoverTrigger asChild>
               <Button
                 className="border-2"
                 size="icon"
+                style={{ borderColor: currentColor }}
                 variant="outline"
-                onClick={clearCanvas}
               >
-                <Eraser className="h-5 w-5" />
+                <Palette className="h-5 w-5" />
               </Button>
-            </div>
-
-            <canvas
-              ref={canvasRef}
-              className="w-full cursor-crosshair rounded-lg border-2 border-black bg-white shadow-inner shadow-ckret-secondary"
-              height={canvasDimensions.height || 458}
-              width={canvasDimensions.width || 458}
-              onMouseDown={startDrawing}
-              onMouseLeave={stopDrawing}
-              onMouseMove={draw}
-              onMouseUp={stopDrawing}
-            />
-          </div>
+            </PopoverTrigger>
+            <PopoverContent className="w-40">
+              <div className="grid grid-cols-3 gap-2">
+                {COLORS.map((color) => (
+                  <button
+                    key={color}
+                    className="grid aspect-square size-full place-items-center rounded-full border border-black"
+                    style={{
+                      backgroundColor: color
+                    }}
+                    onClick={() => setCurrentColor(color)}
+                  >
+                    {color === currentColor && (
+                      <Check
+                        className={cn('h-5 w-5', {
+                          'text-white': currentColor === '#000000'
+                        })}
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
+              <div className="mt-4">
+                <Slider
+                  className="w-full"
+                  min={3}
+                  max={15}
+                  step={1}
+                  value={brushSize}
+                  onValueChange={(value) => setBrushSize(value)}
+                />
+              </div>
+            </PopoverContent>
+          </Popover>
 
           <Button
-            className="mb-10 mt-4 h-12 text-xl md:mb-20"
-            disabled={isSubmitSketchLoading || !hasDrawn}
-            size="lg"
-            onClick={handleSubmit}
+            className="border-2"
+            size="icon"
+            variant="outline"
+            onClick={clearCanvas}
           >
-            {isSubmitSketchLoading ? (
-              <Loader className="mr-2 animate-spin" />
-            ) : (
-              <Send className="mr-2" />
-            )}
-            Send Sketch
+            <Eraser className="h-5 w-5" />
           </Button>
-
-          <CreateLink />
         </div>
+
+        <canvas
+          ref={canvasRef}
+          className="w-full cursor-crosshair rounded-xl border-2 border-white/30 bg-white shadow-inner"
+          height={canvasDimensions.height || 464}
+          width={canvasDimensions.width || 464}
+          onMouseDown={startDrawing}
+          onMouseLeave={stopDrawing}
+          onMouseMove={draw}
+          onMouseUp={stopDrawing}
+        />
+      </div>
+
+      <Button
+        className="mt-6 h-14 w-full transform text-lg font-medium transition-all hover:scale-[1.02] disabled:opacity-50"
+        disabled={isSubmitSketchLoading || !hasDrawn}
+        size="lg"
+        variant="secondary"
+        onClick={handleSubmit}
+      >
+        {isSubmitSketchLoading ? (
+          <Loader className="mr-2 h-5 w-5 animate-spin" />
+        ) : (
+          <Send className="mr-2 h-5 w-5" />
+        )}
+        Send Sketch
+      </Button>
+      <CreateLink />
+    </BackgroundLayout>
+  )
+}
+
+export default SendSketch
+
+const BackgroundLayout = ({
+  children,
+  watermarkText
+}: {
+  children: React.ReactNode
+  watermarkText: string
+}) => {
+  return (
+    <Watermark gutter={50} text={watermarkText} textColor="#BBB">
+      <div className="flex min-h-screen w-full flex-col items-center gap-6 bg-gradient-to-b from-gray-50 to-gray-100 p-5">
+        <div className="z-10 backdrop-blur-sm">
+          <Branding />
+        </div>
+        <Card className="z-10 w-full max-w-[32rem] space-y-6 rounded-2xl bg-gradient-to-br from-ckret-primary to-ckret-secondary p-6 shadow-2xl">
+          {children}
+        </Card>
         <Link
           className="mt-auto text-gray-500 underline-offset-4 backdrop-blur-sm hover:underline"
           href="/legal/disclaimer"
@@ -363,5 +387,3 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
     </Watermark>
   )
 }
-
-export default SendSketch
