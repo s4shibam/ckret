@@ -11,7 +11,7 @@ export function middleware(request: NextRequest) {
     if (pathSegments.length > 1) {
       if (pathSegments[1] === 'msg') {
         pathSegments[1] = 'message'
-      } else if (pathSegments[1] === 'skch') {
+      } else if (pathSegments[1] === 'skc') {
         pathSegments[1] = 'sketch'
       }
     }

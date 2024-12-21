@@ -76,7 +76,7 @@ const MyLink = () => {
     if (linkType === 'message') {
       setMyLink(`${CKRET_URL}/@${data?.user?.username}/msg`)
     } else {
-      setMyLink(`${CKRET_URL}/@${data?.user?.username}/skch`)
+      setMyLink(`${CKRET_URL}/@${data?.user?.username}/skc`)
     }
   }, [data?.user?.username, linkType])
 
