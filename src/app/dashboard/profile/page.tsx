@@ -1,11 +1,12 @@
 'use client'
 
 import { Feather, LogOut, MessageCircleReply, PenSquare } from 'lucide-react'
-import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
+import { signOut, useSession } from 'next-auth/react'
 
 import { FEEDBACK_FORM_URL } from '@lib/constants'
 
+import EditAvatar from '@components/dashboard/edit-avatar'
 import EditName from '@components/dashboard/edit-name'
 import EditUsername from '@components/dashboard/edit-username'
 import Header from '@components/dashboard/header'
@@ -82,6 +83,28 @@ const Profile = () => {
               </p>
               <p className="text-base text-gray-500">
                 Your username is used for your ckret link
+              </p>
+            </div>
+
+            <div className="group relative space-y-2">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Feather className="h-4 w-4 text-ckret-primary" />
+                  <span className="text-base font-medium text-gray-600">
+                    Avatar
+                  </span>
+                </div>
+                <EditAvatar>
+                  <Button className="h-8 w-8 p-0" size="sm" variant="ghost">
+                    <PenSquare className="size-5 text-gray-500 transition-colors group-hover:text-ckret-primary" />
+                  </Button>
+                </EditAvatar>
+              </div>
+              <p className="text-xl font-medium text-gray-900">
+                <span className="text-3xl">{data?.user?.avatar || '🕶️'}</span>
+              </p>
+              <p className="text-base text-gray-500">
+                This is your avatar, visible to all who have your ckret link
               </p>
             </div>
           </div>

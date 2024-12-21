@@ -33,6 +33,9 @@ const anonymousSignUp = (payload: { username: string; password: string }) =>
 const getUserPublicProfile = (username: string) =>
   ckretConnect.get(`user/profile/${username}`)
 
+const updateAvatar = (payload: { avatar: string }) =>
+  ckretConnect.put('/user/avatar', payload)
+
 // User Hooks
 export const useLinkGoogleAccount = ({ ...options }) =>
   useMutation(linkGoogleAccount, options)
@@ -61,3 +64,6 @@ export const useGetUserPublicProfile = (params: { username: string }) =>
   useQuery(['user-public-profile', params], () =>
     getUserPublicProfile(params.username)
   )
+
+export const useUpdateAvatar = ({ ...options }) =>
+  useMutation(updateAvatar, options)
