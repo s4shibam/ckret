@@ -55,21 +55,21 @@ const SketchDashboard = () => {
           sessionData?.user?.inbox_max_size ?? 0
         })`}
       >
-        <div className="flex gap-3">
+        <div className="flex gap-2">
           <Button
             disabled={isLoadingSketches || isRefetchingSketches}
             onClick={() => refetchSketches()}
           >
             {isRefetchingSketches ? (
-              <LRLoader className="animate-spin" />
+              <LRLoader className="size-5 animate-spin" />
             ) : (
-              <RefreshCw />
+              <RefreshCw className="size-5" />
             )}
             <p className="ml-2 hidden md:block">Refresh</p>
           </Button>
           <AllSketchesDeleteModal>
             <Button variant="destructive">
-              <Trash2 />
+              <Trash2 className="size-5" />
               <p className="ml-2 hidden md:block">Delete All</p>
             </Button>
           </AllSketchesDeleteModal>
@@ -108,7 +108,7 @@ const SketchDashboard = () => {
         </div>
       )}
 
-      <div className="grid h-full w-full grid-cols-2 gap-5 md:grid-cols-3 xl:grid-cols-4">
+      <div className="grid h-full w-full gap-5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
         {sketches?.data?.map((sketch: ISketch) => (
           <SketchCard key={sketch._id} sketch={sketch} />
         ))}
