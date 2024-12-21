@@ -6,6 +6,7 @@ import toast from 'react-hot-toast'
 
 import { cn } from '@lib/utils'
 
+import { Alert, AlertDescription, AlertTitle } from '@components/ui/alert'
 import { Switch } from '@components/ui/switch'
 
 import { useToggleInboxStatus } from '@api-hooks/user'
@@ -54,8 +55,8 @@ const InboxStatus = () => {
             </p>
             <p className="text-base/4 text-gray-500">
               {data?.user?.is_inbox_enabled
-                ? 'Your inbox is open to receive messages'
-                : 'Your inbox is closed to new messages'}
+                ? 'Your inbox is open to receive messages and sketches'
+                : 'Your inbox is closed to new messages and sketches'}
             </p>
           </div>
 
@@ -72,11 +73,21 @@ const InboxStatus = () => {
           )}
         </div>
 
+        {!data?.user?.is_inbox_enabled && (
+          <Alert className="mt-2" variant="destructive">
+            <AlertTitle>Warning</AlertTitle>
+            <AlertDescription>
+              Your public profile will not be accessible when the inbox is
+              disabled.
+            </AlertDescription>
+          </Alert>
+        )}
+
         <div className="rounded-lg bg-ckret-primary/10 p-4">
           <p className="text-base text-ckret-primary">
             Toggle the switch above to{' '}
             {data?.user?.is_inbox_enabled ? 'stop' : 'allow'} receiving new
-            messages
+            messages and sketches
           </p>
         </div>
       </div>
