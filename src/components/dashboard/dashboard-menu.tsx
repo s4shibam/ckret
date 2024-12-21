@@ -11,6 +11,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { Button } from '@components/ui/button'
+import { cn } from '@lib/utils'
 
 const DashboardMenu = () => {
   const pathname = usePathname()
@@ -18,27 +19,27 @@ const DashboardMenu = () => {
   const menus = [
     {
       title: 'Profile',
-      icon: <User />,
+      Icon: User,
       route: '/dashboard/profile'
     },
     {
       title: 'Messages',
-      icon: <MessageCircle />,
+      Icon: MessageCircle,
       route: '/dashboard/messages'
     },
     {
       title: 'Sketches',
-      icon: <Brush />,
+      Icon: Brush,
       route: '/dashboard/sketches'
     },
     {
       title: 'Settings',
-      icon: <Settings />,
+      Icon: Settings,
       route: '/dashboard/settings'
     },
     {
       title: 'My Links',
-      icon: <SquareArrowOutUpRight />,
+      Icon: SquareArrowOutUpRight,
       route: '/dashboard/my-links'
     }
   ]
@@ -49,12 +50,16 @@ const DashboardMenu = () => {
         <Button
           key={menu.title}
           asChild
-          className="justify-start gap-2 px-4 text-xl tracking-wide"
+          className={cn(
+            'justify-start gap-2 bg-transparent px-4 text-xl tracking-wide text-black hover:bg-zinc-100',
+            {
+              'bg-zinc-200': pathname === menu.route
+            }
+          )}
           size="lg"
-          variant={pathname === menu.route ? 'secondary' : 'ghost'}
         >
           <Link href={menu.route}>
-            {menu.icon}
+            <menu.Icon className="size-6" />
             <div className="hidden md:block">{menu.title}</div>
           </Link>
         </Button>
