@@ -9,8 +9,8 @@ import {
   MessageSquareShare,
   Twitter
 } from 'lucide-react'
-import { useSession } from 'next-auth/react'
 import Image from 'next/image'
+import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
@@ -84,7 +84,7 @@ const MyLink = () => {
     linkType === 'message'
       ? 'Send me anonymous messages!'
       : 'Send me anonymous sketches!'
-  const hashtags = 'ckret,anonymous,messageme'
+  const hashtags = 'ckret,anonymous'
 
   const handleShare = (platform: string) => {
     let shareUrl = ''

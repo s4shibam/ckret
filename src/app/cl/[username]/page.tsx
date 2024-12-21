@@ -2,19 +2,21 @@
 
 import { formatDistanceToNow } from 'date-fns'
 import { Brush, Frown, Inbox, MessageCircle, Reply } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { IMessage, ISketch } from '@_types/types'
 
+import { cn } from '@lib/utils'
+
 import AnimatedLoader from '@components/common/animated-loader'
 import Branding from '@components/common/branding'
+import CreateLink from '@components/common/create-link'
 import { Avatar, AvatarFallback } from '@components/ui/avatar'
 import { Button } from '@components/ui/button'
 
 import { useGetUserPublicProfile } from '@api-hooks/user'
-import CreateLink from '@components/common/create-link'
-import Image from 'next/image'
 
 const PublicProfile = ({ params }: { params: { username: string } }) => {
   const pathname = usePathname()
@@ -84,8 +86,8 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
           <div className="mb-16 flex gap-3">
             <Button
               asChild
-              size="lg"
               className="min-w-[140px] bg-ckret-primary text-base hover:bg-ckret-primary/90"
+              size="lg"
             >
               <Link href={`${pathname}/message`}>
                 <MessageCircle className="mr-2 h-5 w-5" />
@@ -94,8 +96,8 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
             </Button>
             <Button
               asChild
-              size="lg"
               className="min-w-[140px] bg-ckret-secondary text-base hover:bg-ckret-secondary/90"
+              size="lg"
             >
               <Link href={`${pathname}/sketch`}>
                 <Brush className="mr-2 h-5 w-5" />
@@ -119,8 +121,8 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
               {regularMessages.map((message: IMessage) => (
                 <CardWithReply
                   key={message._id}
-                  updatedAt={message.updatedAt}
                   reply={message.reply}
+                  updatedAt={message.updatedAt}
                 >
                   <p className="whitespace-pre-wrap leading-relaxed text-gray-800">
                     {message.content}
@@ -130,12 +132,17 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
             </div>
 
             {lastMessage && (
-              <div className="mt-4 flex justify-center">
+              <div
+                className={cn(
+                  'flex justify-center',
+                  messages.length > 1 && 'mt-4'
+                )}
+              >
                 <div className="w-full sm:w-1/2">
                   <CardWithReply
                     key={lastMessage._id}
-                    updatedAt={lastMessage.updatedAt}
                     reply={lastMessage.reply}
+                    updatedAt={lastMessage.updatedAt}
                   >
                     <p className="whitespace-pre-wrap leading-relaxed text-gray-800">
                       {lastMessage.content}
@@ -157,40 +164,45 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
               <div className="h-px flex-1 bg-zinc-400" />
             </div>
 
-            <div className="grid gap-8 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               {regularSketches.map((sketch: ISketch) => (
                 <CardWithReply
                   key={sketch._id}
-                  updatedAt={sketch.createdAt}
-                  reply={sketch.reply}
                   isSketch
+                  reply={sketch.reply}
+                  updatedAt={sketch.createdAt}
                 >
                   <Image
-                    width={200}
-                    height={200}
-                    src={sketch.sketch_url}
                     alt="Sketch"
                     className="size-full rounded-xl border object-cover"
+                    height={200}
+                    src={sketch.sketch_url}
+                    width={200}
                   />
                 </CardWithReply>
               ))}
             </div>
 
             {lastSketch && (
-              <div className="mt-4 flex justify-center">
+              <div
+                className={cn(
+                  'flex justify-center',
+                  sketches.length > 1 && 'mt-4'
+                )}
+              >
                 <div className="w-full sm:w-1/2">
                   <CardWithReply
                     key={lastSketch._id}
-                    updatedAt={lastSketch.createdAt}
-                    reply={lastSketch.reply}
                     isSketch
+                    reply={lastSketch.reply}
+                    updatedAt={lastSketch.createdAt}
                   >
                     <Image
-                      width={200}
-                      height={200}
-                      src={lastSketch.sketch_url}
                       alt="Sketch"
                       className="size-full rounded-xl border object-cover"
+                      height={200}
+                      src={lastSketch.sketch_url}
+                      width={200}
                     />
                   </CardWithReply>
                 </div>
@@ -209,7 +221,7 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
               </div>
               <h3 className="mb-2 font-medium text-gray-900">No Content Yet</h3>
               <p className="text-sm text-zinc-600">
-                This user hasn't shared any public messages or sketches
+                This user has not shared any public messages or sketches
               </p>
             </div>
           </div>
