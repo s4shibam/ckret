@@ -25,6 +25,12 @@ const deleteSingleSketch = (payload: { sid: string }) =>
 
 const deleteAllSketches = () => ckretConnect.delete('/sketch/all')
 
+const replyToSketch = (payload: { sid: string; replyContent: string }) =>
+  ckretConnect.put(`/sketch/reply/${payload.sid}`, { replyContent: payload.replyContent })
+
+const toggleSketchVisibility = (payload: { sid: string }) =>
+  ckretConnect.put(`/sketch/visibility/${payload.sid}`)
+
 // Sketch Hooks
 export const useSubmitSketch = ({ ...options }) =>
   useMutation(submitSketch, options)
@@ -37,3 +43,9 @@ export const useDeleteSingleSketch = ({ ...options }) =>
 
 export const useDeleteAllSketches = ({ ...options }) =>
   useMutation(deleteAllSketches, options)
+
+export const useReplyToSketch = ({ ...options }) =>
+  useMutation(replyToSketch, options)
+
+export const useToggleSketchVisibility = ({ ...options }) =>
+  useMutation(toggleSketchVisibility, options)

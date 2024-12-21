@@ -15,6 +15,8 @@ export interface IUser extends DefaultUser {
 export interface IMessage {
   _id: string
   content: string
+  reply?: string
+  show_in_profile?: boolean
   createdAt: string
 }
 
@@ -22,5 +24,7 @@ export interface ISketch {
   _id: string
   recipient: string
   sketch_url: string
+  reply?: string
+  show_in_profile?: boolean
   createdAt: string
 }
