@@ -74,9 +74,9 @@ const MyLink = () => {
 
   useEffect(() => {
     if (linkType === 'message') {
-      setMyLink(`${CKRET_URL}/cl/${data?.user?.username}`)
+      setMyLink(`${CKRET_URL}/@${data?.user?.username}/msg`)
     } else {
-      setMyLink(`${CKRET_URL}/cl/${data?.user?.username}/sketch`)
+      setMyLink(`${CKRET_URL}/@${data?.user?.username}/skch`)
     }
   }, [data?.user?.username, linkType])
 

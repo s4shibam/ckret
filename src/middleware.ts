@@ -6,14 +6,25 @@ export function middleware(request: NextRequest) {
 
   if (pathname.startsWith('/@')) {
     const remainingPath = pathname.slice(2)
+    const pathSegments = remainingPath.split('/')
 
-    const newUrl = new URL(`/cl/${remainingPath}`, request.url)
+    if (pathSegments.length > 1) {
+      if (pathSegments[1] === 'msg') {
+        pathSegments[1] = 'message'
+      } else if (pathSegments[1] === 'skch') {
+        pathSegments[1] = 'sketch'
+      }
+    }
+
+    const newPath = pathSegments.join('/')
+    const newUrl = new URL(`/cl/${newPath}`, request.url)
 
     return NextResponse.redirect(newUrl)
   }
 
   return NextResponse.next()
 }
+
 export const config = {
   matcher: '/@:username*'
 }
