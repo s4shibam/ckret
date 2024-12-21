@@ -27,22 +27,11 @@ const InboxStatus = () => {
     <div>
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Settings className="h-4 w-4 text-ckret-primary" />
+          <Settings className="size-5 text-ckret-primary" />
           <span className="text-base font-medium text-gray-600">
             Inbox Status
           </span>
         </div>
-
-        {isToggleInboxStatusLoading ? (
-          <div className="grid h-7 w-11 place-items-center rounded-full bg-gray-100">
-            <Loader className="h-4 w-4 animate-spin text-ckret-primary" />
-          </div>
-        ) : (
-          <Switch
-            checked={data?.user?.is_inbox_enabled}
-            onClick={() => toggleInboxStatusMutate()}
-          />
-        )}
       </div>
 
       <div className="space-y-4">
@@ -60,15 +49,27 @@ const InboxStatus = () => {
             </span>
           </div>
           <div>
-            <p className="text-lg font-medium text-gray-900">
+            <p className="text-lg/6 font-medium text-gray-900">
               {data?.user?.is_inbox_enabled ? 'Active' : 'Inactive'}
             </p>
-            <p className="text-base text-gray-500">
+            <p className="text-base/4 text-gray-500">
               {data?.user?.is_inbox_enabled
                 ? 'Your inbox is open to receive messages'
                 : 'Your inbox is closed to new messages'}
             </p>
           </div>
+
+          {isToggleInboxStatusLoading ? (
+            <div className="ml-auto grid h-7 w-11 place-items-center rounded-full bg-zinc-100">
+              <Loader className="h-4 w-4 animate-spin text-ckret-primary" />
+            </div>
+          ) : (
+            <Switch
+              className="ml-auto"
+              checked={data?.user?.is_inbox_enabled}
+              onClick={() => toggleInboxStatusMutate()}
+            />
+          )}
         </div>
 
         <div className="rounded-lg bg-ckret-primary/10 p-4">
