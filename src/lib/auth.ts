@@ -48,14 +48,15 @@ export const authOptions: NextAuthOptions = {
               id: userData._id,
               name: userData.name,
               email: userData.email,
+              avatar: userData.avatar,
+              username: userData.username,
               token: userData.token,
               auth_provider: userData.auth_provider,
               message_max_length: userData.message_max_length,
               feedback_message: userData.feedback_message,
               inbox_max_size: userData.inbox_max_size,
               sketch_max_size: userData.sketch_max_size,
-              is_inbox_enabled: userData.is_inbox_enabled,
-              username: userData.username
+              is_inbox_enabled: userData.is_inbox_enabled
             } as User
           }
           return null

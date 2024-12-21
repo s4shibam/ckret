@@ -8,7 +8,9 @@ export interface IUser extends DefaultUser {
   inbox_max_size: number
   sketch_max_size: number
   is_inbox_enabled: boolean
+  name: string
   username: string
+  avatar: string
   token: string
 }
 
@@ -18,6 +20,7 @@ export interface IMessage {
   reply?: string
   show_in_profile?: boolean
   createdAt: string
+  updatedAt: string
 }
 
 export interface ISketch {
