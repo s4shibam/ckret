@@ -1,4 +1,4 @@
-import { Clock, Loader2, Maximize2, Trash2 } from 'lucide-react'
+import { Clock, Loader, Reply, X } from 'lucide-react'
 import Image from 'next/image'
 import toast from 'react-hot-toast'
 
@@ -34,18 +34,24 @@ const SketchCard = ({ sketch }: SketchCardProps) => {
 
   return (
     <Card className="group relative space-y-4 overflow-hidden bg-gradient-to-r from-white to-zinc-100 p-4 shadow-sm transition-all hover:shadow-md">
-      <Image
-        alt={`Sketch ${sketch._id}`}
-        className="aspect-square rounded-md border object-cover"
-        height={1000}
-        src={sketch.sketch_url}
-        width={1000}
-      />
+      <div className="relative">
+        <Image
+          alt={`Sketch ${sketch._id}`}
+          className="aspect-square rounded-md border object-cover"
+          height={1000}
+          src={sketch.sketch_url}
+          width={1000}
+        />
 
-      <div className="grid grid-cols-[1fr_auto] items-center justify-between gap-4">
+        {sketch.show_in_profile && (
+          <div className="absolute right-2 top-2 h-3 w-3 rounded-full bg-green-500 ring-2 ring-white" />
+        )}
+      </div>
+
+      <div className="grid grid-cols-[1fr_auto] items-center justify-between gap-2">
         <div className="flex w-full items-center gap-1">
           <Clock className="h-4 w-4 text-zinc-500" />
-          <p className="max-w-28 truncate text-sm capitalize text-zinc-600">
+          <p className="line-clamp-1 flex-1 text-sm capitalize text-zinc-600">
             {formatDistanceToNow(sketch.createdAt, { addSuffix: true })}
           </p>
         </div>
@@ -57,7 +63,7 @@ const SketchCard = ({ sketch }: SketchCardProps) => {
               title="Reply"
               variant="ghost"
             >
-              <Maximize2 className="size-5" />
+              <Reply className="size-5" />
             </Button>
           </SketchFullScreenView>
 
@@ -69,9 +75,9 @@ const SketchCard = ({ sketch }: SketchCardProps) => {
             onClick={() => deleteSingleSketchMutation({ sid: sketch._id })}
           >
             {isDeleteSingleSketchLoading ? (
-              <Loader2 className="size-5 animate-spin" />
+              <Loader className="size-5 animate-spin" />
             ) : (
-              <Trash2 className="size-5 text-red-500" />
+              <X className="size-5 text-red-500" />
             )}
           </Button>
         </div>
