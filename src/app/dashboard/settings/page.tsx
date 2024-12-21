@@ -17,7 +17,7 @@ const Settings = () => {
 
       <div className="m-6 mx-auto w-full max-w-4xl rounded-xl bg-white p-6 shadow-sm">
         <h2 className="mb-6 text-2xl font-semibold text-gray-900">
-          Message Settings
+          Message & Sketch Settings
         </h2>
 
         <div className="space-y-6">
@@ -63,14 +63,29 @@ const Settings = () => {
             <div className="flex items-center gap-2">
               <SettingsIcon className="size-5 text-ckret-primary" />
               <span className="text-base font-medium text-gray-600">
-                Inbox Storage Limit
+                Message Storage Limit
               </span>
             </div>
             <p className="text-xl font-medium text-gray-900">
-              {data?.user?.inbox_max_size || 50} Messages
+              {data?.user?.inbox_max_size || 0} Messages
             </p>
             <p className="text-base text-gray-500">
               Maximum storage capacity for messages in your inbox
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <SettingsIcon className="size-5 text-ckret-primary" />
+              <span className="text-base font-medium text-gray-600">
+                Sketch Storage Limit
+              </span>
+            </div>
+            <p className="text-xl font-medium text-gray-900">
+              {data?.user?.sketch_max_size || 0} Sketches
+            </p>
+            <p className="text-base text-gray-500">
+              Maximum storage capacity for sketches
             </p>
           </div>
 

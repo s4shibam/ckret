@@ -6,6 +6,7 @@ export interface IUser extends DefaultUser {
   message_max_length: number
   feedback_message: string
   inbox_max_size: number
+  sketch_max_size: number
   is_inbox_enabled: boolean
   username: string
   token: string

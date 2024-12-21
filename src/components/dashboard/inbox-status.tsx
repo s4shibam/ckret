@@ -49,7 +49,7 @@ const InboxStatus = () => {
         <div className="flex items-center gap-3">
           <div
             className={cn(
-              'flex h-10 w-10 items-center justify-center rounded-full',
+              'flex size-12 items-center justify-center rounded-full',
               data?.user?.is_inbox_enabled
                 ? 'bg-green-100 text-green-600'
                 : 'bg-red-100 text-red-600'

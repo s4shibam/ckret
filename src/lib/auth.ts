@@ -53,6 +53,7 @@ export const authOptions: NextAuthOptions = {
               message_max_length: userData.message_max_length,
               feedback_message: userData.feedback_message,
               inbox_max_size: userData.inbox_max_size,
+              sketch_max_size: userData.sketch_max_size,
               is_inbox_enabled: userData.is_inbox_enabled,
               username: userData.username
             } as User
@@ -90,6 +91,7 @@ export const authOptions: NextAuthOptions = {
             user.feedback_message = data.feedback_message
             user.inbox_max_size = data.inbox_max_size
             user.is_inbox_enabled = data.is_inbox_enabled
+            user.sketch_max_size = data.sketch_max_size
             user.username = data.username
 
             return true
