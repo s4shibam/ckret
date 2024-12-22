@@ -64,11 +64,11 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
             </AvatarFallback>
           </Avatar>
 
-          <h1 className="mb-1 text-3xl/5 font-bold text-gray-900">{name}</h1>
+          <h1 className="mb-1 text-4xl/5 font-bold text-gray-900">{name}</h1>
 
           <p className="mb-4 text-gray-500">@{username}</p>
 
-          <p className="mb-6 text-gray-700">
+          <p className="mb-6 text-lg text-gray-700">
             Interact anonymously with me through messages or sketches
           </p>
 
@@ -201,22 +201,24 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
         )}
 
         {noPublicContent && (
-          <div className="flex items-center justify-center py-20">
-            <div className="w-full max-w-sm rounded-xl border border-gray-200 bg-white p-8 text-center shadow-sm">
+          <div className="flex items-center justify-center py-8">
+            <div className="w-full rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
               <div className="mb-4 flex justify-center">
-                <div className="rounded-full bg-gray-100 p-3">
-                  <Inbox className="h-6 w-6 text-gray-400" />
+                <div className="rounded-full bg-zinc-100 p-3">
+                  <Inbox className="size-10 text-zinc-500" />
                 </div>
               </div>
-              <h3 className="mb-2 font-medium text-gray-900">No Content Yet</h3>
-              <p className="text-sm text-zinc-600">
+              <h3 className="mb-2 text-lg font-medium text-zinc-900">
+                No Content Yet
+              </h3>
+              <p className="text-base text-zinc-600">
                 This user has not shared any public messages or sketches
               </p>
             </div>
           </div>
         )}
 
-        <div className="mt-20 rounded-2xl bg-gradient-to-br from-zinc-600 to-zinc-800 p-5">
+        <div className="rounded-2xl bg-gradient-to-br from-zinc-600 to-zinc-800 p-5">
           <div className="mx-auto w-full max-w-md">
             <CreateLink />
           </div>
