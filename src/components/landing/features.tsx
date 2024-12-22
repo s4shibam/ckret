@@ -16,7 +16,6 @@ const Features = () => {
       id="features"
     >
       <div className="mx-auto w-full max-w-7xl px-4 py-16 md:px-6 lg:py-24">
-        {/* Header */}
         <div className="text-center">
           <h2 className="mx-auto max-w-5xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             {FEATURE_HEADING}
@@ -26,12 +25,11 @@ const Features = () => {
           </p>
         </div>
 
-        {/* Main Features */}
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {MAIN_FEATURES.map((feature) => (
             <Card
               key={feature.title}
-              className="group relative overflow-hidden border-2 p-8 transition-all duration-300 hover:border-orange-200 hover:shadow-2xl"
+              className="group relative overflow-hidden border-2 p-4 transition-all duration-300 hover:border-orange-200 hover:shadow-2xl"
             >
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-orange-100 transition-transform group-hover:scale-110">
                 <feature.Icon className="h-8 w-8 text-orange-600" />
@@ -44,7 +42,6 @@ const Features = () => {
           ))}
         </div>
 
-        {/* Detailed Features Tabs */}
         <div className="mt-24">
           <Tabs className="w-full" defaultValue="message-types">
             <TabsList className="mx-auto flex h-auto w-full max-w-[400px] justify-center gap-2 rounded-full border-2 bg-orange-50/50 p-1">

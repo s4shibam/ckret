@@ -11,12 +11,10 @@ const Guide = () => {
       className="relative mx-auto w-full max-w-7xl px-5 py-14 sm:py-28"
       id="guide"
     >
-      {/* Decorative background element */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ckret-primary/5 blur-3xl" />
       </div>
 
-      {/* Section heading */}
       <div className="mb-16 text-center">
         <h2 className="mx-auto inline-block border-x-8 border-ckret-primary px-4 text-4xl font-semibold sm:px-8 xl:text-6xl">
           {GUIDE_HEADING}
@@ -24,7 +22,6 @@ const Guide = () => {
         <div className="mt-6 text-gray-600 md:text-lg">{GUIDE_SUB_HEADING}</div>
       </div>
 
-      {/* Steps grid */}
       <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-3">
         {GUIDE_STEPS.map((step, index) => (
           <div
@@ -37,23 +34,20 @@ const Guide = () => {
 
             <div className="h-full w-full rounded-[0.9rem] bg-white p-6">
               <div className="mb-6 flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-ckret-secondary/10">
-                  <step.Icon className="h-6 w-6 text-ckret-secondary" />
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-ckret-secondary/10">
+                  <step.Icon className="h-8 w-8 text-ckret-secondary" />
                 </div>
               </div>
 
               <h3 className="mb-3 text-xl font-semibold md:text-2xl">
                 {step.heading}
               </h3>
-              <p className="text-gray-600 md:text-lg/relaxed">
-                {step.description}
-              </p>
+              <p className="text-gray-600 md:text-lg/6">{step.description}</p>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Bottom note */}
       <div className="mt-16 text-center">
         <p className="inline-block rounded-full bg-ckret-primary/5 px-6 py-3 text-xl font-medium text-gray-800">
           {GUIDE_NOTE}
