@@ -268,7 +268,7 @@ const CardWithReply = ({
 
       {children}
 
-      <p className="rounded-xl bg-gray-100 p-3 text-sm leading-relaxed text-gray-700">
+      <p className="whitespace-pre-line rounded-xl bg-gray-100 p-3 text-sm leading-relaxed text-gray-700">
         <Reply className="-mt-1.5 mr-1.5 inline-block size-5 text-gray-500" />
         {reply || 'No reply yet'}
       </p>
