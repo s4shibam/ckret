@@ -35,15 +35,28 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
 
   if (error || !profile?.data) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-white px-4">
+      <div className="flex min-h-screen flex-col items-center gap-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-ckret-secondary/20 via-ckret-primary/10 to-transparent px-4 py-6">
+        <div className="mb-20 flex justify-center">
+          <Branding />
+        </div>
+
         <div className="w-full max-w-lg space-y-4 text-center">
           <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-red-50">
             <Frown className="h-10 w-10 text-red-500" />
           </div>
           <h1 className="text-2xl font-semibold text-gray-900">
-            User not found
+            Profile Not Available
           </h1>
-          <p className="text-gray-600">Check the username and try again</p>
+          <p className="text-gray-600">
+            This profile might not exist or the user may have disabled their
+            inbox. Please check the username and try again.
+          </p>
+        </div>
+
+        <div className="mt-20 rounded-2xl bg-gradient-to-br from-zinc-600 to-zinc-800 p-5">
+          <div className="mx-auto w-full max-w-md">
+            <CreateLink />
+          </div>
         </div>
       </div>
     )
@@ -63,8 +76,8 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
 
   return (
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-ckret-secondary/20 via-ckret-primary/10 to-transparent">
-      <div className="mx-auto flex max-w-2xl flex-col gap-10 px-4">
-        <div className="flex justify-center py-6">
+      <div className="mx-auto flex max-w-2xl flex-col gap-6 px-4 py-6 sm:gap-10">
+        <div className="flex justify-center">
           <Branding />
         </div>
 
@@ -234,7 +247,7 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
         </div>
 
         <Link
-          className="mx-auto mb-10 mt-6 text-center text-sm text-zinc-600 transition-colors hover:text-gray-600 hover:underline"
+          className="mx-auto mt-6 text-center text-base text-zinc-600 transition-colors hover:text-gray-600 hover:underline"
           href="/legal/disclaimer"
           target="_blank"
         >
