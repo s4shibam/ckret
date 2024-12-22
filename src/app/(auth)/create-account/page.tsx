@@ -144,7 +144,7 @@ export default function CreateAccountPage() {
         <div className="space-x-1 text-center">
           <span>Already have an account?</span>
           <Button asChild className="p-0 text-base" variant="link">
-            <Link href="/signin">Sign in</Link>
+            <Link href="/sign-in">Sign In</Link>
           </Button>
         </div>
       </CardContent>
