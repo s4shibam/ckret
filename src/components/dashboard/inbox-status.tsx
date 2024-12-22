@@ -26,12 +26,23 @@ const InboxStatus = () => {
 
   return (
     <div>
-      <div className="mb-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+      <div className="-mt-1 mb-4 flex items-center justify-between">
+        <div className="flex w-full items-center gap-2">
           <Settings className="size-5 text-ckret-primary" />
           <span className="text-base font-medium text-gray-600">
             Inbox Status
           </span>
+          {isToggleInboxStatusLoading ? (
+            <div className="ml-auto grid h-7 w-11 place-items-center rounded-full bg-zinc-100">
+              <Loader className="h-4 w-4 animate-spin text-ckret-primary" />
+            </div>
+          ) : (
+            <Switch
+              checked={data?.user?.is_inbox_enabled}
+              className="ml-auto"
+              onClick={() => toggleInboxStatusMutate()}
+            />
+          )}
         </div>
       </div>
 
@@ -39,7 +50,7 @@ const InboxStatus = () => {
         <div className="flex items-center gap-3">
           <div
             className={cn(
-              'flex size-12 items-center justify-center rounded-full',
+              'flex size-12 shrink-0 items-center justify-center rounded-full',
               data?.user?.is_inbox_enabled
                 ? 'bg-green-100 text-green-600'
                 : 'bg-red-100 text-red-600'
@@ -59,18 +70,6 @@ const InboxStatus = () => {
                 : 'Your inbox is closed to new messages and sketches'}
             </p>
           </div>
-
-          {isToggleInboxStatusLoading ? (
-            <div className="ml-auto grid h-7 w-11 place-items-center rounded-full bg-zinc-100">
-              <Loader className="h-4 w-4 animate-spin text-ckret-primary" />
-            </div>
-          ) : (
-            <Switch
-              className="ml-auto"
-              checked={data?.user?.is_inbox_enabled}
-              onClick={() => toggleInboxStatusMutate()}
-            />
-          )}
         </div>
 
         {!data?.user?.is_inbox_enabled && (
