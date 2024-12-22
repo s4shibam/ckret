@@ -22,10 +22,10 @@ import {
 } from 'lucide-react'
 
 // Metadata
-export const META_TITLE = 'Ckret - Anonymous Messaging Platform'
+export const META_TITLE = 'Ckret - Anonymous Interaction Platform'
 
 export const META_DESCRIPTION =
-  'Ckret is an anonymous messaging platform. Exchange anonymous questions, feedback, suggestions, dares, and challenges with your friends, families, and coworkers.'
+  'Ckret is an anonymous interaction platform. Exchange anonymous questions, feedback, suggestions, dares, and challenges with your friends, families, and coworkers.'
 
 export const META_KEYWORDS = [
   'ckret',
@@ -60,7 +60,7 @@ export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''
 
 // Features
 export const FEATURE_HEADING =
-  'Ckret is a safe anonymous messaging platform for the next generation.'
+  'Ckret is a safe anonymous interaction platform for the next generation.'
 
 export const FEATURE_SUB_HEADING =
   'Believe us, it will be fun and secure! All messages are encrypted.'
@@ -110,8 +110,7 @@ export const RECIPIENT_TYPES = [
 // Guide
 export const GUIDE_HEADING = 'How To Use Ckret?'
 
-export const GUIDE_SUB_HEADING =
-  'Start your journey with these simple steps'
+export const GUIDE_SUB_HEADING = 'Start your journey with these simple steps'
 
 export const GUIDE_NOTE =
   'No need to create an account to send anonymous messages via any link!'
@@ -121,8 +120,7 @@ export const GUIDE_STEPS = [
     id: 1,
     Icon: UserRoundPlus,
     heading: 'Create Ckret Account',
-    description:
-      'Create an account with Gmail or anonymously to begin.'
+    description: 'Create an account with Gmail or anonymously to begin.'
   },
   {
     id: 2,
@@ -135,8 +133,7 @@ export const GUIDE_STEPS = [
     id: 3,
     Icon: MessageCircle,
     heading: 'Receive Anonymous Messages',
-    description:
-      'Get anonymous messages and sketches via your custom link.'
+    description: 'Get anonymous messages and sketches via your custom link.'
   }
 ]
 
@@ -218,7 +215,7 @@ export const FAQS = [
   {
     question: 'Why use Ckret?',
     answer:
-      "<span class='font-medium'>Ckret</span> is an anonymous messaging platform with a lots of unique features. Explore its capabilities by giving it a try. We are sure, you will not regret it."
+      "<span class='font-medium'>Ckret</span> is an anonymous interaction platform with a lots of unique features. Explore its capabilities by giving it a try. We are sure, you will not regret it."
   },
   {
     question: 'Where can I find my Ckret Link?',
@@ -236,7 +233,7 @@ export const FAQS = [
   {
     question: 'Can I know who messaged me?',
     answer:
-      "If you're using an anonymous messaging service, understand that user identities are not stored. Therefore, there is no way to determine who sent you the messages."
+      "If you're using an anonymous interaction service, understand that user identities are not stored. Therefore, there is no way to determine who sent you the messages."
   },
   {
     question:
@@ -267,7 +264,7 @@ export const FAQS = [
   {
     question: 'How secure are my messages on Ckret?',
     answer:
-      "Your privacy and security are our top priorities. All messages on Ckret are protected using <span class='font-medium'>AES encryption</span>, ensuring that your communications remain private and secure. This military-grade encryption adds an extra layer of security to our anonymous messaging platform."
+      "Your privacy and security are our top priorities. All messages on Ckret are protected using <span class='font-medium'>AES encryption</span>, ensuring that your communications remain private and secure. This military-grade encryption adds an extra layer of security to our anonymous interaction platform."
   }
 ]
 

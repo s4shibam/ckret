@@ -6,7 +6,7 @@
 
 <div align="center">
     <h1>Ckret</h1>
-    <p>Anonymous Messaging Platform</p>
+    <p>Anonymous Interaction Platform</p>
 </div>
 
 <p align="center">
@@ -19,7 +19,7 @@
 
 ## ⚡ Introduction
 
-Ckret is an anonymous messaging platform, where users can send and receive messages anonymously via link.
+Ckret is an anonymous interaction platform, where users can send and receive messages anonymously via link.
 
 ## ✨ Features
 
