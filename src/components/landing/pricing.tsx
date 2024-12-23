@@ -31,9 +31,9 @@ const Pricing = () => {
             <div className="flex flex-col items-center border-b p-8 sm:p-10">
               <h3 className="text-3xl font-bold">Free Forever Plan</h3>
               <div className="mt-4 flex items-baseline text-5xl font-bold">
-                ₹0
+                $0
                 <span className="ml-1 text-2xl font-medium text-gray-500">
-                  /month
+                  / Month
                 </span>
               </div>
               <p className="mt-5 text-center text-lg text-gray-500">

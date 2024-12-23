@@ -2,9 +2,11 @@ import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { CKRET_URL } from '@lib/constants'
+import { env } from '@lib/env'
 
 export type ShareLinkType = 'Message' | 'Sketch' | 'Profile'
+
+const { ckret_url } = env
 
 export const useShareLink = () => {
   const { data } = useSession()
@@ -13,11 +15,11 @@ export const useShareLink = () => {
 
   useEffect(() => {
     if (linkType === 'Message') {
-      setLink(`${CKRET_URL}/@${data?.user?.username}/msg`)
+      setLink(`${ckret_url}/@${data?.user?.username}/msg`)
     } else if (linkType === 'Sketch') {
-      setLink(`${CKRET_URL}/@${data?.user?.username}/skc`)
+      setLink(`${ckret_url}/@${data?.user?.username}/skc`)
     } else {
-      setLink(`${CKRET_URL}/@${data?.user?.username}`)
+      setLink(`${ckret_url}/@${data?.user?.username}`)
     }
   }, [data?.user?.username, linkType])
 

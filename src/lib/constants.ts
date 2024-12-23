@@ -21,6 +21,10 @@ import {
   Zap
 } from 'lucide-react'
 
+import { env } from './env'
+
+const { ckret_url } = env
+
 // Metadata
 export const META_TITLE = 'Ckret - Anonymous Interaction Platform'
 
@@ -42,21 +46,6 @@ export const META_KEYWORDS = [
   'secret text message',
   'anonymous message website'
 ]
-
-// URLs
-export const CKRET_URL = process.env.NEXT_PUBLIC_CKRET_URL || ''
-
-export const DEVELOPER_PORTFOLIO_URL =
-  process.env.NEXT_PUBLIC_DEVELOPER_PORTFOLIO_URL || ''
-
-export const FEEDBACK_FORM_URL = process.env.NEXT_PUBLIC_FEEDBACK_FORM_URL || ''
-
-export const SUPPORT_EMAIL = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || ''
-
-// Analytics
-export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || ''
-
-export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''
 
 // Features
 export const FEATURE_HEADING =
@@ -196,7 +185,7 @@ export const FAQS = [
   },
   {
     question: 'How can I create my account on Ckret?',
-    answer: `Visit the website (<a href='${CKRET_URL}' class='text-blue-500'>${CKRET_URL}</a>) and choose between two options: sign in with your <span class='font-medium'>Google</span> account or create an <span class='font-medium'>anonymous account</span>. Once created, you'll get an auto-generated link assigned exclusively to you. Share this link with those you want to receive messages from.`
+    answer: `Visit the website (<a href='${ckret_url}' class='text-blue-500'>${ckret_url}</a>) and choose between two options: sign in with your <span class='font-medium'>Google</span> account or create an <span class='font-medium'>anonymous account</span>. Once created, you'll get an auto-generated link assigned exclusively to you. Share this link with those you want to receive messages from.`
   },
   {
     question: 'Can I have multiple accounts on Ckret?',
@@ -210,7 +199,7 @@ export const FAQS = [
   },
   {
     question: 'Who developed Ckret?',
-    answer: `<span class='font-medium'>Ckret</span> was developed by <span class='font-medium'>Shibam</span>, a Software Engineer from <span class='font-medium'>India</span>. Know more about him from his <a target='_blank' href='${DEVELOPER_PORTFOLIO_URL}' class='text-blue-500 font-medium'>Portfolio Website</a>.`
+    answer: `<span class='font-medium'>Ckret</span> was developed by <span class='font-medium'>Shibam</span>, a Software Engineer from <span class='font-medium'>India</span>. Know more about him from his <a target='_blank' href='${env.developer_portfolio_url}' class='text-blue-500 font-medium'>Portfolio Website</a>.`
   },
   {
     question: 'Why use Ckret?',
@@ -219,11 +208,11 @@ export const FAQS = [
   },
   {
     question: 'Where can I find my Ckret Link?',
-    answer: `Navigate to the <span class='font-medium'>My Links</span> page (<a href='${CKRET_URL}/dashboard/my-links' class='text-blue-500'>${CKRET_URL}/dashboard/my-links</a>) to find your <span class='font-medium'>Ckret Link</span>.`
+    answer: `Navigate to the <span class='font-medium'>My Links</span> page (<a href='${ckret_url}/dashboard/my-links' class='text-blue-500'>${ckret_url}/dashboard/my-links</a>) to find your <span class='font-medium'>Ckret Link</span>.`
   },
   {
     question: 'Can I change my Ckret Link?',
-    answer: `<span class='font-medium'>Yes</span>, you can. Go to the <span class='font-medium'>Profile</span> page (<a href='${CKRET_URL}/dashboard/profile' class='text-blue-500'>${CKRET_URL}/dashboard/profile</a>), where you'll find a <span class='font-medium'>Share Feedback</span> button. Clicking on it will open a Google form where you can share your thoughts.`
+    answer: `<span class='font-medium'>Yes</span>, you can. Go to the <span class='font-medium'>Profile</span> page (<a href='${ckret_url}/dashboard/profile' class='text-blue-500'>${ckret_url}/dashboard/profile</a>), where you'll find a <span class='font-medium'>Share Feedback</span> button. Clicking on it will open a Google form where you can share your thoughts.`
   },
   {
     question: 'Whom can I share my Ckret Link with?',
@@ -254,12 +243,12 @@ export const FAQS = [
   },
   {
     question: 'How can I temporarily stop receiving messages?',
-    answer: `Go to the <span class='font-medium'>Settings</span> page (<a href='${CKRET_URL}/dashboard/settings' class='text-blue-500'>${CKRET_URL}/dashboard/settings</a>), where you'll find an option called <span class='font-medium'>Inbox Status</span>. <span class='font-medium'>Enable or Disable</span> it as per your preference.<br/>Disabling the inbox status won't affect your account, but no one will be able to send you messages via your <span class='font-medium'>Ckret Link</span> until you re-enable the inbox status.<br/>Keep in mind that your <span class='font-medium'>Ckret Link</span> won't work when the inbox status is disabled.`
+    answer: `Go to the <span class='font-medium'>Settings</span> page (<a href='${ckret_url}/dashboard/settings' class='text-blue-500'>${ckret_url}/dashboard/settings</a>), where you'll find an option called <span class='font-medium'>Inbox Status</span>. <span class='font-medium'>Enable or Disable</span> it as per your preference.<br/>Disabling the inbox status won't affect your account, but no one will be able to send you messages via your <span class='font-medium'>Ckret Link</span> until you re-enable the inbox status.<br/>Keep in mind that your <span class='font-medium'>Ckret Link</span> won't work when the inbox status is disabled.`
   },
   {
     question:
       'I have feedback for the developers. How can I reach out to them?',
-    answer: `It's great that you want to share your feedback with us.<br/>Visit the <span class='font-medium'>Profile</span> page (<a href='${CKRET_URL}/dashboard/profile' class='text-blue-500'>${CKRET_URL}/dashboard/profile</a>), where you'll find a <span class='font-medium'>Share Feedback</span> button. Clicking on it will open a Google form where you can share your thoughts.`
+    answer: `It's great that you want to share your feedback with us.<br/>Visit the <span class='font-medium'>Profile</span> page (<a href='${ckret_url}/dashboard/profile' class='text-blue-500'>${ckret_url}/dashboard/profile</a>), where you'll find a <span class='font-medium'>Share Feedback</span> button. Clicking on it will open a Google form where you can share your thoughts.`
   },
   {
     question: 'How secure are my messages on Ckret?',

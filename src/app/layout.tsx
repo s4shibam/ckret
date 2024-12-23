@@ -6,12 +6,8 @@ import OG_IMAGE from '@assets/og-image.png'
 import AppProviders from '@providers/app-providers'
 import './globals.css'
 
-import {
-  CKRET_URL,
-  META_DESCRIPTION,
-  META_KEYWORDS,
-  META_TITLE
-} from '@lib/constants'
+import { META_DESCRIPTION, META_KEYWORDS, META_TITLE } from '@lib/constants'
+import { env } from '@lib/env'
 
 import GoogleAnalytics from '@components/analytics/google-analytics'
 
@@ -43,7 +39,7 @@ export const metadata: Metadata = {
     description: META_DESCRIPTION,
     images: imagesArray
   },
-  metadataBase: new URL(CKRET_URL)
+  metadataBase: new URL(env.ckret_url)
 }
 
 export const viewport: Viewport = {

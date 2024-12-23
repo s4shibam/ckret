@@ -1,9 +1,9 @@
 import Script from 'next/script'
 
-import { GA_MEASUREMENT_ID } from '@lib/constants'
+import { env } from '@lib/env'
 
 const GoogleAnalytics = () => {
-  if (!GA_MEASUREMENT_ID) {
+  if (env.ga_measurement_id === 'env-not-set') {
     return null
   }
 
@@ -12,7 +12,7 @@ const GoogleAnalytics = () => {
       <Script
         async
         src={`https://www.googletagmanager.com/gtag/js? 
-      id=${GA_MEASUREMENT_ID}`}
+      id=${env.ga_measurement_id}`}
       />
       <Script
         dangerouslySetInnerHTML={{
@@ -21,7 +21,7 @@ const GoogleAnalytics = () => {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', '${GA_MEASUREMENT_ID}');
+          gtag('config', '${env.ga_measurement_id}');
         `
         }}
         id="google-analytics"

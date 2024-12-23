@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { DEVELOPER_PORTFOLIO_URL, FEEDBACK_FORM_URL } from '@lib/constants'
+import { env } from '@lib/env'
 
 import Branding from '@components/common/branding'
 import { Separator } from '@components/ui/separator'
@@ -37,7 +37,7 @@ const Footer = () => {
             </Link>
             <Link
               className="w-fit decoration-white underline-offset-4 hover:underline"
-              href={FEEDBACK_FORM_URL || '#'}
+              href={env.feedback_form_url || '#'}
               target="_blank"
             >
               Share Feedback
@@ -74,7 +74,7 @@ const Footer = () => {
       <div className="flex w-full flex-wrap justify-between text-center">
         <p className="whitespace-nowrap">
           Developed with 🧡 by{' '}
-          <a className="hover:underline" href={DEVELOPER_PORTFOLIO_URL}>
+          <a className="hover:underline" href={env.developer_portfolio_url}>
             Shibam Saha
           </a>
           .

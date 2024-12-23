@@ -1,4 +1,4 @@
-import { SUPPORT_EMAIL } from '@lib/constants'
+import { env } from '@lib/env'
 
 const PrivacyPolicy = () => {
   return (
@@ -504,7 +504,7 @@ const PrivacyPolicy = () => {
         If you have any questions about this Privacy Policy, You can contact us:
       </p>
       <ul className="list-inside list-disc [&>*]:pl-4">
-        <li>By email: {SUPPORT_EMAIL}</li>
+        <li>By email: {env.support_email}</li>
       </ul>
     </div>
   )

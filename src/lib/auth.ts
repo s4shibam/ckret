@@ -3,13 +3,14 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 
 import ckretConnect from './api'
+import { env } from './env'
 
 export const authOptions: NextAuthOptions = {
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: env.nextauth_secret,
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      clientId: env.google_client_id,
+      clientSecret: env.google_client_secret,
       authorization: {
         params: {
           prompt: 'consent',
@@ -132,5 +133,5 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt'
   },
-  debug: process.env.NODE_ENV !== 'production'
+  debug: env.node_env !== 'production'
 }

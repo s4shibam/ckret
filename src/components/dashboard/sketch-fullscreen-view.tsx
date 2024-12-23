@@ -1,8 +1,8 @@
 import { format, formatDistanceToNow } from 'date-fns'
 import html2canvas from 'html2canvas'
 import { ArrowDown, Eye, EyeOff, Loader, Send, Share2 } from 'lucide-react'
-import { useSession } from 'next-auth/react'
 import Image from 'next/image'
+import { useSession } from 'next-auth/react'
 import { useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 
@@ -10,7 +10,7 @@ import { ISketch } from '@_types/types'
 
 import LOGO_SECONDARY from '@assets/logo-secondary.svg'
 
-import { CKRET_URL } from '@lib/constants'
+import { env } from '@lib/env'
 import { invalidateQueries } from '@lib/query-client'
 
 import { Button } from '@components/ui/button'
@@ -178,7 +178,7 @@ const SketchFullScreenView = ({ sketch, children }: Props) => {
                   width={16}
                 />
                 <span className="text-sm text-zinc-500">
-                  {`${CKRET_URL}/@${session?.user?.username}/skc`}
+                  {`${env.ckret_url}/@${session?.user?.username}/skc`}
                 </span>
               </div>
               <div className="flex items-center gap-1.5 text-sm text-zinc-400">

@@ -1,10 +1,11 @@
 import axios from 'axios'
 import { getSession } from 'next-auth/react'
-const ckretConnectURL = process.env.NEXT_PUBLIC_CKRET_CONNECT_URL
+
+import { env } from '@lib/env'
 
 // Custom Axios instance with common configurations
 const ckretConnect = axios.create({
-  baseURL: ckretConnectURL,
+  baseURL: env.ckret_connect_url,
   headers: {
     'Content-Type': 'application/json'
   }

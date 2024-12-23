@@ -1,4 +1,6 @@
-import { CKRET_URL, SUPPORT_EMAIL } from '@lib/constants'
+import { env } from '@lib/env'
+
+const { ckret_url, support_email } = env
 
 const CookiePolicy = () => {
   return (
@@ -7,8 +9,8 @@ const CookiePolicy = () => {
 
       <p>
         This is the Cookie Policy for Ckret, accessible from{' '}
-        <a className="text-blue-500" href={CKRET_URL}>
-          {CKRET_URL}
+        <a className="text-blue-500" href={ckret_url}>
+          {ckret_url}
         </a>
       </p>
 
@@ -153,7 +155,7 @@ const CookiePolicy = () => {
 
       <p className="mt-4 text-lg">
         By clicking on this{' '}
-        <a className="text-blue-500" href={`mailto:${SUPPORT_EMAIL}`}>
+        <a className="text-blue-500" href={`mailto:${support_email}`}>
           link
         </a>
         .

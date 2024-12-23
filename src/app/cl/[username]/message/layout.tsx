@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { unstable_noStore as noStore } from 'next/cache'
 
+import { env } from '@lib/env'
+
 type Props = {
   params: { username: string }
 }
@@ -9,7 +11,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const username = params.username
   noStore()
   const data = await fetch(
-    `${process.env.NEXT_PUBLIC_CKRET_CONNECT_URL}/user/details/${username}`
+    `${env.ckret_connect_url}/user/details/${username}`
   ).then((res) => res.json())
 
   const metadata = {

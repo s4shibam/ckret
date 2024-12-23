@@ -4,7 +4,7 @@ import { Feather, LogOut, MessageCircleReply, PenSquare } from 'lucide-react'
 import Link from 'next/link'
 import { signOut, useSession } from 'next-auth/react'
 
-import { FEEDBACK_FORM_URL } from '@lib/constants'
+import { env } from '@lib/env'
 
 import EditAvatar from '@components/dashboard/edit-avatar'
 import EditName from '@components/dashboard/edit-name'
@@ -121,7 +121,7 @@ const Profile = () => {
               asChild
               className="inline-flex items-center gap-2 rounded-lg bg-ckret-secondary px-4 py-2 text-sm font-medium text-white hover:bg-ckret-secondary/80"
             >
-              <Link href={FEEDBACK_FORM_URL || '#'} target="_blank">
+              <Link href={env.feedback_form_url || '#'} target="_blank">
                 <MessageCircleReply className="h-4 w-4" />
                 Share Your Feedback
               </Link>

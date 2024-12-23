@@ -1,28 +1,29 @@
-import { CKRET_URL, SUPPORT_EMAIL } from '@lib/constants'
+import { env } from '@lib/env'
 
+const { ckret_url, support_email } = env
 const Disclaimer = () => {
   return (
     <div>
       <h1 className="text-3xl font-semibold">Disclaimer for Ckret</h1>
       <p>
         This is the Disclaimer for Ckret, accessible from{' '}
-        <a className="text-blue-500" href={CKRET_URL}>
-          {CKRET_URL}
+        <a className="text-blue-500" href={ckret_url}>
+          {ckret_url}
         </a>
       </p>
       <p className="mb-4 mt-8">
         All information on this website -{' '}
-        <a className="text-blue-500" href={CKRET_URL}>
-          {CKRET_URL}
+        <a className="text-blue-500" href={ckret_url}>
+          {ckret_url}
         </a>{' '}
         - is provided in good faith and is intended solely for general
         information purposes.
       </p>
       <p className="mb-4 mt-8">
-        <span className="font-medium">{CKRET_URL}</span> makes no guarantees on
+        <span className="font-medium">{ckret_url}</span> makes no guarantees on
         the completeness, dependability, or correctness of this material. Any
         action you take in response to the material on this website is entirely
-        at your own risk. <span className="font-medium">{CKRET_URL}</span> shall
+        at your own risk. <span className="font-medium">{ckret_url}</span> shall
         not be liable for any losses or damages incurred as a result of using
         our website. Please do not use this website to propagate hatred or
         disgust others.
@@ -47,7 +48,7 @@ const Disclaimer = () => {
         <li>You don&apos;t intend to share any NSFW content here.</li>
 
         <li>
-          <span className="font-medium">{CKRET_URL}</span> shall not be
+          <span className="font-medium">{ckret_url}</span> shall not be
           accountable for any losses or damages incurred as a result of using
           our website.
         </li>
@@ -76,10 +77,10 @@ const Disclaimer = () => {
         website&apos;s disclaimer, please contact us by email at{' '}
         <a
           className="text-blue-500"
-          href={'mailto:' + SUPPORT_EMAIL}
+          href={'mailto:' + support_email}
           target="_blank"
         >
-          {SUPPORT_EMAIL}.
+          {support_email}.
         </a>
       </p>
     </div>
