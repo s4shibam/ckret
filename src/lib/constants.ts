@@ -169,12 +169,14 @@ export const PRICING_FEATURES = [
   {
     Icon: Sparkles,
     title: 'Message Replies',
-    description: 'Store and showcase your replies to messages to engage with others'
+    description:
+      'Store and showcase your replies to messages to engage with others'
   },
   {
     Icon: Zap,
     title: 'Instant Sharing',
-    description: 'Share your profile link across social platforms in just one click'
+    description:
+      'Share your profile link across social platforms in just one click'
   }
 ]
 
@@ -217,6 +219,46 @@ export const FAQS = [
   {
     question: 'Where can I find my Ckret Link?',
     answer: `Navigate to the <span class='font-medium'>My Links</span> page (<a href='${ckret_url}/dashboard/my-links' class='text-blue-500'>${ckret_url}/dashboard/my-links</a>) to find your <span class='font-medium'>Ckret Link</span>.`
+  },
+  {
+    question: 'Can I change my Ckret Link?',
+    answer: `<span class='font-medium'>Yes</span>, you can. Go to the <span class='font-medium'>Profile</span> page (<a href='${ckret_url}/dashboard/profile' class='text-blue-500'>${ckret_url}/dashboard/profile</a>), where you'll find a <span class='font-medium'>Share Feedback</span> button. Clicking on it will open a Google form where you can share your thoughts.`
+  },
+  {
+    question: 'Whom can I share my Ckret Link with?',
+    answer:
+      "Share your <span class='font-medium'>Ckret Link</span> with anyone you want to use it, such as family, friends, fans, coworkers, etc."
+  },
+  {
+    question: 'Can I know who messaged me?',
+    answer:
+      "If you're using an anonymous interaction service, understand that user identities are not stored. Therefore, there is no way to determine who sent you the messages."
+  },
+  {
+    question:
+      'People are sending me messages, but they are not visible on the messages page. What should I do now?',
+    answer:
+      "Try clicking the <span class='font-medium'>Refresh</span> button or manually reload the messages page to fetch new messages. Hope your internet is on."
+  },
+  {
+    question:
+      'Someone is abusing or insulting me. How can I find out who they are?',
+    answer:
+      "We recommend sharing your personalized link with people you trust. If someone is bothering you with insults, change your <span class='font-medium'>Ckret Link</span> or <span class='font-medium'>Log Out</span> of your account and stop using our service.<br/>Unfortunately, there's no way for us to identify the sender of abusive messages. We understand your concern, but that's how our website operates. Good luck."
+  },
+  {
+    question: 'How can I restore deleted messages?',
+    answer:
+      "<span class='font-medium'>Sorry</span>, once you delete a message, it's permanently deleted from our servers. Therefore, you cannot restore deleted messages. Think twice before deleting any message."
+  },
+  {
+    question: 'How can I temporarily stop receiving messages?',
+    answer: `Go to the <span class='font-medium'>Settings</span> page (<a href='${ckret_url}/dashboard/settings' class='text-blue-500'>${ckret_url}/dashboard/settings</a>), where you'll find an option called <span class='font-medium'>Inbox Status</span>. <span class='font-medium'>Enable or Disable</span> it as per your preference.<br/>Disabling the inbox status won't affect your account, but no one will be able to send you messages via your <span class='font-medium'>Ckret Link</span> until you re-enable the inbox status.<br/>Keep in mind that your <span class='font-medium'>Ckret Link</span> won't work when the inbox status is disabled.`
+  },
+  {
+    question:
+      'I have feedback for the developers. How can I reach out to them?',
+    answer: `It's great that you want to share your feedback with us.<br/>Visit the <span class='font-medium'>Profile</span> page (<a href='${ckret_url}/dashboard/profile' class='text-blue-500'>${ckret_url}/dashboard/profile</a>), where you'll find a <span class='font-medium'>Share Feedback</span> button. Clicking on it will open a Google form where you can share your thoughts.`
   },
   {
     question: 'Who developed Ckret?',
