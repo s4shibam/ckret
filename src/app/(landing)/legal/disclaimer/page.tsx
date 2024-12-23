@@ -12,21 +12,22 @@ const Disclaimer = () => {
         </a>
       </p>
       <p className="mb-4 mt-8">
-        All information on this website -{' '}
+        All information and features on this website -{' '}
         <a className="text-blue-500" href={ckret_url}>
           {ckret_url}
         </a>{' '}
-        - is provided in good faith and is intended solely for general
-        information purposes.
+        - including messages, sketches, profile content, and user interactions,
+        are provided in good faith and are intended solely for general
+        communication and creative expression purposes.
       </p>
       <p className="mb-4 mt-8">
         <span className="font-medium">{ckret_url}</span> makes no guarantees on
-        the completeness, dependability, or correctness of this material. Any
-        action you take in response to the material on this website is entirely
-        at your own risk. <span className="font-medium">{ckret_url}</span> shall
-        not be liable for any losses or damages incurred as a result of using
-        our website. Please do not use this website to propagate hatred or
-        disgust others.
+        the completeness, dependability, or correctness of this material. While
+        we implement industry-standard security measures including AES
+        encryption for messages, any action you take in response to the material
+        on this website is entirely at your own risk.{' '}
+        <span className="font-medium">{ckret_url}</span> shall not be liable for
+        any losses or damages incurred as a result of using our website.
       </p>
       <p className="mb-4 mt-8">
         If you sign in or use our platform in any way, we expect you to be
@@ -36,23 +37,53 @@ const Disclaimer = () => {
       </p>
 
       <ul className="ml-4 mt-4 list-inside list-disc">
-        <li>You will not to spam messages.</li>
+        <li>You will not spam messages or sketches.</li>
         <li>
           You are not going to create any threats or send any harmful
-          communications.
+          communications through messages or artwork.
         </li>
         <li>
           You promise not to use this platform for any unethical or
           anti-national activity.
         </li>
-        <li>You don&apos;t intend to share any NSFW content here.</li>
-
+        <li>
+          You don&apos;t intend to share any NSFW content here, including
+          through sketches or profile content.
+        </li>
+        <li>
+          You understand that while messages are encrypted, you should exercise
+          caution in sharing sensitive information.
+        </li>
+        <li>
+          You acknowledge that featured content on profiles is publicly visible
+          and exercise discretion in what you choose to feature.
+        </li>
+        <li>
+          You understand and agree that messages and sketches older than 6
+          months will be automatically deleted, and inactive accounts may be
+          subject to content deletion.
+        </li>
         <li>
           <span className="font-medium">{ckret_url}</span> shall not be
           accountable for any losses or damages incurred as a result of using
-          our website.
+          our website or its features.
         </li>
       </ul>
+
+      <p className="mb-4 mt-8">
+        While we implement security measures such as AES encryption for
+        messages, you acknowledge that no internet transmission is completely
+        secure. We recommend exercising appropriate caution when using any
+        online service.
+      </p>
+
+      <p className="mb-4 mt-8">
+        Please note that to maintain service efficiency, we automatically delete
+        messages and sketches older than 6 months. Additionally, accounts that
+        remain inactive for 6 months may have their content deleted after
+        notification. We strongly recommend saving any important content before
+        it reaches these time limits, as deleted data cannot be recovered.
+      </p>
 
       <p className="mb-4 mt-8">
         You can access other websites by following hyperlinks to such external
@@ -80,7 +111,7 @@ const Disclaimer = () => {
           href={'mailto:' + support_email}
           target="_blank"
         >
-          {support_email}.
+          {support_email}
         </a>
       </p>
     </div>

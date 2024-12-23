@@ -19,16 +19,19 @@
 
 ## ⚡ Introduction
 
-Ckret is an anonymous interaction platform, where users can send and receive messages anonymously via link.
+Ckret is a comprehensive anonymous interaction platform that enables users to exchange messages and sketches anonymously. With features like personal profiles, secure message encryption, and creative expression tools, it provides a safe and engaging space for anonymous communication.
 
 ## ✨ Features
 
-- Exchange messages with friends and families anonymously.
-- Create account anonymously or with gmail to get messages.
-- Send secret messages using ckret link without even creating account.
-- Share ckret link to social media platforms in one click to receive messages.
-- Highly customizable settings for the best user experience.
-- Install the Ckret App (PWA) for convenience.
+- Exchange messages and sketches with friends and families anonymously
+- Create account anonymously or with Gmail to receive messages and artwork
+- Send secret messages using Ckret link without creating an account
+- Personal profile page with featured messages and sketches
+- Store and showcase your replies to messages
+- AES encryption for enhanced message security
+- Share Ckret link to social media platforms in one click
+- Highly customizable settings for the best user experience
+- Install the Ckret App (PWA) for convenience
 
 ## ⚙️ Tech Stack
 
@@ -51,6 +54,9 @@ Ckret is an anonymous interaction platform, where users can send and receive mes
 ## 🎯 Goals
 
 - [x] Exploring `Next JS` and its core components such as App router, Caching, and SSR, while applying them in a project
+- [x] Implementing secure message handling with `AES encryption` for enhanced data protection
+- [x] Creating interactive `Canvas-based drawing` features for anonymous sketch submissions
+- [x] Building dynamic user profiles with featured content management system
 - [x] Delving into `React Query`'s capabilities in managing asynchronous states effectively
 - [x] Implement Google sign-in using `Next Auth` for enhanced user authentication and session management
 - [x] Seamlessly integrating a `Next JS` web app with a dedicated backend service to manage data from the database

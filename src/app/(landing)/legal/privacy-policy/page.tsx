@@ -117,8 +117,47 @@ const PrivacyPolicy = () => {
       <ul className="list-inside list-disc [&>*]:pl-4">
         <li>Email address</li>
         <li>First name and last name</li>
+        <li>Profile information and preferences</li>
+        <li>Featured content selections</li>
         <li>Usage Data</li>
       </ul>
+      <h4 className="my-2 text-lg font-medium">User Content</h4>
+      <p>
+        Our Service allows You to create, submit, and share various types of
+        content, including:
+      </p>
+      <ul className="list-inside list-disc [&>*]:pl-4">
+        <li>Messages (which are encrypted using AES encryption)</li>
+        <li>Sketches and artwork</li>
+        <li>Profile customizations</li>
+        <li>Featured content selections</li>
+        <li>Message replies</li>
+      </ul>
+      <p>
+        While messages are protected with AES encryption, other content such as
+        sketches and profile information may be publicly visible based on your
+        settings and choices. Please exercise discretion when sharing content
+        through our platform.
+      </p>
+      <h4 className="my-2 text-lg font-medium">
+        Security of Your Personal Data
+      </h4>
+      <p>
+        The security of Your Personal Data is important to us. We implement
+        several security measures to protect your data:
+      </p>
+      <ul className="list-inside list-disc [&>*]:pl-4">
+        <li>AES encryption for message content</li>
+        <li>Secure authentication systems</li>
+        <li>Regular security audits and updates</li>
+        <li>Protected database storage</li>
+      </ul>
+      <p>
+        However, no method of transmission over the Internet, or method of
+        electronic storage is 100% secure. While we strive to use commercially
+        acceptable means to protect Your Personal Data, we cannot guarantee its
+        absolute security.
+      </p>
       <h4 className="my-2 text-lg font-medium">Usage Data</h4>
       <p>Usage Data is collected automatically when using the Service.</p>
       <p>
@@ -358,10 +397,63 @@ const PrivacyPolicy = () => {
         The Company will retain Your Personal Data only for as long as is
         necessary for the purposes set out in this Privacy Policy. We will
         retain and use Your Personal Data to the extent necessary to comply with
-        our legal obligations (for example, if we are required to retain your
-        data to comply with applicable laws), resolve disputes, and enforce our
-        legal agreements and policies.
+        our legal obligations, resolve disputes, and enforce our legal
+        agreements and policies.
       </p>
+
+      <h4 className="my-2 text-lg font-medium">
+        Automatic Data Deletion Policy
+      </h4>
+      <p>
+        To maintain service efficiency and manage storage costs, we implement
+        the following automatic deletion policies:
+      </p>
+      <ul className="list-inside list-disc [&>*]:pl-4">
+        <li>
+          Messages and sketches older than 6 months will be automatically
+          deleted from our systems
+        </li>
+        <li>
+          For inactive accounts (no login for 6 months), we may delete or
+          archive associated content after sending a notification email
+        </li>
+        <li>
+          Featured content on profiles will be retained until manually removed
+          by the user or the account becomes inactive
+        </li>
+        <li>
+          Account information and preferences will be retained as long as the
+          account is active
+        </li>
+      </ul>
+
+      <h4 className="my-2 text-lg font-medium">
+        Important Notes on Data Deletion
+      </h4>
+      <p>
+        Please be aware of the following regarding our data deletion policy:
+      </p>
+      <ul className="list-inside list-disc [&>*]:pl-4">
+        <li>Data deletion is permanent and cannot be reversed</li>
+        <li>
+          We recommend saving any important messages or sketches before the
+          6-month period expires
+        </li>
+        <li>
+          For inactive accounts, we will attempt to notify you via email 30 days
+          before any data deletion
+        </li>
+        <li>
+          If you reactivate an inactive account before the final deletion, your
+          profile information will be retained, but old messages and sketches
+          may still be subject to the 6-month deletion policy
+        </li>
+        <li>
+          Encrypted messages are included in this deletion policy and cannot be
+          recovered once deleted
+        </li>
+      </ul>
+
       <p>
         The Company will also retain Usage Data for internal analysis purposes.
         Usage Data is generally retained for a shorter period of time, except
