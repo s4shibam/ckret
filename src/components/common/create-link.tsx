@@ -29,22 +29,23 @@ const CreateLink = () => {
 
   return (
     <div className="mt-auto flex w-full flex-col gap-2">
-      <p className="text-center text-lg text-white">
+      <p className="text-center text-base text-white sm:text-lg">
         <span
-          className="inline-block w-[2.7rem] animate-jump font-medium tracking-wide"
           key={createdCount}
+          className="inline-block w-[2.5rem] animate-jump font-medium tracking-wide sm:w-[2.7rem]"
         >
           {createdCount}+
         </span>{' '}
         People clicked this button in the last{' '}
-        <span className="font-medium">3 hours</span>
+        <span className="whitespace-nowrap font-medium">3 hours</span>
       </p>
       <Button
         asChild
-        className="h-12 bg-white text-xl capitalize text-black hover:bg-white/90"
+        className="h-11 bg-white text-lg capitalize text-black hover:bg-white/90 sm:h-12 sm:text-xl"
       >
         <Link href="/create-account">
-          <SquareArrowOutUpRight className="mr-2" /> Create your own link
+          <SquareArrowOutUpRight className="mr-2 size-6 sm:size-7" /> Create
+          your own link
         </Link>
       </Button>
     </div>

@@ -29,7 +29,7 @@ const NavBar = () => {
   }, [])
 
   return (
-    <div className="fixed inset-x-0 top-0 z-10 h-16 bg-transparent">
+    <div className="fixed inset-x-0 top-0 z-50 h-16 bg-transparent">
       <div
         className={`fixed inset-x-0 top-0 border-b bg-white shadow-sm transition-all duration-500 ease-in-out ${
           scrolled ? 'h-16' : 'h-0'

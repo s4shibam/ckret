@@ -32,7 +32,7 @@ const Hero = () => {
 
       <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white to-transparent" />
 
-      <div className="group relative h-auto w-[28rem] animate-fade-up overflow-hidden rounded-2xl drop-shadow-lg md:w-[32rem]">
+      <div className="group relative h-auto w-full max-w-[25rem] animate-fade-up overflow-hidden rounded-2xl drop-shadow-lg sm:max-w-[28rem] md:max-w-[32rem]">
         <Image
           alt="Ckret Hero Image"
           className="size-full transition-all duration-500 hover:scale-105"
