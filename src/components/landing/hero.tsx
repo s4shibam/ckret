@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 import HERO from '@assets/ckret-hero-image.webp'
+
 import CreateLink from '@components/common/create-link'
 
 const Hero = () => {
@@ -33,19 +34,19 @@ const Hero = () => {
 
       <div className="group relative h-auto w-[28rem] animate-fade-up overflow-hidden rounded-2xl drop-shadow-lg md:w-[32rem]">
         <Image
-          draggable={false}
           alt="Ckret Hero Image"
           className="size-full transition-all duration-500 hover:scale-105"
+          draggable={false}
           height={1500}
           src={HERO}
           width={1500}
         />
 
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-b from-transparent to-ckret-secondary/20 px-2 py-4 text-center text-lg font-medium tracking-wide text-black opacity-0 transition-all duration-500 group-hover:opacity-100 md:text-xl">
-          Santa's Profile on Ckret.
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-b from-transparent to-ckret-secondary/20 px-2 py-3 text-center text-lg font-medium tracking-wide text-black opacity-0 transition-all duration-500 group-hover:opacity-100 md:text-xl">
+          Santa&apos;s Profile on Ckret.
         </div>
 
-        <div className="absolute bottom-0 left-5 right-5 h-px bg-gradient-to-r from-transparent via-ckret-secondary to-transparent" />
+        <div className="absolute inset-x-5 bottom-0 h-px bg-gradient-to-r from-transparent via-ckret-secondary to-transparent" />
       </div>
 
       <div className="w-full max-w-md animate-fade-up rounded-2xl bg-gradient-to-br from-zinc-600 to-zinc-800 p-4 md:hidden">
