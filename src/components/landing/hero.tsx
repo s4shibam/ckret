@@ -6,7 +6,7 @@ import CreateLink from '@/components/common/create-link'
 const Hero = () => {
   return (
     <div className="doodle relative min-h-screen animate-fade border-b-2 border-ckret-primary">
-      <div className="mx-auto flex size-full max-w-7xl flex-col items-center justify-between gap-6 px-6 py-[5.5rem] md:flex-row">
+      <div className="mx-auto flex size-full min-h-screen max-w-7xl flex-col items-center justify-between gap-6 px-6 py-[5.5rem] md:flex-row">
         <div className="flex min-h-[11rem] min-w-[20rem] flex-col justify-center gap-6">
           <div className="flex select-none flex-col justify-center text-5xl drop-shadow-xl sm:text-6xl md:justify-start lg:text-7xl">
             <p className="animate-fade-up overflow-hidden text-center font-extrabold md:text-left">
