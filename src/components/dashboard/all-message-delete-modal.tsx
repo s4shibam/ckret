@@ -15,7 +15,7 @@ import {
 import { useDeleteAllMessages } from '@/hooks/api/message'
 import { invalidateQueries } from '@/lib/query-client'
 
-interface AllMessageDeleteModalProps {
+type AllMessageDeleteModalProps = {
   children: ReactNode
 }
 

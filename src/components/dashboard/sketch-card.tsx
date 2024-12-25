@@ -11,7 +11,7 @@ import { useDeleteSingleSketch } from '@/hooks/api/sketch'
 import { invalidateQueries } from '@/lib/query-client'
 import { TSketch } from '@/types/index'
 
-interface SketchCardProps {
+type SketchCardProps = {
   sketch: TSketch
 }
 

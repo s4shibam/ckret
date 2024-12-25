@@ -1,4 +1,4 @@
-interface IEnv {
+type IEnv = {
   node_env: 'development' | 'production'
   nextauth_secret: string | 'env-not-set'
   nextauth_url: string | 'env-not-set'

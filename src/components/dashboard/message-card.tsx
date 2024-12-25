@@ -12,7 +12,7 @@ import { useDeleteSingleMessage } from '@/hooks/api/message'
 import { invalidateQueries } from '@/lib/query-client'
 import { TMessage } from '@/types/index'
 
-interface MessageCardProps {
+type MessageCardProps = {
   message: TMessage
 }
 

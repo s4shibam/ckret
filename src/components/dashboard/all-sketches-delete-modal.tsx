@@ -15,7 +15,7 @@ import {
 import { useDeleteAllSketches } from '@/hooks/api/sketch'
 import { invalidateQueries } from '@/lib/query-client'
 
-interface AllSketchesDeleteModalProps {
+type AllSketchesDeleteModalProps = {
   children: ReactNode
 }
 
