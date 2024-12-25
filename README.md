@@ -40,13 +40,14 @@ Ckret is a comprehensive anonymous interaction platform that enables users to ex
 - Tailwind CSS
 - Shadcn/ui
 - Next Auth
-- React Query
+- Tanstack Query
 
 ## 📦 Other Libraries and Tools
 
 - Axios
 - ES Lint
 - Prettier
+- Commitlint
 - React Lenis
 - Lucide React
 - React Hot Toast
@@ -64,9 +65,9 @@ Ckret is a comprehensive anonymous interaction platform that enables users to ex
 
 ## 🖼️ Screenshots
 
-![Landing Page](./.readme/screenshot_1.png)
-![Features](./.readme/screenshot_2.png)
-![How to use Ckret](./.readme/screenshot_3.png)
+![Hero Section](./.readme/screenshot-1.png)
+![Messages](./.readme/screenshot-2.png)
+![Settings](./.readme/screenshot-3.png)
 
 ## 👋🏻 Contact
 
