@@ -18,7 +18,7 @@ const LandingPage = () => {
 
       <Pricing />
 
-      <FAQs />
+      <FAQs minimal />
     </>
   )
 }
