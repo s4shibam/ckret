@@ -22,7 +22,7 @@ export default function AuthLayout({
   }
 
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-center gap-4 bg-gray-50 p-5 pb-20">
+    <div className="bg-ckret-gradient flex min-h-screen w-full flex-col items-center justify-center gap-6 px-6 py-8 pb-20">
       <Branding />
       {children}
     </div>

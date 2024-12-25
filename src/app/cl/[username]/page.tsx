@@ -48,7 +48,7 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
   const noPublicContent = messages.length === 0 && sketches.length === 0
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-ckret-secondary/20 via-ckret-primary/10 to-transparent">
+    <div className="bg-ckret-gradient min-h-screen">
       <div className="mx-auto flex max-w-2xl flex-col gap-6 px-4 py-6 sm:gap-10">
         <div className="flex justify-center">
           <Branding />

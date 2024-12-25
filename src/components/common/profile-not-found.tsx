@@ -5,7 +5,7 @@ import CreateLink from './create-link'
 
 const ProfileNotFound = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center gap-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-ckret-secondary/20 via-ckret-primary/10 to-transparent px-4 py-6">
+    <div className="bg-ckret-gradient flex min-h-screen flex-col items-center gap-10 px-4 py-6">
       <div className="mb-20 flex justify-center">
         <Branding />
       </div>

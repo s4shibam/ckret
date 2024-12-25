@@ -334,7 +334,7 @@ export default SendSketch
 
 const BackgroundLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex min-h-screen w-full flex-col items-center gap-6 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-ckret-secondary/20 via-ckret-primary/10 to-transparent p-5">
+    <div className="bg-ckret-gradient flex min-h-screen w-full flex-col items-center gap-6 p-5">
       <div className="z-10 backdrop-blur-sm">
         <Branding />
       </div>

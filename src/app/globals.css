@@ -87,6 +87,9 @@
   @apply bg-ckret-primary;
 }
 
+.bg-ckret-gradient {
+  @apply bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-ckret-secondary/20 via-ckret-primary/10 to-transparent;
+}
 .doodle {
   background-size: 750px auto;
   background-image: url('../assets/background.svg');
