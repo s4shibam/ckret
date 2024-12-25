@@ -1,16 +1,17 @@
 interface IEnv {
   node_env: 'development' | 'production'
-  nextauth_secret: string
-  nextauth_url: string
-  google_client_id: string
-  google_client_secret: string
-  gtm_id: string
-  ga_measurement_id: string
-  ckret_connect_url: string
-  ckret_url: string
-  developer_portfolio_url: string
-  feedback_form_url: string
-  support_email: string
+  nextauth_secret: string | 'env-not-set'
+  nextauth_url: string | 'env-not-set'
+  google_client_id: string | 'env-not-set'
+  google_client_secret: string | 'env-not-set'
+  gtm_id: string | 'env-not-set'
+  ga_measurement_id: string | 'env-not-set'
+  ckret_connect_url: string | 'env-not-set'
+  ckret_url: string | 'env-not-set'
+  developer_portfolio_url: string | 'env-not-set'
+  feedback_form_url: string | 'env-not-set'
+  support_email: string | 'env-not-set'
+  occasion_greetings: string | 'env-not-set'
 }
 
 export const env: IEnv = {
@@ -26,5 +27,7 @@ export const env: IEnv = {
   developer_portfolio_url:
     process.env.NEXT_PUBLIC_DEVELOPER_PORTFOLIO_URL || 'env-not-set',
   feedback_form_url: process.env.NEXT_PUBLIC_FEEDBACK_FORM_URL || 'env-not-set',
-  support_email: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || 'env-not-set'
+  support_email: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || 'env-not-set',
+  occasion_greetings:
+    process.env.NEXT_PUBLIC_OCCASION_GREETINGS || 'env-not-set'
 }
