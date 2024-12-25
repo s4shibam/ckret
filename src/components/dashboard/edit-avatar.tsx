@@ -1,19 +1,20 @@
-import EmojiPicker from 'emoji-picker-react'
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
 import { Button } from '@components/ui/button'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger
-} from '@components/ui/dialog'
 import { Label } from '@components/ui/label'
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger
+} from '@components/ui/sheet'
 
 import { useUpdateAvatar } from '@api-hooks/user'
 
@@ -36,42 +37,61 @@ const EditAvatar = ({ children }: { children: React.ReactNode }) => {
   })
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="top-10 translate-y-0 sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle className="text-xl tracking-wide">
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>{children}</SheetTrigger>
+
+      <SheetContent className="sm:max-w-[27.5rem]">
+        <SheetHeader>
+          <SheetTitle className="text-xl tracking-wide">
             Edit Your Avatar
-          </DialogTitle>
-          <DialogDescription className="text-lg/5">
-            Select an emoji to use as your avatar. Click save when you&apos;re
-            done.
-          </DialogDescription>
-        </DialogHeader>
+          </SheetTitle>
+          <SheetDescription className="text-lg/5">
+            Select an emoji to use as your avatar.
+          </SheetDescription>
+        </SheetHeader>
+
         <div className="my-2 flex w-full flex-col gap-2">
           <Label className="text-lg" htmlFor="avatar">
-            Avatar
+            <p className="mt-2 text-lg font-normal">
+              Selected Avatar: {avatar || session?.user?.avatar || 'None'}
+            </p>
           </Label>
-          <EmojiPicker
-            skinTonesDisabled
-            onEmojiClick={(emoji) => setAvatar(emoji.emoji)}
+          <Picker
+            data={data}
+            icons="outline"
+            maxFrequentRows={0}
+            perLine={10}
+            previewPosition="none"
+            skinTonePosition="none"
+            theme="light"
+            onEmojiSelect={(emoji: any) => setAvatar(emoji.native)}
           />
-          <div className="mt-2 text-lg">
-            Selected Avatar: <span>{avatar}</span>
-          </div>
         </div>
-        <DialogFooter className="flex justify-start">
+
+        <SheetFooter className="mt-10 flex sm:justify-start">
           <Button
-            className="text-xl"
+            className="w-full"
+            size="lg"
+            variant="secondary"
+            onClick={() => {
+              setAvatar(session?.user?.avatar || '')
+              setOpen(false)
+            }}
+          >
+            Cancel
+          </Button>
+          <Button
+            className="w-full"
             disabled={isUpdateAvatarMutationLoading}
+            size="lg"
             type="submit"
             onClick={() => updateAvatarMutation({ avatar: avatar.trim() })}
           >
-            {isUpdateAvatarMutationLoading ? 'Saving...' : 'Save changes'}
+            {isUpdateAvatarMutationLoading ? 'Saving...' : 'Save'}
           </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
   )
 }
 

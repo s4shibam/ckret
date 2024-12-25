@@ -6,17 +6,17 @@ import { CHAR_SIZE_LIMIT } from '@lib/constants'
 import { isInvalidLength } from '@lib/utils'
 
 import { Button } from '@components/ui/button'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger
-} from '@components/ui/dialog'
 import { Input } from '@components/ui/input'
 import { Label } from '@components/ui/label'
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger
+} from '@components/ui/sheet'
 
 import { useUpdateUsername } from '@api-hooks/user'
 
@@ -39,44 +39,40 @@ const EditUsername = ({ children }: { children: React.ReactNode }) => {
     }
   })
 
+  const usernameRequirements = [
+    { label: 'Lowercase Letters', code: '[a - z]' },
+    { label: 'Uppercase Letters', code: '[A - Z]' },
+    { label: 'Numbers', code: '[0 - 9]' },
+    { label: 'Dots', code: '[.]' },
+    { label: 'Underscores', code: '[_]' },
+    {
+      label: `Length: Min ${CHAR_SIZE_LIMIT.USERNAME.MIN}, Max ${CHAR_SIZE_LIMIT.USERNAME.MAX} characters`
+    }
+  ]
+
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="top-10 translate-y-0 sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle className="text-xl tracking-wide">
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>{children}</SheetTrigger>
+      <SheetContent className="sm:max-w-[425px]">
+        <SheetHeader>
+          <SheetTitle className="text-xl tracking-wide">
             Edit Your Username
-          </DialogTitle>
-          <DialogDescription className="text-lg/5">
-            Make changes to your username here. Click save when you&apos;re
-            done.
-          </DialogDescription>
-          <div className="mt-4 flex flex-col gap-2 rounded-lg bg-gray-100 px-4 py-2">
+          </SheetTitle>
+          <SheetDescription className="pb-4 text-lg/5">
+            Make changes to your username here.
+          </SheetDescription>
+          <div className="flex flex-col gap-2 rounded-lg bg-zinc-50 border px-4 py-2">
             <p className="text-left font-medium">Usernames can only have:</p>
             <ul className="list-inside list-disc text-left text-base/5">
-              <li>
-                Lowercase Letters <code>[a - z]</code>
-              </li>
-              <li>
-                Uppercase Letters <code>[A - Z]</code>
-              </li>
-              <li>
-                Numbers <code>[0 - 9]</code>
-              </li>
-              <li>
-                Dots <code>[.]</code>
-              </li>
-              <li>
-                Underscores <code>[_]</code>
-              </li>
-              <li>
-                Length: Minimum {CHAR_SIZE_LIMIT.USERNAME.MIN}, Maximum{' '}
-                {CHAR_SIZE_LIMIT.USERNAME.MAX} characters
-              </li>
+              {usernameRequirements.map(({ label, code }) => (
+                <li key={label}>
+                  {label} {code && <code>{code}</code>}
+                </li>
+              ))}
             </ul>
           </div>
-        </DialogHeader>
-        <div className="my-2 flex w-full flex-col gap-2">
+        </SheetHeader>
+        <div className="my-4 flex w-full flex-col gap-2">
           <Label className="text-lg" htmlFor="username">
             New Username
           </Label>
@@ -89,23 +85,35 @@ const EditUsername = ({ children }: { children: React.ReactNode }) => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <DialogFooter>
+        <SheetFooter className="mt-10 flex sm:justify-start">
           <Button
-            className="text-xl"
+            className="w-full"
+            size="lg"
+            variant="secondary"
+            onClick={() => {
+              setUsername(session?.user?.username || '')
+              setOpen(false)
+            }}
+          >
+            Cancel
+          </Button>
+          <Button
+            className="w-full"
             disabled={
               isUpdateUsernameMutationLoading ||
               isInvalidLength(username, CHAR_SIZE_LIMIT.USERNAME)
             }
+            size="lg"
             type="submit"
             onClick={() =>
               updateUsernameMutation({ username: username.trim() })
             }
           >
-            {isUpdateUsernameMutationLoading ? 'Saving...' : 'Save changes'}
+            {isUpdateUsernameMutationLoading ? 'Saving...' : 'Save'}
           </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
   )
 }
 

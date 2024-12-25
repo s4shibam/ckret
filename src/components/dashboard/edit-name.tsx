@@ -6,17 +6,17 @@ import { CHAR_SIZE_LIMIT } from '@lib/constants'
 import { isInvalidLength } from '@lib/utils'
 
 import { Button } from '@components/ui/button'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger
-} from '@components/ui/dialog'
 import { Input } from '@components/ui/input'
 import { Label } from '@components/ui/label'
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger
+} from '@components/ui/sheet'
 
 import { useUpdateName } from '@api-hooks/user'
 
@@ -37,22 +37,22 @@ const EditName = ({ children }: { children: React.ReactNode }) => {
     })
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="top-10 translate-y-0 sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle className="text-xl tracking-wide">
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>{children}</SheetTrigger>
+      <SheetContent className="sm:max-w-[425px]">
+        <SheetHeader>
+          <SheetTitle className="text-xl tracking-wide">
             Edit Your Name
-          </DialogTitle>
-          <DialogDescription className="text-lg/5">
-            Make changes to your name here. Click save when you&apos;re done.
-          </DialogDescription>
+          </SheetTitle>
+          <SheetDescription className="text-lg/5">
+            Make changes to your name here.
+          </SheetDescription>
           <p className="mt-2 text-base/5">
             Note: Name length can not be more than{' '}
             <span className="font-medium">{CHAR_SIZE_LIMIT.NAME.MAX}</span>{' '}
             characters.
           </p>
-        </DialogHeader>
+        </SheetHeader>
         <div className="my-2 flex w-full flex-col gap-2">
           <Label className="text-lg" htmlFor="message">
             Name
@@ -66,21 +66,33 @@ const EditName = ({ children }: { children: React.ReactNode }) => {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <DialogFooter>
+        <SheetFooter className="mt-10 flex sm:justify-start">
           <Button
-            className="text-xl"
+            className="w-full"
+            size="lg"
+            variant="secondary"
+            onClick={() => {
+              setName(session?.user?.name || '')
+              setOpen(false)
+            }}
+          >
+            Cancel
+          </Button>
+          <Button
+            className="w-full"
             disabled={
               isUpdateNameMutationLoading ||
               isInvalidLength(name, CHAR_SIZE_LIMIT.NAME)
             }
+            size="lg"
             type="submit"
             onClick={() => updateNameMutation({ name: name.trim() })}
           >
-            {isUpdateNameMutationLoading ? 'Saving...' : 'Save changes'}
+            {isUpdateNameMutationLoading ? 'Saving...' : 'Save'}
           </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
   )
 }
 
