@@ -5,6 +5,5 @@
   "semi": false,
   "singleQuote": true,
   "arrowParens": "always",
-  "ignore": ["src/components/ui"],
   "plugins": ["prettier-plugin-tailwindcss"]
 }
