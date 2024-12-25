@@ -259,10 +259,6 @@ export const FAQS = [
     question:
       'I have feedback for the developers. How can I reach out to them?',
     answer: `It's great that you want to share your feedback with us.<br/>Visit the <span class='font-medium'>Profile</span> page (<a href='${ckret_url}/dashboard/profile' class='text-blue-500'>${ckret_url}/dashboard/profile</a>), where you'll find a <span class='font-medium'>Share Feedback</span> button. Clicking on it will open a Google form where you can share your thoughts.`
-  },
-  {
-    question: 'Who developed Ckret?',
-    answer: `<span class='font-medium'>Ckret</span> was developed by <span class='font-medium'>Shibam</span>, a Software Engineer from <span class='font-medium'>India</span>. Know more about him from his <a target='_blank' href='${env.developer_portfolio_url}' class='text-blue-500 font-medium'>Portfolio Website</a>.`
   }
 ]
 
