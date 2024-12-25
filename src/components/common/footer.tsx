@@ -14,9 +14,10 @@ const Footer = () => {
         <div>
           <Branding />
           <p className="mt-4 max-w-96">
-            Ckret <em>(pronounced secret)</em> allows its users to send and
-            receive anonymous messages via personalized <em>Ckret Link</em> from
-            their friends, families, neighbors, coworkers, fans etc.
+            Ckret <em className="mr-px">(pronounced secret) </em> is a secure
+            platform for anonymous messages and artistic sketches. Share your
+            thoughts freely and showcase featured content in a safe, ad-free
+            environment.
           </p>
         </div>
         <div className="grid gap-8 md:grid-cols-2">
@@ -73,7 +74,7 @@ const Footer = () => {
         <p className="whitespace-nowrap">
           Developed with 🧡 by{' '}
           <a className="hover:underline" href={env.developer_portfolio_url}>
-            Shibam Saha
+            Shibam
           </a>
           .
         </p>
