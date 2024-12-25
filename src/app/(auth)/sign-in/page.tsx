@@ -125,7 +125,7 @@ export default function SignInPage() {
 
         <Button
           asChild
-          className="h-12 w-full bg-gradient-to-br from-ckret-primary to-ckret-secondary text-lg capitalize text-black hover:opacity-90"
+          className="h-12 w-full bg-gradient-to-r from-ckret-primary to-ckret-secondary text-lg capitalize hover:opacity-90"
         >
           <Link href="/create-account">
             <SquareArrowOutUpRight className="mr-2" /> Create your own link
