@@ -11,7 +11,7 @@ const { ckret_url } = env
 export const useShareLink = () => {
   const { data } = useSession()
   const [link, setLink] = useState('')
-  const [linkType, setLinkType] = useState<ShareLinkType>('Message')
+  const [linkType, setLinkType] = useState<ShareLinkType>('Profile')
 
   useEffect(() => {
     if (linkType === 'Message') {
@@ -24,12 +24,15 @@ export const useShareLink = () => {
   }, [data?.user?.username, linkType])
 
   const shareTextMap: Record<ShareLinkType, string> = {
-    Profile: 'Interact anonymously with me through messages or sketches',
-    Message: 'Send me anonymous messages!',
-    Sketch: 'Send me anonymous sketches!'
+    Profile:
+      'Interact anonymously with me through messages or sketches on Ckret!',
+    Message: 'Send me anonymous messages on Ckret!',
+    Sketch: 'Send me anonymous sketches on Ckret!'
   }
 
-  const shareText = shareTextMap[linkType]
+  const shareText = env.occasion_greetings
+    ? `${env.occasion_greetings}\n${shareTextMap[linkType]}`
+    : shareTextMap[linkType]
   const hashtags = `Ckret,Anonymous,${linkType}`
 
   const handleShare = (platform: string) => {

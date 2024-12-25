@@ -20,6 +20,7 @@ import { Button } from '@components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@components/ui/tabs'
 
 import { ShareLinkType, useShareLink } from 'hooks/use-share-link'
+import Link from 'next/link'
 
 export const SOCIAL_MEDIA_PLATFORMS = [
   {
@@ -94,28 +95,19 @@ const MyLink = () => {
               Sketch
             </TabsTrigger>
           </TabsList>
-          <TabsContent value="Message">
-            <div className="flex flex-col items-center gap-2 rounded-lg border-2 border-gray-500 p-4">
-              <p>The link to message you is:</p>
-              <code className="w-full break-words rounded-md bg-gray-300 px-2 py-1 text-center text-base font-semibold sm:text-xl">
-                {link}
-              </code>
-            </div>
-          </TabsContent>
-          <TabsContent value="Sketch">
-            <div className="flex flex-col items-center gap-2 rounded-lg border-2 border-gray-500 p-4">
-              <p>The link to share a sketch with you is:</p>
-              <code className="w-full break-words rounded-md bg-gray-300 px-2 py-1 text-center text-base font-semibold sm:text-xl">
-                {link}
-              </code>
-            </div>
-          </TabsContent>
-          <TabsContent value="Profile">
-            <div className="flex flex-col items-center gap-2 rounded-lg border-2 border-gray-500 p-4">
-              <p>Your profile link is:</p>
-              <code className="w-full break-words rounded-md bg-gray-300 px-2 py-1 text-center text-base font-semibold sm:text-xl">
-                {link}
-              </code>
+
+          <TabsContent value={linkType}>
+            <div className="mt-4 flex flex-col items-center gap-2 rounded-lg border-2 border-gray-500 p-4">
+              <p className="whitespace-pre-line text-center">{shareText}</p>
+              <Link
+                href={link}
+                target="_blank"
+                className="hover:text-ckret-secondary"
+              >
+                <span className="w-full break-words rounded-md bg-zinc-100 px-2 py-1 text-center text-base font-medium tracking-wide">
+                  {link}
+                </span>
+              </Link>
             </div>
           </TabsContent>
         </Tabs>
