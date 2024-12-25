@@ -54,8 +54,8 @@ export default function SignInPage() {
   }
 
   return (
-    <Card className="w-full max-w-lg">
-      <CardHeader className="space-y-1">
+    <Card className="w-full max-w-md">
+      <CardHeader>
         <CardTitle className="text-2xl font-medium">Sign In</CardTitle>
         <CardDescription className="text-lg">
           Sign in to send and receive anonymous messages
@@ -125,7 +125,7 @@ export default function SignInPage() {
 
         <Button
           asChild
-          className="h-12 w-full bg-ckret-secondary text-xl capitalize hover:bg-ckret-secondary/80"
+          className="h-12 w-full bg-gradient-to-br from-ckret-primary to-ckret-secondary text-lg capitalize text-black hover:opacity-90"
         >
           <Link href="/create-account">
             <SquareArrowOutUpRight className="mr-2" /> Create your own link

@@ -18,6 +18,8 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 import { useAnonymousSignUp } from '@/hooks/api/user'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { AlertTriangle } from 'lucide-react'
 
 const CreateAccountPage = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -69,15 +71,15 @@ const CreateAccountPage = () => {
   }
 
   return (
-    <Card className="w-full max-w-lg">
-      <CardHeader className="space-y-1">
+    <Card className="w-full max-w-md">
+      <CardHeader>
         <CardTitle className="text-2xl font-medium">Create Account</CardTitle>
         <CardDescription className="text-lg">
-          Create an account to receive anonymous messages
+          Create an account to receive secret messages
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
-        <GoogleSignInButton text="Sign Up with Google" />
+        <GoogleSignInButton text="Sign In with Google" />
 
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
@@ -130,6 +132,15 @@ const CreateAccountPage = () => {
               }
             />
           </div>
+          <Alert variant="destructive" className="border-amber-300 bg-amber-50">
+            <AlertTriangle className="h-5 w-5 text-amber-600" />
+            <AlertTitle className="text-amber-700">Important Notice</AlertTitle>
+            <AlertDescription className="text-amber-600">
+              Password recovery is not available for username/password accounts.
+              Please remember your credentials as they cannot be recovered if
+              forgotten. Google Sign-in accounts are not affected.
+            </AlertDescription>
+          </Alert>
           <Button
             className="w-full text-lg"
             disabled={isLoading}

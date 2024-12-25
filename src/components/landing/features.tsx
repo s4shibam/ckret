@@ -19,7 +19,7 @@ const Features = () => {
           <h2 className="mx-auto max-w-5xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             {FEATURE_HEADING}
           </h2>
-          <p className="mx-auto mt-4 max-w-xs text-xl text-gray-600 lg:text-xl">
+          <p className="mx-auto mt-4 max-w-xs text-xl text-zinc-600 lg:text-xl">
             {FEATURE_SUB_HEADING}
           </p>
         </div>
@@ -34,7 +34,7 @@ const Features = () => {
                 <feature.Icon className="h-8 w-8 text-orange-600" />
               </div>
               <h3 className="mt-6 text-xl font-semibold">{feature.title}</h3>
-              <p className="mt-3 text-lg/6 text-gray-600">
+              <p className="mt-3 text-lg/6 text-zinc-600">
                 {feature.description}
               </p>
             </Card>

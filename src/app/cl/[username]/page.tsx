@@ -61,11 +61,11 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
             </AvatarFallback>
           </Avatar>
 
-          <h1 className="mb-1 text-4xl/5 font-bold text-gray-900">{name}</h1>
+          <h1 className="mb-1 text-4xl/5 font-bold text-zinc-900">{name}</h1>
 
-          <p className="mb-4 text-gray-500">@{username}</p>
+          <p className="mb-4 text-zinc-500">@{username}</p>
 
-          <p className="mb-6 text-lg text-gray-700">
+          <p className="mb-6 text-lg text-zinc-700">
             Interact anonymously with me through messages or sketches
           </p>
 
@@ -110,7 +110,7 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
                   reply={message.reply}
                   updatedAt={message.updatedAt}
                 >
-                  <p className="whitespace-pre-wrap leading-relaxed text-gray-800">
+                  <p className="whitespace-pre-wrap leading-relaxed text-zinc-800">
                     {message.content}
                   </p>
                 </CardWithReply>
@@ -130,7 +130,7 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
                     reply={lastMessage.reply}
                     updatedAt={lastMessage.updatedAt}
                   >
-                    <p className="whitespace-pre-wrap leading-relaxed text-gray-800">
+                    <p className="whitespace-pre-wrap leading-relaxed text-zinc-800">
                       {lastMessage.content}
                     </p>
                   </CardWithReply>
@@ -199,7 +199,7 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
 
         {noPublicContent && (
           <div className="flex items-center justify-center py-8">
-            <div className="w-full rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
+            <div className="w-full rounded-2xl border border-zinc-200 bg-white p-8 text-center shadow-sm">
               <div className="mb-4 flex justify-center">
                 <div className="rounded-full bg-zinc-100 p-3">
                   <Inbox className="size-10 text-zinc-500" />
@@ -222,7 +222,7 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
         </div>
 
         <Link
-          className="mx-auto mt-6 text-center text-base text-zinc-600 transition-colors hover:text-gray-600 hover:underline"
+          className="mx-auto mt-6 text-center text-base text-zinc-600 transition-colors hover:text-zinc-600 hover:underline"
           href="/legal/disclaimer"
           target="_blank"
         >
@@ -247,7 +247,7 @@ const CardWithReply = ({
   isSketch?: boolean
 }) => {
   return (
-    <div className="flex h-full flex-col gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+    <div className="flex h-full flex-col gap-4 rounded-lg border border-zinc-200 bg-white p-4 shadow-sm">
       <div className="flex items-center gap-3">
         <div className="size-8 rounded-full bg-zinc-100 p-1.5">
           {isSketch ? (
@@ -267,8 +267,8 @@ const CardWithReply = ({
 
       {children}
 
-      <p className="whitespace-pre-line rounded-xl bg-gray-100 p-3 text-sm leading-relaxed text-gray-700">
-        <Reply className="-mt-1.5 mr-1.5 inline-block size-5 text-gray-500" />
+      <p className="whitespace-pre-line rounded-xl bg-zinc-100 p-3 text-sm leading-relaxed text-zinc-700">
+        <Reply className="-mt-1.5 mr-1.5 inline-block size-5 text-zinc-500" />
         {reply || 'No reply yet'}
       </p>
     </div>

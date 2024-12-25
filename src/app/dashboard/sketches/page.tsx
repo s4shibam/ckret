@@ -98,7 +98,7 @@ const SketchDashboard = () => {
       {isLoadingSketches && <AnimatedLoader />}
 
       {sketches?.data?.length === 0 && (
-        <div className="grid w-full place-items-center pt-20 text-gray-300">
+        <div className="grid w-full place-items-center pt-20 text-zinc-300">
           <Eraser className="h-20 w-20" />
           <p className="text-xl font-medium tracking-wide">
             No sketches found!

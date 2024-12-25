@@ -103,7 +103,7 @@ const SendMessage = ({ params }: { params: { username: string } }) => {
         className={cn(
           'group relative overflow-hidden rounded-lg bg-white p-4 backdrop-blur-md',
           {
-            'cursor-not-allowed bg-gray-500/20': recipient?.data?.is_inbox_full
+            'cursor-not-allowed bg-zinc-500/20': recipient?.data?.is_inbox_full
           }
         )}
       >
@@ -184,7 +184,7 @@ const BackgroundLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
 
       <Link
-        className="mt-auto text-gray-500 underline-offset-4 backdrop-blur-sm hover:underline"
+        className="mt-auto text-zinc-500 underline-offset-4 backdrop-blur-sm hover:underline"
         href="/legal/disclaimer"
         target="_blank"
       >

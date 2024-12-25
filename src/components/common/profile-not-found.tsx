@@ -14,10 +14,10 @@ const ProfileNotFound = () => {
         <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-red-50">
           <Frown className="h-10 w-10 text-red-500" />
         </div>
-        <h1 className="text-2xl font-semibold text-gray-900">
+        <h1 className="text-2xl font-semibold text-zinc-900">
           Profile Not Available
         </h1>
-        <p className="text-gray-600">
+        <p className="text-zinc-600">
           This profile might not exist or the user may have disabled their
           inbox. Please check the username and try again.
         </p>

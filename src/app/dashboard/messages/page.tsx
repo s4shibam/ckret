@@ -58,15 +58,15 @@ const Messages = () => {
             onClick={() => messagesRefetch()}
           >
             {isMessagesRefetching ? (
-              <LRLoader className="animate-spin" />
+              <LRLoader className="size-5 animate-spin" />
             ) : (
-              <RefreshCw />
+              <RefreshCw className="size-5" />
             )}
             <p className="ml-2 hidden md:block">Refresh</p>
           </Button>
           <AllMessageDeleteModal>
             <Button variant="destructive">
-              <Trash2 />
+              <Trash2 className="size-5" />
               <p className="ml-2 hidden md:block">Delete All</p>
             </Button>
           </AllMessageDeleteModal>
@@ -97,7 +97,7 @@ const Messages = () => {
       {isMessagesLoading && <AnimatedLoader />}
 
       {messages?.data?.length === 0 && (
-        <div className="grid w-full place-items-center pt-[15%] text-gray-300">
+        <div className="grid w-full place-items-center pt-[15%] text-zinc-300">
           <Eraser className="h-20 w-20" />
           <p className="text-xl font-medium tracking-wide">Inbox is empty!</p>
         </div>

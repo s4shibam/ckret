@@ -19,7 +19,7 @@ const Guide = () => {
         <h2 className="mx-auto inline-block border-x-8 border-ckret-primary px-4 text-4xl font-semibold sm:px-8 xl:text-6xl">
           {GUIDE_HEADING}
         </h2>
-        <div className="mt-6 text-gray-600 md:text-lg">{GUIDE_SUB_HEADING}</div>
+        <div className="mt-6 text-zinc-600 md:text-lg">{GUIDE_SUB_HEADING}</div>
       </div>
 
       <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-3">
@@ -42,14 +42,14 @@ const Guide = () => {
               <h3 className="mb-3 text-xl font-semibold md:text-2xl">
                 {step.heading}
               </h3>
-              <p className="text-gray-600 md:text-lg/6">{step.description}</p>
+              <p className="text-zinc-600 md:text-lg/6">{step.description}</p>
             </div>
           </div>
         ))}
       </div>
 
       <div className="mt-16 text-center">
-        <p className="inline-block rounded-full bg-ckret-primary/5 px-6 py-3 text-xl font-medium text-gray-800">
+        <p className="inline-block rounded-full bg-ckret-primary/5 px-6 py-3 text-xl font-medium text-zinc-800">
           {GUIDE_NOTE}
         </p>
       </div>

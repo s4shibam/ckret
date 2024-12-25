@@ -122,17 +122,17 @@ const SketchFullScreenView = ({ sketch, children }: Props) => {
         <div className="flex h-full w-full flex-col gap-4">
           <div
             ref={imageRef}
-            className="relative flex h-full w-full flex-col overflow-hidden rounded-xl border border-gray-200/80 bg-gradient-to-b from-white to-gray-50/50 shadow-sm backdrop-blur-sm transition-all"
+            className="relative flex h-full w-full flex-col overflow-hidden rounded-xl border border-zinc-200/80 bg-gradient-to-b from-white to-zinc-50/50 shadow-sm backdrop-blur-sm transition-all"
           >
-            <div className="flex items-center gap-3 border-b border-gray-200/80 p-2 sm:p-4">
+            <div className="flex items-center gap-3 border-b border-zinc-200/80 p-2 sm:p-4">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-ckret-primary to-ckret-secondary text-white">
                 <span className="text-base font-medium">A</span>
               </div>
               <div>
-                <h3 className="font-medium leading-4 text-gray-900">
+                <h3 className="font-medium leading-4 text-zinc-900">
                   Anonymous
                 </h3>
-                <p className="text-sm capitalize text-gray-500">
+                <p className="text-sm capitalize text-zinc-500">
                   {formatDistanceToNow(sketch.createdAt, {
                     addSuffix: true
                   })}
@@ -155,7 +155,7 @@ const SketchFullScreenView = ({ sketch, children }: Props) => {
               <div className="flex flex-col items-end gap-1">
                 <div className="relative w-full max-w-[75%]">
                   <textarea
-                    className="h-[7rem] w-full resize-none overflow-auto rounded-2xl rounded-br-none border-0 bg-gray-100 p-3 text-base leading-relaxed text-gray-700 shadow-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-ckret-primary/20 focus:ring-offset-2 focus:ring-offset-white"
+                    className="h-[7rem] w-full resize-none overflow-auto rounded-2xl rounded-br-none border-0 bg-zinc-100 p-3 text-base leading-relaxed text-zinc-700 shadow-sm placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-ckret-primary/20 focus:ring-offset-2 focus:ring-offset-white"
                     placeholder="Write your reply here..."
                     value={reply}
                     onChange={(e) => setReply(e.target.value)}
@@ -186,7 +186,7 @@ const SketchFullScreenView = ({ sketch, children }: Props) => {
           <div className="flex items-center justify-between gap-2">
             <div className="flex gap-2">
               <Button
-                className="bg-gray-100 hover:bg-gray-200"
+                className="bg-zinc-100 hover:bg-zinc-200"
                 variant="ghost"
                 onClick={handleSaveImage}
               >
@@ -194,7 +194,7 @@ const SketchFullScreenView = ({ sketch, children }: Props) => {
                 <span className="ml-2 hidden sm:block">Save</span>
               </Button>
               <Button
-                className="bg-gray-100 hover:bg-gray-200"
+                className="bg-zinc-100 hover:bg-zinc-200"
                 variant="ghost"
                 onClick={handleShare}
               >

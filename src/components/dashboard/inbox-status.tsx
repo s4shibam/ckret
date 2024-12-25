@@ -27,7 +27,7 @@ const InboxStatus = () => {
       <div className="-mt-1 mb-4 flex items-center justify-between">
         <div className="flex w-full items-center gap-2">
           <Settings className="size-5 text-ckret-primary" />
-          <span className="text-base font-medium text-gray-600">
+          <span className="text-base font-medium text-zinc-600">
             Inbox Status
           </span>
           {isToggleInboxStatusLoading ? (
@@ -59,10 +59,10 @@ const InboxStatus = () => {
             </span>
           </div>
           <div>
-            <p className="text-lg/6 font-medium text-gray-900">
+            <p className="text-lg/6 font-medium text-zinc-900">
               {data?.user?.is_inbox_enabled ? 'Active' : 'Inactive'}
             </p>
-            <p className="text-base/4 text-gray-500">
+            <p className="text-base/4 text-zinc-500">
               {data?.user?.is_inbox_enabled
                 ? 'Your inbox is open to receive messages and sketches'
                 : 'Your inbox is closed to new messages and sketches'}

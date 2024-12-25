@@ -29,10 +29,10 @@ const CreateLink = () => {
 
   return (
     <div className="mt-auto flex w-full flex-col gap-2">
-      <p className="text-center text-base text-white sm:text-lg">
+      <p className="text-center text-sm tracking-wide text-white sm:text-base">
         <span
           key={createdCount}
-          className="inline-block w-[2.5rem] animate-jump font-medium tracking-wide sm:w-[2.7rem]"
+          className="inline-block w-[2.1rem] animate-jump font-medium sm:w-[2.3rem]"
         >
           {createdCount}+
         </span>{' '}
@@ -41,10 +41,10 @@ const CreateLink = () => {
       </p>
       <Button
         asChild
-        className="h-11 bg-white text-lg capitalize text-black hover:bg-white/90 sm:h-12 sm:text-xl"
+        className="h-11 bg-white text-base capitalize text-black hover:bg-white/90 sm:h-12 sm:text-lg"
       >
         <Link href="/create-account">
-          <SquareArrowOutUpRight className="mr-2 size-6 sm:size-7" /> Create
+          <SquareArrowOutUpRight className="mr-2 size-5 sm:size-6" /> Create
           your own link
         </Link>
       </Button>

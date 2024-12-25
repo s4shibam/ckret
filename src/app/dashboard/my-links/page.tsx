@@ -74,7 +74,7 @@ const MyLink = () => {
   }
 
   return (
-    <div className="min-h-full w-full bg-slate-50/50 pb-8">
+    <div className="min-h-full w-full bg-zinc-50/50 pb-8">
       <Header title="My Links" />
 
       <div className="m-6 mx-auto w-full max-w-4xl space-y-6 rounded-xl bg-white p-6 shadow-sm">
@@ -95,14 +95,14 @@ const MyLink = () => {
           </TabsList>
 
           <TabsContent value={linkType}>
-            <div className="mt-4 flex flex-col items-center gap-2 rounded-lg border-2 border-gray-500 p-4">
+            <div className="mt-4 flex flex-col items-center gap-2 rounded-lg border-2 border-zinc-500 p-4">
               <p className="whitespace-pre-line text-center">{shareText}</p>
               <Link
                 className="hover:text-ckret-secondary"
                 href={link}
                 target="_blank"
               >
-                <span className="w-full break-words rounded-md bg-zinc-100 px-2 py-1 text-center text-base font-medium tracking-wide">
+                <span className="w-full break-words rounded-md bg-zinc-100 px-2 py-1 text-center text-sm font-medium tracking-wide sm:text-base">
                   {link}
                 </span>
               </Link>
@@ -118,7 +118,7 @@ const MyLink = () => {
             onClick={copyLinkToClipboard}
           >
             <ClipboardCopy />
-            <p className="ml-4 text-xl">Copy Link to Clipboard</p>
+            <p className="ml-4 text-base">Copy Link to Clipboard</p>
           </Button>
           {SOCIAL_MEDIA_PLATFORMS.map((platform) => (
             <Button
@@ -128,7 +128,7 @@ const MyLink = () => {
               onClick={() => handleShare(platform.key)}
             >
               {platform.icon}
-              <p className="ml-4 text-xl">Share on {platform.name}</p>
+              <p className="ml-4 text-base">Share on {platform.name}</p>
             </Button>
           ))}
         </div>

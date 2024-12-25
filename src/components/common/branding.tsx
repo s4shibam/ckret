@@ -2,13 +2,20 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import LOGO from '@/assets/logo-animated.svg'
+import { cn } from '@/lib/utils'
 
-const Branding = () => {
+const Branding = ({ className }: { className?: string }) => {
   return (
-    <Link className="flex h-[2.5rem] items-center gap-1" href="/">
+    <Link
+      className={cn(
+        'flex h-[2.3rem] w-fit items-center gap-1',
+        className
+      )}
+      href="/"
+    >
       <Image
-        alt=""
-        className="-ml-1 aspect-square size-[2rem] sm:ml-0 sm:size-[3rem]"
+        alt="Logo"
+        className="-ml-0.5 aspect-square size-8 sm:ml-0 sm:size-12"
         height={50}
         src={LOGO}
         width={50}

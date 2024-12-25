@@ -1,6 +1,6 @@
 const Stats = () => {
   return (
-    <div className="w-full bg-gray-950">
+    <div className="w-full bg-zinc-950">
       <div className="mx-auto flex w-full max-w-3xl justify-between py-14 sm:py-28">
         <div>
           <p className="mb-2 text-center text-5xl font-semibold text-white">

@@ -12,7 +12,7 @@ const AnimatedLoader = ({ type = 'normal' }: Props) => {
   return (
     <div
       className={cn('grid place-items-center', {
-        'h-screen bg-gray-50': type === 'fullscreen',
+        'h-screen bg-zinc-50': type === 'fullscreen',
         'pt-[15%]': type === 'normal'
       })}
     >

@@ -347,7 +347,7 @@ const BackgroundLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
 
       <Link
-        className="mt-auto text-gray-500 underline-offset-4 backdrop-blur-sm hover:underline"
+        className="mt-auto text-zinc-500 underline-offset-4 backdrop-blur-sm hover:underline"
         href="/legal/disclaimer"
         target="_blank"
       >

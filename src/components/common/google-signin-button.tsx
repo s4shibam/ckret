@@ -8,7 +8,7 @@ import toast from 'react-hot-toast'
 import GOOGLE from '@/assets/google.svg'
 import { Button } from '@/components/ui/button'
 
-interface GoogleSignInButtonProps {
+type GoogleSignInButtonProps = {
   text: string
 }
 
@@ -31,7 +31,7 @@ export function GoogleSignInButton({ text }: GoogleSignInButtonProps) {
 
   return (
     <Button
-      className="w-full"
+      className="h-12 w-full"
       disabled={isLoading}
       size="lg"
       variant="outline"
@@ -44,7 +44,7 @@ export function GoogleSignInButton({ text }: GoogleSignInButtonProps) {
         src={GOOGLE}
         width={65}
       />
-      <span className="text-xl">{text}</span>
+      <span className="text-lg">{text}</span>
     </Button>
   )
 }

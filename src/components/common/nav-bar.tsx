@@ -35,18 +35,24 @@ const NavBar = () => {
           scrolled ? 'h-16' : 'h-0'
         }`}
       />
-      <div className="relative mx-auto flex h-full w-full max-w-7xl items-center justify-between px-5">
-        <Branding />
-        {(session.status === 'loading' ||
-          session.status === 'unauthenticated') && (
-          <Button asChild className="h-11 rounded-full px-6 text-xl">
-            <Link href="/sign-in">Sign In</Link>
-          </Button>
-        )}
-        {session.status === 'authenticated' && (
-          <Button asChild className="h-11 rounded-full px-6 text-xl">
-            <Link href="/dashboard/profile">Dashboard</Link>
-          </Button>
+
+      <div className="relative mx-auto flex h-full w-full max-w-7xl items-center justify-between px-6">
+        <Branding className="animate-fade-right animate-delay-150" />
+
+        {session.status !== 'loading' && (
+          <div className="animate-fade-left">
+            {session.status === 'unauthenticated' && (
+              <Button asChild className="h-11 rounded-full px-6 text-lg">
+                <Link href="/sign-in">Sign In</Link>
+              </Button>
+            )}
+
+            {session.status === 'authenticated' && (
+              <Button asChild className="h-11 rounded-full px-6 text-lg">
+                <Link href="/dashboard/profile">Dashboard</Link>
+              </Button>
+            )}
+          </div>
         )}
       </div>
     </div>

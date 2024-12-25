@@ -7,7 +7,7 @@ import { env } from '@/lib/env'
 const Footer = () => {
   return (
     <footer
-      className="flex w-full flex-col gap-8 bg-gray-950 px-6 py-4 text-gray-100 sm:px-14 sm:py-6"
+      className="flex w-full flex-col gap-8 bg-zinc-950 px-6 py-4 text-zinc-100 sm:px-14 sm:py-6"
       id="footer"
     >
       <div className="flex flex-col gap-8 md:mr-10 md:flex-row md:justify-between">

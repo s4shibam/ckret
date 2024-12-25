@@ -20,7 +20,7 @@ const Pricing = () => {
           <h2 className="mx-auto w-fit border-x-8 border-ckret-secondary px-4 text-center text-4xl font-semibold sm:px-8 xl:text-6xl">
             {PRICING_HEADING}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-gray-600 lg:text-xl">
+          <p className="mx-auto mt-4 max-w-xl text-lg text-zinc-600 lg:text-xl">
             {PRICING_SUB_HEADING}
           </p>
         </div>
@@ -31,11 +31,11 @@ const Pricing = () => {
               <h3 className="text-3xl font-bold">Free Forever Plan</h3>
               <div className="mt-4 flex items-baseline text-5xl font-bold">
                 $0
-                <span className="ml-1 text-2xl font-medium text-gray-500">
+                <span className="ml-1 text-2xl font-medium text-zinc-500">
                   / Month
                 </span>
               </div>
-              <p className="mt-5 text-center text-lg text-gray-500">
+              <p className="mt-5 text-center text-lg text-zinc-500">
                 No credit card required. Start using all features instantly.
               </p>
               <div className="mt-6">
@@ -57,7 +57,7 @@ const Pricing = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold">{feature.title}</h4>
-                    <p className="mt-1 text-base/5 text-gray-600">
+                    <p className="mt-1 text-base/5 text-zinc-600">
                       {feature.description}
                     </p>
                   </div>

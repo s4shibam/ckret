@@ -13,8 +13,8 @@ const NotFound = () => {
         <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-red-50">
           <Squirrel className="h-10 w-10 text-red-500" />
         </div>
-        <h1 className="text-2xl font-semibold text-gray-900">Page Not Found</h1>
-        <p className="text-gray-600">
+        <h1 className="text-2xl font-semibold text-zinc-900">Page Not Found</h1>
+        <p className="text-zinc-600">
           Looks like this page is playing hide and seek...
           <br />
           And it&apos;s winning!
