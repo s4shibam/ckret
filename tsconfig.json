@@ -20,14 +20,13 @@
       }
     ],
     "paths": {
-      "@*": ["./src/*"],
-      "@_types/*": ["_types/*"],
-      "@assets/*": ["assets/*"],
-      "@components/*": ["components/*"],
-      "@ui/*": ["components/ui/*"],
-      "@api-hooks/*": ["hooks/api-hooks/*"],
-      "@lib/*": ["lib/*"],
-      "@providers/*": ["providers/*"]
+      "@/*": ["./src/*"],
+      "@/assets/*": ["assets/*"],
+      "@/components/*": ["components/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/lib/*": ["lib/*"],
+      "@/types/*": ["types/*"],
+      "@/providers/*": ["providers/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from 'react-query'
 
-import ckretConnect from '@lib/api'
+import ckretConnect from '@/lib/api'
 
 // User Services
 

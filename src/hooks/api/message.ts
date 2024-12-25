@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from 'react-query'
 
-import ckretConnect from '@lib/api'
+import ckretConnect from '@/lib/api'
 
 // Message Services
 const submitMessage = (payload: {
@@ -16,7 +16,9 @@ const deleteSingleMessage = (payload: { mid: string }) =>
 const deleteAllMessages = () => ckretConnect.delete('/message/all')
 
 const replyToMessage = (payload: { mid: string; replyContent: string }) =>
-  ckretConnect.put(`/message/reply/${payload.mid}`, { replyContent: payload.replyContent })
+  ckretConnect.put(`/message/reply/${payload.mid}`, {
+    replyContent: payload.replyContent
+  })
 
 const toggleMessageVisibility = (payload: { mid: string }) =>
   ckretConnect.put(`/message/visibility/${payload.mid}`)

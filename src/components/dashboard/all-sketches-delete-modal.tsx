@@ -10,9 +10,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger
-} from '@components/ui/alert-dialog'
-
-import { useDeleteAllSketches } from '@api-hooks/sketch'
+} from '@/components/ui/alert-dialog'
+import { useDeleteAllSketches } from '@/hooks/api/sketch'
 
 interface AllSketchesDeleteModalProps {
   children: ReactNode

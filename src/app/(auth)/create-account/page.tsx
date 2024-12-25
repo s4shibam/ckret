@@ -5,22 +5,21 @@ import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { GoogleSignInButton } from '@components/common/google-signin-button'
-import { Button } from '@components/ui/button'
+import { GoogleSignInButton } from '@/components/common/google-signin-button'
+import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle
-} from '@components/ui/card'
-import { Input } from '@components/ui/input'
-import { Label } from '@components/ui/label'
-import { Separator } from '@components/ui/separator'
+} from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Separator } from '@/components/ui/separator'
+import { useAnonymousSignUp } from '@/hooks/api/user'
 
-import { useAnonymousSignUp } from '@api-hooks/user'
-
-export default function CreateAccountPage() {
+const CreateAccountPage = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     username: '',
@@ -151,3 +150,5 @@ export default function CreateAccountPage() {
     </Card>
   )
 }
+
+export default CreateAccountPage

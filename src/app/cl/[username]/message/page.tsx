@@ -6,18 +6,16 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { getRandomMessage } from '@lib/sample-messages'
-import { cn } from '@lib/utils'
-
-import AnimatedLoader from '@components/common/animated-loader'
-import Branding from '@components/common/branding'
-import CreateLink from '@components/common/create-link'
-import ProfileNotFound from '@components/common/profile-not-found'
-import { Button } from '@components/ui/button'
-import { Card } from '@components/ui/card'
-
-import { useSubmitMessage } from '@api-hooks/message'
-import { useGetUserDetailsByUsername } from '@api-hooks/user'
+import AnimatedLoader from '@/components/common/animated-loader'
+import Branding from '@/components/common/branding'
+import CreateLink from '@/components/common/create-link'
+import ProfileNotFound from '@/components/common/profile-not-found'
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+import { useSubmitMessage } from '@/hooks/api/message'
+import { useGetUserDetailsByUsername } from '@/hooks/api/user'
+import { getRandomMessage } from '@/lib/sample-messages'
+import { cn } from '@/lib/utils'
 
 const SendMessage = ({ params }: { params: { username: string } }) => {
   const router = useRouter()

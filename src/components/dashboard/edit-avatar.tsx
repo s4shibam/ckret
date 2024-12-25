@@ -4,8 +4,8 @@ import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { Button } from '@components/ui/button'
-import { Label } from '@components/ui/label'
+import { Button } from '@/components/ui/button'
+import { Label } from '@/components/ui/label'
 import {
   Sheet,
   SheetContent,
@@ -14,9 +14,8 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger
-} from '@components/ui/sheet'
-
-import { useUpdateAvatar } from '@api-hooks/user'
+} from '@/components/ui/sheet'
+import { useUpdateAvatar } from '@/hooks/api/user'
 
 const EditAvatar = ({ children }: { children: React.ReactNode }) => {
   const { data: session, update } = useSession()

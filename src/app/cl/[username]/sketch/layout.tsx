@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { unstable_noStore as noStore } from 'next/cache'
 
-import { env } from '@lib/env'
+import { env } from '@/lib/env'
 
 type Props = {
   params: { username: string }

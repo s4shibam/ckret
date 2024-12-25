@@ -2,7 +2,7 @@ import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { env } from '@lib/env'
+import { env } from '@/lib/env'
 
 export type ShareLinkType = 'Message' | 'Sketch' | 'Profile'
 

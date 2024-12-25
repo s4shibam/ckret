@@ -1,4 +1,4 @@
-import { env } from '@lib/env'
+import { env } from '@/lib/env'
 
 const { ckret_url, support_email } = env
 const Disclaimer = () => {

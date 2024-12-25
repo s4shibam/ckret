@@ -3,10 +3,10 @@
 import { PenSquare, Settings as SettingsIcon } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 
-import EditFeedbackMessage from '@components/dashboard/edit-feedback-message'
-import Header from '@components/dashboard/header'
-import InboxStatus from '@components/dashboard/inbox-status'
-import { Button } from '@components/ui/button'
+import EditFeedbackMessage from '@/components/dashboard/edit-feedback-message'
+import Header from '@/components/dashboard/header'
+import InboxStatus from '@/components/dashboard/inbox-status'
+import { Button } from '@/components/ui/button'
 
 const Settings = () => {
   const { data } = useSession()

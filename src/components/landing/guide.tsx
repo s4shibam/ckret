@@ -3,7 +3,7 @@ import {
   GUIDE_NOTE,
   GUIDE_STEPS,
   GUIDE_SUB_HEADING
-} from '@lib/constants'
+} from '@/lib/constants'
 
 const Guide = () => {
   return (

@@ -2,12 +2,9 @@ import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { CHAR_SIZE_LIMIT } from '@lib/constants'
-import { isInvalidLength } from '@lib/utils'
-
-import { Button } from '@components/ui/button'
-import { Input } from '@components/ui/input'
-import { Label } from '@components/ui/label'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import {
   Sheet,
   SheetContent,
@@ -16,9 +13,10 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger
-} from '@components/ui/sheet'
-
-import { useUpdateFeedbackMessage } from '@api-hooks/user'
+} from '@/components/ui/sheet'
+import { useUpdateFeedbackMessage } from '@/hooks/api/user'
+import { CHAR_SIZE_LIMIT } from '@/lib/constants'
+import { isInvalidLength } from '@/lib/utils'
 
 const EditFeedbackMessage = ({ children }: { children: React.ReactNode }) => {
   const { data: session, update } = useSession()

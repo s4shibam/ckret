@@ -10,16 +10,14 @@ import {
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 
-import { IMessage } from '@_types/types'
-
-import AnimatedLoader from '@components/common/animated-loader'
-import AllMessageDeleteModal from '@components/dashboard/all-message-delete-modal'
-import Header from '@components/dashboard/header'
-import MessageCard from '@components/dashboard/message-card'
-import { Alert, AlertDescription, AlertTitle } from '@components/ui/alert'
-import { Button } from '@components/ui/button'
-
-import { useGetAllMessages } from '@api-hooks/message'
+import AnimatedLoader from '@/components/common/animated-loader'
+import AllMessageDeleteModal from '@/components/dashboard/all-message-delete-modal'
+import Header from '@/components/dashboard/header'
+import MessageCard from '@/components/dashboard/message-card'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { Button } from '@/components/ui/button'
+import { useGetAllMessages } from '@/hooks/api/message'
+import { IMessage } from '@/types/index'
 
 const Messages = () => {
   const { data } = useSession()

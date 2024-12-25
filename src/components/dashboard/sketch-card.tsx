@@ -1,18 +1,15 @@
+import { formatDistanceToNow } from 'date-fns'
 import { Clock, Loader, Reply, X } from 'lucide-react'
 import Image from 'next/image'
 import toast from 'react-hot-toast'
 
-import { ISketch } from '@_types/types'
-
-import { invalidateQueries } from '@lib/query-client'
-
-import { Button } from '@components/ui/button'
-import { Card } from '@components/ui/card'
-
-import { useDeleteSingleSketch } from '@api-hooks/sketch'
-
-import { formatDistanceToNow } from 'date-fns'
 import SketchFullScreenView from './sketch-fullscreen-view'
+
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+import { useDeleteSingleSketch } from '@/hooks/api/sketch'
+import { invalidateQueries } from '@/lib/query-client'
+import { ISketch } from '@/types/index'
 
 interface SketchCardProps {
   sketch: ISketch

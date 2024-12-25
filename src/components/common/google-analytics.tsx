@@ -1,6 +1,6 @@
 import Script from 'next/script'
 
-import { env } from '@lib/env'
+import { env } from '@/lib/env'
 
 const GoogleAnalytics = () => {
   if (env.ga_measurement_id === 'env-not-set') {

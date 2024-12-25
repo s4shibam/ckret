@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Footer from '@components/common/footer'
-import NavBar from '@components/common/nav-bar'
+import Footer from '@/components/common/footer'
+import NavBar from '@/components/common/nav-bar'
 
 const LandingLayout = ({ children }: { children: React.ReactNode }) => {
   return (

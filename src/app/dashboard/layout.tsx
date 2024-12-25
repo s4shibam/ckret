@@ -4,10 +4,10 @@ import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import toast from 'react-hot-toast'
 
-import AnimatedLoader from '@components/common/animated-loader'
-import Branding from '@components/common/branding'
-import DashboardMenu from '@components/dashboard/dashboard-menu'
-import ProfileMenu from '@components/dashboard/profile-menu'
+import AnimatedLoader from '@/components/common/animated-loader'
+import Branding from '@/components/common/branding'
+import DashboardMenu from '@/components/dashboard/dashboard-menu'
+import ProfileMenu from '@/components/dashboard/profile-menu'
 
 export default function DashboardLayout({
   children

@@ -4,9 +4,9 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 
-import { Button } from '@components/ui/button'
-
 import Branding from './branding'
+
+import { Button } from '@/components/ui/button'
 
 const NavBar = () => {
   const session = useSession()

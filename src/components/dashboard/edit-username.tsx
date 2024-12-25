@@ -2,12 +2,9 @@ import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { CHAR_SIZE_LIMIT } from '@lib/constants'
-import { isInvalidLength } from '@lib/utils'
-
-import { Button } from '@components/ui/button'
-import { Input } from '@components/ui/input'
-import { Label } from '@components/ui/label'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import {
   Sheet,
   SheetContent,
@@ -16,9 +13,10 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger
-} from '@components/ui/sheet'
-
-import { useUpdateUsername } from '@api-hooks/user'
+} from '@/components/ui/sheet'
+import { useUpdateUsername } from '@/hooks/api/user'
+import { CHAR_SIZE_LIMIT } from '@/lib/constants'
+import { isInvalidLength } from '@/lib/utils'
 
 const EditUsername = ({ children }: { children: React.ReactNode }) => {
   const { data: session, update } = useSession()
@@ -61,7 +59,7 @@ const EditUsername = ({ children }: { children: React.ReactNode }) => {
           <SheetDescription className="pb-4 text-lg/5">
             Make changes to your username here.
           </SheetDescription>
-          <div className="flex flex-col gap-2 rounded-lg bg-zinc-50 border px-4 py-2">
+          <div className="flex flex-col gap-2 rounded-lg border bg-zinc-50 px-4 py-2">
             <p className="text-left font-medium">Usernames can only have:</p>
             <ul className="list-inside list-disc text-left text-base/5">
               {usernameRequirements.map(({ label, code }) => (

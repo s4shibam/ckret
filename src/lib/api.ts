@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { getSession } from 'next-auth/react'
 
-import { env } from '@lib/env'
+import { env } from '@/lib/env'
 
 // Custom Axios instance with common configurations
 const ckretConnect = axios.create({

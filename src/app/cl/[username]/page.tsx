@@ -6,18 +6,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { IMessage, ISketch } from '@_types/types'
-
-import { cn } from '@lib/utils'
-
-import AnimatedLoader from '@components/common/animated-loader'
-import Branding from '@components/common/branding'
-import CreateLink from '@components/common/create-link'
-import ProfileNotFound from '@components/common/profile-not-found'
-import { Avatar, AvatarFallback } from '@components/ui/avatar'
-import { Button } from '@components/ui/button'
-
-import { useGetUserPublicProfile } from '@api-hooks/user'
+import AnimatedLoader from '@/components/common/animated-loader'
+import Branding from '@/components/common/branding'
+import CreateLink from '@/components/common/create-link'
+import ProfileNotFound from '@/components/common/profile-not-found'
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
+import { useGetUserPublicProfile } from '@/hooks/api/user'
+import { cn } from '@/lib/utils'
+import { IMessage, ISketch } from '@/types/index'
 
 const PublicProfile = ({ params }: { params: { username: string } }) => {
   const pathname = usePathname()

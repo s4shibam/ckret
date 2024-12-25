@@ -1,15 +1,13 @@
 import type { Metadata, Viewport } from 'next'
 import { Outfit } from 'next/font/google'
 
-import OG_IMAGE from '@assets/og-image.png'
+import OG_IMAGE from '@/assets/og-image.png'
+import GoogleAnalytics from '@/components/common/google-analytics'
+import { META_DESCRIPTION, META_KEYWORDS, META_TITLE } from '@/lib/constants'
+import { env } from '@/lib/env'
+import AppProviders from '@/providers/app-providers'
 
-import AppProviders from '@providers/app-providers'
 import './globals.css'
-
-import { META_DESCRIPTION, META_KEYWORDS, META_TITLE } from '@lib/constants'
-import { env } from '@lib/env'
-
-import GoogleAnalytics from '@components/analytics/google-analytics'
 
 const outfit = Outfit({
   subsets: ['latin'],

@@ -1,9 +1,8 @@
 import Link from 'next/link'
 
-import { env } from '@lib/env'
-
-import Branding from '@components/common/branding'
-import { Separator } from '@components/ui/separator'
+import Branding from '@/components/common/branding'
+import { Separator } from '@/components/ui/separator'
+import { env } from '@/lib/env'
 
 const Footer = () => {
   return (

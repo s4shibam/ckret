@@ -10,17 +10,15 @@ import {
   Twitter
 } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import toast from 'react-hot-toast'
 
-import SNAPCHAT from '@assets/snapchat.svg'
-import WHATSAPP from '@assets/whatsapp.svg'
-
-import Header from '@components/dashboard/header'
-import { Button } from '@components/ui/button'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@components/ui/tabs'
-
+import SNAPCHAT from '@/assets/snapchat.svg'
+import WHATSAPP from '@/assets/whatsapp.svg'
+import Header from '@/components/dashboard/header'
+import { Button } from '@/components/ui/button'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ShareLinkType, useShareLink } from 'hooks/use-share-link'
-import Link from 'next/link'
 
 export const SOCIAL_MEDIA_PLATFORMS = [
   {
@@ -100,9 +98,9 @@ const MyLink = () => {
             <div className="mt-4 flex flex-col items-center gap-2 rounded-lg border-2 border-gray-500 p-4">
               <p className="whitespace-pre-line text-center">{shareText}</p>
               <Link
+                className="hover:text-ckret-secondary"
                 href={link}
                 target="_blank"
-                className="hover:text-ckret-secondary"
               >
                 <span className="w-full break-words rounded-md bg-zinc-100 px-2 py-1 text-center text-base font-medium tracking-wide">
                   {link}

@@ -1,16 +1,15 @@
 'use client'
 
 import { Feather, LogOut, MessageCircleReply, PenSquare } from 'lucide-react'
-import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
+import { signOut, useSession } from 'next-auth/react'
 
-import { env } from '@lib/env'
-
-import EditAvatar from '@components/dashboard/edit-avatar'
-import EditName from '@components/dashboard/edit-name'
-import EditUsername from '@components/dashboard/edit-username'
-import Header from '@components/dashboard/header'
-import { Button } from '@components/ui/button'
+import EditAvatar from '@/components/dashboard/edit-avatar'
+import EditName from '@/components/dashboard/edit-name'
+import EditUsername from '@/components/dashboard/edit-username'
+import Header from '@/components/dashboard/header'
+import { Button } from '@/components/ui/button'
+import { env } from '@/lib/env'
 
 const Profile = () => {
   const { data } = useSession()

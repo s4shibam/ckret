@@ -1,4 +1,4 @@
-import { IUser } from './types'
+import { IUser } from '.'
 
 declare module 'next-auth' {
   interface User extends IUser {}

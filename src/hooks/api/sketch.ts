@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from 'react-query'
 
-import ckretConnect from '@lib/api'
+import ckretConnect from '@/lib/api'
 
 // Sketch Services
 const submitSketch = (payload: {
@@ -26,7 +26,9 @@ const deleteSingleSketch = (payload: { sid: string }) =>
 const deleteAllSketches = () => ckretConnect.delete('/sketch/all')
 
 const replyToSketch = (payload: { sid: string; replyContent: string }) =>
-  ckretConnect.put(`/sketch/reply/${payload.sid}`, { replyContent: payload.replyContent })
+  ckretConnect.put(`/sketch/reply/${payload.sid}`, {
+    replyContent: payload.replyContent
+  })
 
 const toggleSketchVisibility = (payload: { sid: string }) =>
   ckretConnect.put(`/sketch/visibility/${payload.sid}`)

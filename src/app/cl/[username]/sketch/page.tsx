@@ -6,19 +6,21 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import React, { useEffect, useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { cn } from '@lib/utils'
-
-import AnimatedLoader from '@components/common/animated-loader'
-import Branding from '@components/common/branding'
-import CreateLink from '@components/common/create-link'
-import ProfileNotFound from '@components/common/profile-not-found'
-import { Button } from '@components/ui/button'
-import { Card } from '@components/ui/card'
-import { Popover, PopoverContent, PopoverTrigger } from '@components/ui/popover'
-import { Slider } from '@components/ui/slider'
-
-import { useSubmitSketch } from '@api-hooks/sketch'
-import { useGetUserDetailsByUsername } from '@api-hooks/user'
+import AnimatedLoader from '@/components/common/animated-loader'
+import Branding from '@/components/common/branding'
+import CreateLink from '@/components/common/create-link'
+import ProfileNotFound from '@/components/common/profile-not-found'
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger
+} from '@/components/ui/popover'
+import { Slider } from '@/components/ui/slider'
+import { useSubmitSketch } from '@/hooks/api/sketch'
+import { useGetUserDetailsByUsername } from '@/hooks/api/user'
+import { cn } from '@/lib/utils'
 
 const COLORS = [
   '#000000',
@@ -282,7 +284,7 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
                   min={3}
                   step={1}
                   value={brushSize}
-                  onValueChange={(value) => setBrushSize(value)}
+                  onValueChange={(value: number[]) => setBrushSize(value)}
                 />
               </div>
             </PopoverContent>

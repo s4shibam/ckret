@@ -1,13 +1,12 @@
 import parse from 'html-react-parser'
 
-import { FAQS } from '@lib/constants'
-
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger
-} from '@components/ui/accordion'
+} from '@/components/ui/accordion'
+import { FAQS } from '@/lib/constants'
 
 const FAQs = () => {
   return (

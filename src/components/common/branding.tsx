@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import LOGO from '@assets/logo-animated.svg'
+import LOGO from '@/assets/logo-animated.svg'
 
 const Branding = () => {
   return (

@@ -3,8 +3,8 @@
 import { redirect } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 
-import AnimatedLoader from '@components/common/animated-loader'
-import Branding from '@components/common/branding'
+import AnimatedLoader from '@/components/common/animated-loader'
+import Branding from '@/components/common/branding'
 
 export default function AuthLayout({
   children

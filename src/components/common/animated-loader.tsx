@@ -1,8 +1,7 @@
 import Image from 'next/image'
 
-import LOADER from '@assets/loader.svg'
-
-import { cn } from '@lib/utils'
+import LOADER from '@/assets/loader.svg'
+import { cn } from '@/lib/utils'
 
 type Props = {
   type?: 'fullscreen' | 'normal'

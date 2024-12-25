@@ -1,7 +1,7 @@
 import { Squirrel } from 'lucide-react'
 
-import Branding from '@components/common/branding'
-import CreateLink from '@components/common/create-link'
+import Branding from '@/components/common/branding'
+import CreateLink from '@/components/common/create-link'
 
 const NotFound = () => {
   return (

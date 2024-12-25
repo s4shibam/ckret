@@ -1,13 +1,12 @@
+import { Card } from '@/components/ui/card'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
   FEATURE_HEADING,
   FEATURE_SUB_HEADING,
   MAIN_FEATURES,
   MESSAGE_TYPES,
   RECIPIENT_TYPES
-} from '@lib/constants'
-
-import { Card } from '@components/ui/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@components/ui/tabs'
+} from '@/lib/constants'
 
 const Features = () => {
   return (

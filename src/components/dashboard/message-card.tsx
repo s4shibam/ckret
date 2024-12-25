@@ -3,18 +3,14 @@ import { Clock, Loader, Reply, X } from 'lucide-react'
 import Image from 'next/image'
 import toast from 'react-hot-toast'
 
-import { IMessage } from '@_types/types'
-
-import LOGO_SECONDARY from '@assets/logo-secondary.svg'
-
-import { invalidateQueries } from '@lib/query-client'
-
-import { Button } from '@components/ui/button'
-import { Card } from '@components/ui/card'
-
-import { useDeleteSingleMessage } from '@api-hooks/message'
-
 import MessageFullScreenView from './message-fullscreen-view'
+
+import LOGO_SECONDARY from '@/assets/logo-secondary.svg'
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+import { useDeleteSingleMessage } from '@/hooks/api/message'
+import { invalidateQueries } from '@/lib/query-client'
+import { IMessage } from '@/types/index'
 
 interface MessageCardProps {
   message: IMessage

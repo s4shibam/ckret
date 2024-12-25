@@ -4,12 +4,10 @@ import { Loader, Settings } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import toast from 'react-hot-toast'
 
-import { cn } from '@lib/utils'
-
-import { Alert, AlertDescription, AlertTitle } from '@components/ui/alert'
-import { Switch } from '@components/ui/switch'
-
-import { useToggleInboxStatus } from '@api-hooks/user'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { Switch } from '@/components/ui/switch'
+import { useToggleInboxStatus } from '@/hooks/api/user'
+import { cn } from '@/lib/utils'
 
 const InboxStatus = () => {
   const { data, update } = useSession()

@@ -5,9 +5,8 @@ import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
-import GOOGLE from '@assets/google.svg'
-
-import { Button } from '@components/ui/button'
+import GOOGLE from '@/assets/google.svg'
+import { Button } from '@/components/ui/button'
 
 interface GoogleSignInButtonProps {
   text: string
@@ -19,7 +18,10 @@ export function GoogleSignInButton({ text }: GoogleSignInButtonProps) {
   const handleGoogleSignIn = async () => {
     setIsLoading(true)
     try {
-      await signIn('google', { callbackUrl: '/dashboard/profile', redirect: false })
+      await signIn('google', {
+        callbackUrl: '/dashboard/profile',
+        redirect: false
+      })
     } catch (error) {
       toast.error('Failed to sign in with Google. Please try again.')
     } finally {

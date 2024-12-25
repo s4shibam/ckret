@@ -2,7 +2,7 @@
 
 import { useSession } from 'next-auth/react'
 
-import { Avatar, AvatarFallback, AvatarImage } from '@components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 const ProfileMenu = () => {
   const { data } = useSession()
@@ -11,7 +11,7 @@ const ProfileMenu = () => {
     <div className="mt-auto flex w-full items-center gap-2 rounded-lg bg-gradient-to-br from-orange-100 to-rose-200 px-4 py-2">
       <Avatar>
         <AvatarImage alt="" src={data?.user?.image || ''} />
-        <AvatarFallback>{data?.user?.name?.[0] || '@'}</AvatarFallback>
+        <AvatarFallback>{data?.user?.name?.[0] || '@/'}</AvatarFallback>
       </Avatar>
       <div className="w-full">
         <p

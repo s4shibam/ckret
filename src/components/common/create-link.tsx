@@ -4,7 +4,7 @@ import { SquareArrowOutUpRight } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-import { Button } from '@components/ui/button'
+import { Button } from '@/components/ui/button'
 
 const CreateLink = () => {
   const [createdCount, setCreatedCount] = useState(169)

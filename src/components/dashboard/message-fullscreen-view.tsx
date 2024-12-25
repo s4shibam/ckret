@@ -6,20 +6,16 @@ import { useSession } from 'next-auth/react'
 import { useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { IMessage } from '@_types/types'
-
-import LOGO_SECONDARY from '@assets/logo-secondary.svg'
-
-import { env } from '@lib/env'
-import { invalidateQueries } from '@lib/query-client'
-
-import { Button } from '@components/ui/button'
-import { Dialog, DialogContent, DialogTrigger } from '@components/ui/dialog'
-
+import LOGO_SECONDARY from '@/assets/logo-secondary.svg'
+import { Button } from '@/components/ui/button'
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import {
   useReplyToMessage,
   useToggleMessageVisibility
-} from '@api-hooks/message'
+} from '@/hooks/api/message'
+import { env } from '@/lib/env'
+import { invalidateQueries } from '@/lib/query-client'
+import { IMessage } from '@/types/index'
 
 type Props = {
   children: React.ReactNode

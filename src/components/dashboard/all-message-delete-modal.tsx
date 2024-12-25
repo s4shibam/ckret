@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { invalidateQueries } from '@lib/query-client'
-
-import { Button } from '@components/ui/button'
+import { Button } from '@/components/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -12,9 +10,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger
-} from '@components/ui/dialog'
-
-import { useDeleteAllMessages } from '@api-hooks/message'
+} from '@/components/ui/dialog'
+import { useDeleteAllMessages } from '@/hooks/api/message'
+import { invalidateQueries } from '@/lib/query-client'
 
 const AllMessageDeleteModal = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = useState(false)

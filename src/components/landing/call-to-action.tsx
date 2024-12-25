@@ -4,12 +4,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 
-import MESSAGE_UI from '@assets/ckret-message-ui.webp'
-import SKETCH_UI from '@assets/ckret-sketch-ui.webp'
-
-import { CTA_HEADING, CTA_SUB_HEADING } from '@lib/constants'
-
-import { Button } from '@components/ui/button'
+import MESSAGE_UI from '@/assets/ckret-message-ui.webp'
+import SKETCH_UI from '@/assets/ckret-sketch-ui.webp'
+import { Button } from '@/components/ui/button'
+import { CTA_HEADING, CTA_SUB_HEADING } from '@/lib/constants'
 
 const CallToAction = () => {
   const { status } = useSession()

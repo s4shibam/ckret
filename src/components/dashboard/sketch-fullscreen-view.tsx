@@ -6,17 +6,13 @@ import { useSession } from 'next-auth/react'
 import { useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 
-import { ISketch } from '@_types/types'
-
-import LOGO_SECONDARY from '@assets/logo-secondary.svg'
-
-import { env } from '@lib/env'
-import { invalidateQueries } from '@lib/query-client'
-
-import { Button } from '@components/ui/button'
-import { Dialog, DialogContent, DialogTrigger } from '@components/ui/dialog'
-
-import { useReplyToSketch, useToggleSketchVisibility } from '@api-hooks/sketch'
+import LOGO_SECONDARY from '@/assets/logo-secondary.svg'
+import { Button } from '@/components/ui/button'
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+import { useReplyToSketch, useToggleSketchVisibility } from '@/hooks/api/sketch'
+import { env } from '@/lib/env'
+import { invalidateQueries } from '@/lib/query-client'
+import { ISketch } from '@/types/index'
 
 type Props = {
   children: React.ReactNode

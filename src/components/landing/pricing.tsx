@@ -1,14 +1,13 @@
 import Link from 'next/link'
 
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import {
   PRICING_FEATURES,
   PRICING_HEADING,
   PRICING_SUB_HEADING
-} from '@lib/constants'
-
-import { Badge } from '@components/ui/badge'
-import { Button } from '@components/ui/button'
-import { Card } from '@components/ui/card'
+} from '@/lib/constants'
 
 const Pricing = () => {
   return (

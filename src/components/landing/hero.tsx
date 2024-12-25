@@ -1,8 +1,7 @@
 import Image from 'next/image'
 
-import HERO from '@assets/ckret-hero-image.webp'
-
-import CreateLink from '@components/common/create-link'
+import HERO from '@/assets/ckret-hero-image.webp'
+import CreateLink from '@/components/common/create-link'
 
 const Hero = () => {
   return (
