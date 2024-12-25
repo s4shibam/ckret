@@ -6,7 +6,6 @@ import { useSession } from 'next-auth/react'
 
 import MESSAGE_UI from '@/assets/ckret-message-ui.webp'
 import SKETCH_UI from '@/assets/ckret-sketch-ui.webp'
-import { Button } from '@/components/ui/button'
 import { CTA_HEADING, CTA_SUB_HEADING } from '@/lib/constants'
 
 const CallToAction = () => {
@@ -50,19 +49,12 @@ const CallToAction = () => {
           </p>
         </div>
 
-        {status === 'authenticated' ? (
-          <Button
-            asChild
-            className="h-14 w-60 rounded-full text-2xl drop-shadow-xl"
-            size="lg"
-          >
-            <Link href="/dashboard/profile">Dashboard</Link>
-          </Button>
-        ) : (
-          <Button className="h-14 w-60 rounded-full text-2xl drop-shadow-xl">
-            <Link href="/sign-in">Be Anonymous</Link>
-          </Button>
-        )}
+        <Link
+          className="relative flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-ckret-primary to-ckret-secondary px-8 py-3 text-lg font-medium text-white transition-all duration-300 hover:opacity-90"
+          href={status === 'authenticated' ? '/dashboard/profile' : '/sign-in'}
+        >
+          {status === 'authenticated' ? 'Dashboard' : 'Go Anonymous'}
+        </Link>
       </div>
     </div>
   )
