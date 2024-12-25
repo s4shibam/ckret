@@ -12,7 +12,7 @@ import {
 const Pricing = () => {
   return (
     <section
-      className="bg-gradient-to-bl from-white via-transparent to-orange-50"
+      className="bg-gradient-to-br from-white via-transparent to-rose-100"
       id="pricing"
     >
       <div className="mx-auto w-full max-w-7xl px-4 py-16 md:px-6 lg:py-24">

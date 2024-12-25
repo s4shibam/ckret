@@ -19,7 +19,7 @@ const FAQs = ({ minimal }: FAQsProps) => {
 
   return (
     <div
-      className="bg-gradient-to-br from-orange-50 via-transparent to-transparent"
+      className="bg-gradient-to-bl from-rose-100 via-transparent to-transparent"
       id="faq"
     >
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-20 px-5 py-14 sm:py-28">
