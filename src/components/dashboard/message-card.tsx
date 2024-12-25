@@ -10,21 +10,21 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { useDeleteSingleMessage } from '@/hooks/api/message'
 import { invalidateQueries } from '@/lib/query-client'
-import { IMessage } from '@/types/index'
+import { TMessage } from '@/types/index'
 
 interface MessageCardProps {
-  message: IMessage
+  message: TMessage
 }
 
 const MessageCard = ({ message }: MessageCardProps) => {
   const {
     mutate: deleteSingleMessageMutation,
-    isLoading: isDeleteSingleMessageLoading
+    isPending: isDeleteSingleMessageLoading
   } = useDeleteSingleMessage({
-    onError: (error: any) => toast.error(error.message),
-    onSuccess: (success: any) => {
+    onError: (error) => toast.error(error.message),
+    onSuccess: (success) => {
       toast.success(success.message)
-      invalidateQueries('get-all-messages')
+      invalidateQueries(['get-all-messages'])
     }
   })
 

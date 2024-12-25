@@ -13,10 +13,10 @@ const InboxStatus = () => {
   const { data, update } = useSession()
   const {
     mutate: toggleInboxStatusMutate,
-    isLoading: isToggleInboxStatusLoading
+    isPending: isToggleInboxStatusLoading
   } = useToggleInboxStatus({
-    onError: (error: any) => toast.error(error.message),
-    onSuccess: (success: any) => {
+    onError: (error) => toast.error(error.message),
+    onSuccess: (success) => {
       update({ is_inbox_enabled: success?.data?.is_inbox_enabled })
       toast.success(success.message)
     }

@@ -27,14 +27,14 @@ const SendMessage = ({ params }: { params: { username: string } }) => {
     data: recipient,
     isLoading: isRecipientLoading,
     error: recipientError
-  }: any = useGetUserDetailsByUsername({
+  } = useGetUserDetailsByUsername({
     username: params.username
   })
 
-  const { mutate: submitMessageMutation, isLoading: isSubmitMessageLoading } =
+  const { mutate: submitMessageMutation, isPending: isSubmitMessageLoading } =
     useSubmitMessage({
-      onError: (error: any) => toast.error(error.message),
-      onSuccess: (success: any) => {
+      onError: (error) => toast.error(error.message),
+      onSuccess: (success) => {
         setMessage('')
         toast.success(success.message)
         router.push(pathname + '?status=sent')

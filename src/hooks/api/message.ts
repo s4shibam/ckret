@@ -1,43 +1,98 @@
-import { useMutation, useQuery } from 'react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 
 import ckretConnect from '@/lib/api'
+import { TApiPromise, TMutationOpts, TQueryOpts } from '@/types/api'
+import { TMessage } from '@/types/index'
 
-// Message Services
-const submitMessage = (payload: {
+type TSubmitMessagePayload = {
   recipientUsername: string
   messageContent: string
-}) => ckretConnect.post('/message/submit', payload)
+}
 
-const getAllMessages = () => ckretConnect.get('/message/all')
+type TDeleteSingleMessagePayload = {
+  mid: string
+}
 
-const deleteSingleMessage = (payload: { mid: string }) =>
-  ckretConnect.delete(`/message/single-message/${payload.mid}`)
+// Message Services
+const submitMessage = (payload: TSubmitMessagePayload): TApiPromise => {
+  return ckretConnect.post('/message/submit', payload)
+}
 
-const deleteAllMessages = () => ckretConnect.delete('/message/all')
+const getAllMessages = (): TApiPromise<TMessage[]> => {
+  return ckretConnect.get('/message/all')
+}
 
-const replyToMessage = (payload: { mid: string; replyContent: string }) =>
-  ckretConnect.put(`/message/reply/${payload.mid}`, {
+const deleteSingleMessage = (
+  payload: TDeleteSingleMessagePayload
+): TApiPromise => {
+  return ckretConnect.delete(`/message/single-message/${payload.mid}`)
+}
+
+const deleteAllMessages = (): TApiPromise => {
+  return ckretConnect.delete('/message/all')
+}
+
+const replyToMessage = (payload: {
+  mid: string
+  replyContent: string
+}): TApiPromise => {
+  return ckretConnect.put(`/message/reply/${payload.mid}`, {
     replyContent: payload.replyContent
   })
+}
 
-const toggleMessageVisibility = (payload: { mid: string }) =>
-  ckretConnect.put(`/message/visibility/${payload.mid}`)
+const toggleMessageVisibility = (payload: { mid: string }): TApiPromise => {
+  return ckretConnect.put(`/message/visibility/${payload.mid}`)
+}
 
 // Message Hooks
-export const useSubmitMessage = ({ ...options }) =>
-  useMutation(submitMessage, options)
+export const useSubmitMessage = (
+  opts?: TMutationOpts<{ recipientUsername: string; messageContent: string }>
+) => {
+  return useMutation({
+    mutationFn: (payload) => submitMessage(payload),
+    ...opts
+  })
+}
 
-export const useGetAllMessages = () =>
-  useQuery(['get-all-messages'], getAllMessages)
+export const useGetAllMessages = (opts?: TQueryOpts<TMessage[]>) => {
+  return useQuery({
+    queryKey: ['get-all-messages'],
+    queryFn: getAllMessages,
+    ...opts
+  })
+}
 
-export const useDeleteSingleMessage = ({ ...options }) =>
-  useMutation(deleteSingleMessage, options)
+export const useDeleteSingleMessage = (
+  opts?: TMutationOpts<{ mid: string }>
+) => {
+  return useMutation({
+    mutationFn: (payload) => deleteSingleMessage(payload),
+    ...opts
+  })
+}
 
-export const useDeleteAllMessages = ({ ...options }) =>
-  useMutation(deleteAllMessages, options)
+export const useDeleteAllMessages = (opts?: TMutationOpts) => {
+  return useMutation({
+    mutationFn: deleteAllMessages,
+    ...opts
+  })
+}
 
-export const useReplyToMessage = ({ ...options }) =>
-  useMutation(replyToMessage, options)
+export const useReplyToMessage = (
+  opts?: TMutationOpts<{ mid: string; replyContent: string }>
+) => {
+  return useMutation({
+    mutationFn: (payload) => replyToMessage(payload),
+    ...opts
+  })
+}
 
-export const useToggleMessageVisibility = ({ ...options }) =>
-  useMutation(toggleMessageVisibility, options)
+export const useToggleMessageVisibility = (
+  opts?: TMutationOpts<{ mid: string }>
+) => {
+  return useMutation({
+    mutationFn: (payload) => toggleMessageVisibility(payload),
+    ...opts
+  })
+}

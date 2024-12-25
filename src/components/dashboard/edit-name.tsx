@@ -23,11 +23,10 @@ const EditName = ({ children }: { children: React.ReactNode }) => {
   const [name, setName] = useState(session?.user?.name || '')
   const [open, setOpen] = useState(false)
 
-  const { mutate: updateNameMutation, isLoading: isUpdateNameMutationLoading } =
+  const { mutate: updateNameMutation, isPending: isUpdateNameMutationLoading } =
     useUpdateName({
-      onError: (error: any) => toast.error(error.message),
-
-      onSuccess: (success: any) => {
+      onError: (error) => toast.error(error.message),
+      onSuccess: (success) => {
         setOpen(false)
         update({ name: success?.data?.name })
         toast.success(success.message)

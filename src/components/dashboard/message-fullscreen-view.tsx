@@ -15,11 +15,11 @@ import {
 } from '@/hooks/api/message'
 import { env } from '@/lib/env'
 import { invalidateQueries } from '@/lib/query-client'
-import { IMessage } from '@/types/index'
+import { TMessage } from '@/types/index'
 
 type Props = {
   children: React.ReactNode
-  message: IMessage
+  message: TMessage
 }
 
 const FILE_NAME = `ckret-message-${format(
@@ -34,23 +34,23 @@ const MessageFullScreenView = ({ message, children }: Props) => {
 
   const [reply, setReply] = useState(message.reply || '')
 
-  const { mutate: replyToMessageMutation, isLoading: isReplyLoading } =
+  const { mutate: replyToMessageMutation, isPending: isReplyLoading } =
     useReplyToMessage({
-      onError: (error: any) => toast.error(error.message),
-      onSuccess: (success: any) => {
+      onError: (error) => toast.error(error.message),
+      onSuccess: (success) => {
         toast.success(success.message)
-        invalidateQueries('get-all-messages')
+        invalidateQueries(['get-all-messages'])
       }
     })
 
   const {
     mutate: toggleVisibilityMutation,
-    isLoading: isToggleVisibilityLoading
+    isPending: isToggleVisibilityLoading
   } = useToggleMessageVisibility({
-    onError: (error: any) => toast.error(error.message),
-    onSuccess: (success: any) => {
+    onError: (error) => toast.error(error.message),
+    onSuccess: (success) => {
       toast.success(success.message)
-      invalidateQueries('get-all-messages')
+      invalidateQueries(['get-all-messages'])
     }
   })
 

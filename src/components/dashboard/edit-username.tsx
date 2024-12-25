@@ -26,11 +26,10 @@ const EditUsername = ({ children }: { children: React.ReactNode }) => {
 
   const {
     mutate: updateUsernameMutation,
-    isLoading: isUpdateUsernameMutationLoading
+    isPending: isUpdateUsernameMutationLoading
   } = useUpdateUsername({
-    onError: (error: any) => toast.error(error.message),
-
-    onSuccess: (success: any) => {
+    onError: (error) => toast.error(error.message),
+    onSuccess: (success) => {
       setOpen(false)
       update({ username: success?.data?.username })
       toast.success(success.message)

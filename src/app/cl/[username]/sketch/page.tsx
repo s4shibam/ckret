@@ -57,14 +57,14 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
     data: recipient,
     isLoading: isRecipientLoading,
     error: recipientError
-  }: any = useGetUserDetailsByUsername({
+  } = useGetUserDetailsByUsername({
     username: params.username
   })
 
-  const { mutate: submitSketchMutation, isLoading: isSubmitSketchLoading } =
+  const { mutate: submitSketchMutation, isPending: isSubmitSketchLoading } =
     useSubmitSketch({
-      onError: (error: any) => toast.error(error.message),
-      onSuccess: (success: any) => {
+      onError: (error) => toast.error(error.message),
+      onSuccess: (success) => {
         clearCanvas()
         toast.success(success.message)
         router.push(pathname + '?status=sent')

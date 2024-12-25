@@ -1,12 +1,12 @@
-import { IUser } from '.'
+import { TUser } from '.'
 
 declare module 'next-auth' {
-  interface User extends IUser {}
+  interface User extends TUser {}
   interface Session {
     user?: User
   }
 }
 
 declare module 'next-auth/jwt' {
-  interface JWT extends IUser {}
+  interface JWT extends TUser {}
 }

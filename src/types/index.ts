@@ -1,6 +1,6 @@
 import { DefaultUser } from 'next-auth'
 
-export interface IUser extends DefaultUser {
+export type TUser = DefaultUser & {
   _id: string
   auth_provider: string
   message_max_length: number
@@ -14,7 +14,7 @@ export interface IUser extends DefaultUser {
   token: string
 }
 
-export interface IMessage {
+export type TMessage = {
   _id: string
   content: string
   reply?: string
@@ -23,7 +23,7 @@ export interface IMessage {
   updatedAt: string
 }
 
-export interface ISketch {
+export type TSketch = {
   _id: string
   recipient: string
   sketch_url: string

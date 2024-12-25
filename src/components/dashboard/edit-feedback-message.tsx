@@ -27,11 +27,10 @@ const EditFeedbackMessage = ({ children }: { children: React.ReactNode }) => {
 
   const {
     mutate: updateFeedbackMessageMutation,
-    isLoading: isUpdateFeedbackMessageMutationLoading
+    isPending: isUpdateFeedbackMessageMutationLoading
   } = useUpdateFeedbackMessage({
-    onError: (error: any) => toast.error(error.message),
-
-    onSuccess: (success: any) => {
+    onError: (error) => toast.error(error.message),
+    onSuccess: (success) => {
       setOpen(false)
       update({ feedback_message: success?.data?.feedback_message })
       toast.success(success.message)

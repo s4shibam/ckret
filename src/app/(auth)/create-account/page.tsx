@@ -28,10 +28,10 @@ const CreateAccountPage = () => {
   })
 
   const { mutateAsync: signUp } = useAnonymousSignUp({
-    onSuccess: (success: any) => {
+    onSuccess: (success) => {
       toast.success(success.message)
     },
-    onError: (error: any) => {
+    onError: (error) => {
       toast.error(error.message)
     }
   })

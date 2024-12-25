@@ -98,7 +98,7 @@ export const authOptions: NextAuthOptions = {
 
             return true
           }
-        } catch (error: any) {
+        } catch (error: unknown) {
           console.error('Signin Error: ', error)
         }
       }

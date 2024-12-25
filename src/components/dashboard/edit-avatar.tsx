@@ -24,11 +24,11 @@ const EditAvatar = ({ children }: { children: React.ReactNode }) => {
 
   const {
     mutate: updateAvatarMutation,
-    isLoading: isUpdateAvatarMutationLoading
+    isPending: isUpdateAvatarMutationLoading
   } = useUpdateAvatar({
-    onError: (error: any) => toast.error(error.message),
+    onError: (error) => toast.error(error.message),
 
-    onSuccess: (success: any) => {
+    onSuccess: (success) => {
       setOpen(false)
       update({ avatar: success?.data?.avatar })
       toast.success(success.message)
@@ -63,7 +63,9 @@ const EditAvatar = ({ children }: { children: React.ReactNode }) => {
             previewPosition="none"
             skinTonePosition="none"
             theme="light"
-            onEmojiSelect={(emoji: any) => setAvatar(emoji.native)}
+            onEmojiSelect={(emoji: { native: string }) =>
+              setAvatar(emoji.native)
+            }
           />
         </div>
 

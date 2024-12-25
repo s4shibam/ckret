@@ -12,11 +12,11 @@ import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { useReplyToSketch, useToggleSketchVisibility } from '@/hooks/api/sketch'
 import { env } from '@/lib/env'
 import { invalidateQueries } from '@/lib/query-client'
-import { ISketch } from '@/types/index'
+import { TSketch } from '@/types/index'
 
 type Props = {
   children: React.ReactNode
-  sketch: ISketch
+  sketch: TSketch
 }
 
 const FILE_NAME = `ckret-sketch-${format(
@@ -29,23 +29,23 @@ const SketchFullScreenView = ({ sketch, children }: Props) => {
   const imageRef = useRef<HTMLDivElement>(null)
   const [reply, setReply] = useState(sketch.reply || '')
 
-  const { mutate: replyToSketchMutation, isLoading: isReplyLoading } =
+  const { mutate: replyToSketchMutation, isPending: isReplyLoading } =
     useReplyToSketch({
-      onError: (error: any) => toast.error(error.message),
-      onSuccess: (success: any) => {
+      onError: (error) => toast.error(error.message),
+      onSuccess: (success) => {
         toast.success(success.message)
-        invalidateQueries('get-all-sketches')
+        invalidateQueries(['get-all-sketches'])
       }
     })
 
   const {
     mutate: toggleVisibilityMutation,
-    isLoading: isToggleVisibilityLoading
+    isPending: isToggleVisibilityLoading
   } = useToggleSketchVisibility({
-    onError: (error: any) => toast.error(error.message),
-    onSuccess: (success: any) => {
+    onError: (error) => toast.error(error.message),
+    onSuccess: (success) => {
       toast.success(success.message)
-      invalidateQueries('get-all-sketches')
+      invalidateQueries(['get-all-sketches'])
     }
   })
 

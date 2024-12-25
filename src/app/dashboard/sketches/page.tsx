@@ -17,7 +17,7 @@ import SketchCard from '@/components/dashboard/sketch-card'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { useGetAllSketches } from '@/hooks/api/sketch'
-import { ISketch } from '@/types/index'
+import { TSketch } from '@/types/index'
 
 const SketchDashboard = () => {
   const { data: sessionData } = useSession()
@@ -107,7 +107,7 @@ const SketchDashboard = () => {
       )}
 
       <div className="grid h-full w-full gap-5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-        {sketches?.data?.map((sketch: ISketch) => (
+        {sketches?.data?.map((sketch: TSketch) => (
           <SketchCard key={sketch._id} sketch={sketch} />
         ))}
       </div>

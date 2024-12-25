@@ -9,22 +9,22 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { useDeleteSingleSketch } from '@/hooks/api/sketch'
 import { invalidateQueries } from '@/lib/query-client'
-import { ISketch } from '@/types/index'
+import { TSketch } from '@/types/index'
 
 interface SketchCardProps {
-  sketch: ISketch
+  sketch: TSketch
 }
 
 const SketchCard = ({ sketch }: SketchCardProps) => {
   const {
     mutate: deleteSingleSketchMutation,
-    isLoading: isDeleteSingleSketchLoading
+    isPending: isDeleteSingleSketchLoading
   } = useDeleteSingleSketch({
-    onSuccess: (success: any) => {
+    onSuccess: (success) => {
       toast.success(success.message)
-      invalidateQueries('get-all-sketches')
+      invalidateQueries(['get-all-sketches'])
     },
-    onError: (error: any) => {
+    onError: (error) => {
       toast.error(error.message)
     }
   })

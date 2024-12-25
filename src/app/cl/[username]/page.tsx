@@ -14,7 +14,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { useGetUserPublicProfile } from '@/hooks/api/user'
 import { cn } from '@/lib/utils'
-import { IMessage, ISketch } from '@/types/index'
+import { TMessage, TSketch } from '@/types/index'
 
 const PublicProfile = ({ params }: { params: { username: string } }) => {
   const pathname = usePathname()
@@ -104,7 +104,7 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              {regularMessages.map((message: IMessage) => (
+              {regularMessages.map((message: TMessage) => (
                 <CardWithReply
                   key={message._id}
                   reply={message.reply}
@@ -151,7 +151,7 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              {regularSketches.map((sketch: ISketch) => (
+              {regularSketches.map((sketch: TSketch) => (
                 <CardWithReply
                   key={sketch._id}
                   isSketch

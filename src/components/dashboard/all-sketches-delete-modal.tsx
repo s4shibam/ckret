@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode } from 'react'
 import toast from 'react-hot-toast'
 
 import {
@@ -6,35 +6,30 @@ import {
   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
+  AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger
 } from '@/components/ui/alert-dialog'
 import { useDeleteAllSketches } from '@/hooks/api/sketch'
+import { invalidateQueries } from '@/lib/query-client'
 
 interface AllSketchesDeleteModalProps {
   children: ReactNode
 }
 
 const AllSketchesDeleteModal = ({ children }: AllSketchesDeleteModalProps) => {
-  const [isDeleting, setIsDeleting] = useState(false)
-
-  const { mutate: deleteAllSketches } = useDeleteAllSketches({
-    onSuccess: (success: any) => {
-      toast.success(success.message)
-      setIsDeleting(false)
-    },
-    onError: (error: any) => {
-      toast.error(error.message)
-      setIsDeleting(false)
-    }
-  })
-
-  const handleDeleteAll = () => {
-    setIsDeleting(true)
-    deleteAllSketches()
-  }
+  const { mutate: deleteAllSketches, isPending: isDeleteAllSketchesPending } =
+    useDeleteAllSketches({
+      onSuccess: (success) => {
+        toast.success(success.message)
+        invalidateQueries(['get-all-sketches'])
+      },
+      onError: (error) => {
+        toast.error(error.message)
+      }
+    })
 
   return (
     <AlertDialog>
@@ -42,14 +37,18 @@ const AllSketchesDeleteModal = ({ children }: AllSketchesDeleteModalProps) => {
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This action cannot be undone. This will permanently delete all your
+            sketches and remove them from our servers.
+          </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             className="bg-red-500 hover:bg-red-600"
-            onClick={handleDeleteAll}
+            onClick={() => deleteAllSketches()}
           >
-            {isDeleting ? 'Deleting...' : 'Delete All'}
+            {isDeleteAllSketchesPending ? 'Deleting...' : 'Delete All'}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

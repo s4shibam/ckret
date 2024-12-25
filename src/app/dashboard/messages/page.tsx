@@ -17,7 +17,7 @@ import MessageCard from '@/components/dashboard/message-card'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { useGetAllMessages } from '@/hooks/api/message'
-import { IMessage } from '@/types/index'
+import { TMessage } from '@/types/index'
 
 const Messages = () => {
   const { data } = useSession()
@@ -33,7 +33,8 @@ const Messages = () => {
   } = useGetAllMessages()
 
   useEffect(() => {
-    const diff = (data?.user?.inbox_max_size ?? 0) - messages?.data?.length
+    const diff =
+      (data?.user?.inbox_max_size ?? 0) - (messages?.data?.length ?? 0)
 
     if (diff === 0) {
       setInboxStorageStatus('full')
@@ -103,7 +104,7 @@ const Messages = () => {
       )}
 
       <div className="grid h-full w-full gap-5 sm:grid-cols-2 xl:grid-cols-3">
-        {messages?.data?.map((message: IMessage) => (
+        {messages?.data?.map((message: TMessage) => (
           <MessageCard key={message._id} message={message} />
         ))}
       </div>
