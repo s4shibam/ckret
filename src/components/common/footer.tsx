@@ -37,10 +37,9 @@ const Footer = () => {
             </Link>
             <Link
               className="w-fit decoration-white underline-offset-4 hover:underline"
-              href={env.feedback_form_url || '#'}
-              target="_blank"
+              href="/dashboard/sketches"
             >
-              Share Feedback
+              Sketches
             </Link>
           </div>
 

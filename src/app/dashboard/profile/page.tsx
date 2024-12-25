@@ -1,8 +1,8 @@
 'use client'
 
 import { Feather, LogOut, MessageCircleReply, PenSquare } from 'lucide-react'
-import Link from 'next/link'
 import { signOut, useSession } from 'next-auth/react'
+import Link from 'next/link'
 
 import { env } from '@lib/env'
 
@@ -100,7 +100,7 @@ const Profile = () => {
                   </Button>
                 </EditAvatar>
               </div>
-              <p className="text-xl font-medium text-gray-900">
+              <p className="grid size-10 place-items-center rounded-lg bg-zinc-200 text-xl font-medium">
                 <span className="text-3xl">{data?.user?.avatar || '🕶️'}</span>
               </p>
               <p className="text-base text-gray-500">

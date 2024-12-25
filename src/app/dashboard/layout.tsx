@@ -30,7 +30,7 @@ export default function DashboardLayout({
   return (
     <section className="h-full min-h-screen w-full bg-gray-50">
       <aside
-        className="fixed inset-y-0 left-0 z-40 hidden w-[18rem] flex-col items-center gap-10 overflow-auto border-r border-gray-300 bg-white p-4 md:flex"
+        className="fixed inset-y-0 left-0 z-40 hidden w-[16rem] flex-col items-center gap-10 overflow-auto border-r border-gray-300 bg-white p-4 md:flex"
         id="pc-menu"
       >
         <Branding />
@@ -43,7 +43,7 @@ export default function DashboardLayout({
       >
         <DashboardMenu />
       </aside>
-      <section className="min-h-screen w-full pb-20 pt-6 md:pl-[18rem]">
+      <section className="min-h-screen w-full pb-20 pt-6 md:pl-[16rem]">
         <main className="mx-auto mt-20 h-full w-full px-4 md:px-8">
           {children}
         </main>
