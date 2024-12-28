@@ -14,6 +14,11 @@ type TUserPublicProfileResponse = TUser & {
   sketches: TSketch[]
 }
 
+type TGetUserDetailsByUsernameResponse = TUser & {
+  is_message_inbox_full: boolean
+  is_sketch_inbox_full: boolean
+}
+
 // User Services
 const anonymousSignUp = (
   payload: TAnonymousSignUpPayload
@@ -56,7 +61,7 @@ const toggleInboxStatus = (): TApiPromise<{
 
 const getUserDetailsByUsername = (
   username: string
-): TApiPromise<TUser & { is_inbox_full: boolean }> => {
+): TApiPromise<TGetUserDetailsByUsernameResponse> => {
   return ckretConnect.get(`user/details/${username}`)
 }
 
@@ -130,7 +135,7 @@ export const useToggleInboxStatus = (
 
 export const useGetUserDetailsByUsername = (
   params: { username: string },
-  opts?: TQueryOpts<TUser & { is_inbox_full: boolean }>
+  opts?: TQueryOpts<TGetUserDetailsByUsernameResponse>
 ) =>
   useQuery({
     queryKey: ['user-details-by-username', params],
