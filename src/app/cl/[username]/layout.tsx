@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const metadata = {
     title: `Ckret - ${data?.data?.name || 'User not found'}`,
-    description: 'Send me anonymous messages.'
+    description: 'Interact anonymously with me through messages or sketches'
   }
 
   return metadata
