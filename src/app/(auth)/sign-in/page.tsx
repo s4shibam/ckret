@@ -2,7 +2,6 @@
 
 import { SquareArrowOutUpRight } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
@@ -21,7 +20,6 @@ import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 
 export default function SignInPage() {
-  const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     username: '',
@@ -44,8 +42,6 @@ export default function SignInPage() {
         toast.error('Invalid username or password')
         return
       }
-
-      router.push('/dashboard/profile')
     } catch (error) {
       toast.error('Something went wrong. Please try again.')
     } finally {
