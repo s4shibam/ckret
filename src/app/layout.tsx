@@ -11,7 +11,8 @@ import './globals.css'
 
 const outfit = Outfit({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800']
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-outfit'
 })
 
 const imagesArray = [
@@ -51,7 +52,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={outfit.className}>
+      <body className={`${outfit.className} ${outfit.variable}`}>
         <GoogleAnalytics />
         <AppProviders>{children}</AppProviders>
       </body>
