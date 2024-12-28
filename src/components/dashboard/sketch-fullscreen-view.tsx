@@ -122,7 +122,7 @@ const SketchFullScreenView = ({ sketch, children }: Props) => {
         <div className="flex h-full w-full flex-col gap-4">
           <div
             ref={imageRef}
-            className="relative flex h-full w-full flex-col overflow-hidden rounded-xl border border-zinc-200/80 bg-gradient-to-b from-white to-zinc-50/50 shadow-sm backdrop-blur-sm transition-all"
+            className="relative flex h-full w-full flex-col overflow-hidden rounded-xl border border-zinc-200/80 bg-gradient-to-b from-white to-zinc-50/50 font-outfit shadow-sm backdrop-blur-sm transition-all"
           >
             <div className="flex items-center gap-3 border-b border-zinc-200/80 p-2 sm:p-4">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-ckret-primary to-ckret-secondary text-white">
