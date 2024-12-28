@@ -7,10 +7,7 @@ import { cn } from '@/lib/utils'
 const Branding = ({ className }: { className?: string }) => {
   return (
     <Link
-      className={cn(
-        'flex h-[2.3rem] w-fit items-center gap-1',
-        className
-      )}
+      className={cn('flex h-[2.3rem] w-fit items-center gap-1', className)}
       href="/"
     >
       <Image

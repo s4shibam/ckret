@@ -41,8 +41,8 @@ const FAQs = ({ minimal }: FAQsProps) => {
           </Accordion>
           {minimal && (
             <Link
-              href="/faqs"
               className="group relative flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-ckret-primary to-ckret-secondary px-8 py-3 text-lg font-medium text-white transition-all duration-300 hover:gap-4"
+              href="/faqs"
             >
               <span>View All</span>
               <ArrowRight className="size-5 transition-transform group-hover:translate-x-0.5" />

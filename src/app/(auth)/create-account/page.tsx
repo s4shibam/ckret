@@ -1,11 +1,13 @@
 'use client'
 
+import { AlertTriangle } from 'lucide-react'
 import Link from 'next/link'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 
 import { GoogleSignInButton } from '@/components/common/google-signin-button'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -18,8 +20,6 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 import { useAnonymousSignUp } from '@/hooks/api/user'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
-import { AlertTriangle } from 'lucide-react'
 
 const CreateAccountPage = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -132,7 +132,7 @@ const CreateAccountPage = () => {
               }
             />
           </div>
-          <Alert variant="destructive" className="border-amber-300 bg-amber-50">
+          <Alert className="border-amber-300 bg-amber-50" variant="destructive">
             <AlertTriangle className="h-5 w-5 text-amber-600" />
             <AlertTitle className="text-amber-700">Important Notice</AlertTitle>
             <AlertDescription className="text-amber-600">
