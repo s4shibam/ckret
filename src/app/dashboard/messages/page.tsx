@@ -17,13 +17,11 @@ import MessageCard from '@/components/dashboard/message-card'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { useGetAllMessages } from '@/hooks/api/message'
-import { TMessage } from '@/types/index'
+import { TMessage, TStorageStatus } from '@/types/index'
 
 const Messages = () => {
   const { data } = useSession()
-  const [inboxStorageStatus, setInboxStorageStatus] = useState<
-    'full' | 'almost_full' | 'ok'
-  >('ok')
+  const [storageStatus, setStorageStatus] = useState<TStorageStatus>('empty')
 
   const {
     data: messages,
@@ -33,15 +31,18 @@ const Messages = () => {
   } = useGetAllMessages()
 
   useEffect(() => {
-    const diff =
-      (data?.user?.inbox_max_size ?? 0) - (messages?.data?.length ?? 0)
+    const messageLimit = data?.user?.inbox_max_size ?? 0
+    const messageCount = messages?.data?.length ?? 0
+    const diff = messageLimit - messageCount
 
-    if (diff === 0) {
-      setInboxStorageStatus('full')
+    if (messageCount === 0) {
+      setStorageStatus('empty')
+    } else if (diff === 0) {
+      setStorageStatus('full')
     } else if (diff <= 5) {
-      setInboxStorageStatus('almost_full')
+      setStorageStatus('almost_full')
     } else {
-      setInboxStorageStatus('ok')
+      setStorageStatus('ok')
     }
   }, [data?.user?.inbox_max_size, messages?.data?.length])
 
@@ -73,26 +74,24 @@ const Messages = () => {
         </div>
       </Header>
 
-      {inboxStorageStatus !== 'ok' && (
+      {(storageStatus === 'almost_full' || storageStatus === 'full') && (
         <Alert
-          variant={
-            inboxStorageStatus === 'almost_full' ? 'warning' : 'destructive'
-          }
+          variant={storageStatus === 'almost_full' ? 'warning' : 'destructive'}
         >
           <AlertTriangle className="h-4 w-4" />
           <AlertTitle className="flex justify-between">
             <p>
-              {inboxStorageStatus === 'almost_full' && 'Inbox Almost Full'}
-              {inboxStorageStatus === 'full' && 'Inbox Full'}
+              {storageStatus === 'almost_full' && 'Inbox Almost Full'}
+              {storageStatus === 'full' && 'Inbox Full'}
             </p>
             <p className="text-right">
               {messages?.data?.length} / {data?.user?.inbox_max_size}
             </p>
           </AlertTitle>
           <AlertDescription>
-            {inboxStorageStatus === 'almost_full' &&
+            {storageStatus === 'almost_full' &&
               'Your inbox is almost full. Please delete some messages to save space.'}
-            {inboxStorageStatus === 'full' &&
+            {storageStatus === 'full' &&
               'Your inbox is full. Please delete some messages to make space.'}
           </AlertDescription>
         </Alert>

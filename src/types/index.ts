@@ -31,3 +31,5 @@ export type TSketch = {
   show_in_profile?: boolean
   createdAt: string
 }
+
+export type TStorageStatus = 'full' | 'almost_full' | 'ok' | 'empty'

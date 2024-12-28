@@ -17,13 +17,11 @@ import SketchCard from '@/components/dashboard/sketch-card'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { useGetAllSketches } from '@/hooks/api/sketch'
-import { TSketch } from '@/types/index'
+import { TSketch, TStorageStatus } from '@/types/index'
 
 const SketchDashboard = () => {
   const { data: sessionData } = useSession()
-  const [storageStatus, setStorageStatus] = useState<
-    'full' | 'almost_full' | 'ok'
-  >('ok')
+  const [storageStatus, setStorageStatus] = useState<TStorageStatus>('empty')
 
   const {
     data: sketches,
@@ -37,7 +35,9 @@ const SketchDashboard = () => {
     const sketchCount = sketches?.data?.length ?? 0
     const diff = sketchLimit - sketchCount
 
-    if (diff === 0) {
+    if (sketchCount === 0) {
+      setStorageStatus('empty')
+    } else if (diff === 0) {
       setStorageStatus('full')
     } else if (diff <= 5) {
       setStorageStatus('almost_full')
@@ -74,7 +74,7 @@ const SketchDashboard = () => {
         </div>
       </Header>
 
-      {storageStatus !== 'ok' && (
+      {(storageStatus === 'almost_full' || storageStatus === 'full') && (
         <Alert
           variant={storageStatus === 'almost_full' ? 'warning' : 'destructive'}
         >
