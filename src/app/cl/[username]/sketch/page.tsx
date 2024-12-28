@@ -3,7 +3,7 @@
 import { Check, CircleCheck, Eraser, Loader, Palette, Send } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import toast from 'react-hot-toast'
 
 import AnimatedLoader from '@/components/common/animated-loader'
@@ -20,38 +20,30 @@ import {
 import { Slider } from '@/components/ui/slider'
 import { useSubmitSketch } from '@/hooks/api/sketch'
 import { useGetUserDetailsByUsername } from '@/hooks/api/user'
+import { useCanvas } from '@/hooks/use-canvas'
+import { COLORS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
-
-const COLORS = [
-  '#000000',
-  '#FF0000',
-  '#00FF00',
-  '#0000FF',
-  '#FFFF00',
-  '#FF00FF',
-  '#00FFFF',
-  '#FFA500',
-  '#8A2BE2'
-]
-const DEFAULT_COLOR = COLORS[0]
-const DEFAULT_BRUSH_SIZE = 10
 
 const SendSketch = ({ params }: { params: { username: string } }) => {
   const router = useRouter()
   const pathname = usePathname()
   const sketchStatus = useSearchParams().get('status')
-
-  const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
-  const [isDrawing, setIsDrawing] = useState(false)
-  const [brushSize, setBrushSize] = useState([DEFAULT_BRUSH_SIZE])
-  const [currentColor, setCurrentColor] = useState(DEFAULT_COLOR)
-  const [hasDrawn, setHasDrawn] = useState(false)
-  const [canvasDimensions, setCanvasDimensions] = useState({
-    width: 0,
-    height: 0
-  })
+  const {
+    canvasRef,
+    brushSize,
+    currentColor,
+    hasDrawn,
+    canvasDimensions,
+    changeBrushSize,
+    setCurrentColor,
+    startDrawing,
+    draw,
+    stopDrawing,
+    clearCanvas,
+    getCanvasBlob
+  } = useCanvas({ containerRef })
 
   const {
     data: recipient,
@@ -71,127 +63,15 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
       }
     })
 
-  useEffect(() => {
-    const updateCanvasSize = () => {
-      if (containerRef.current) {
-        const containerWidth = containerRef.current.offsetWidth
-        const width = containerWidth
-        const height = width
-        setCanvasDimensions({ width, height })
-      }
-    }
+  const handleSubmit = async () => {
+    const blob = await getCanvasBlob()
+    if (!blob) return
 
-    updateCanvasSize()
-
-    const currentRef = containerRef.current
-    const resizeObserver = new ResizeObserver(updateCanvasSize)
-
-    if (currentRef) {
-      resizeObserver.observe(currentRef)
-    }
-
-    return () => {
-      if (currentRef) {
-        resizeObserver.unobserve(currentRef)
-      }
-      resizeObserver.disconnect()
-    }
-  }, [])
-
-  useEffect(() => {
-    if (
-      canvasRef.current &&
-      canvasDimensions.width > 0 &&
-      canvasDimensions.height > 0
-    ) {
-      const canvas = canvasRef.current
-      const ctx = canvas.getContext('2d')
-      if (ctx) {
-        const tempCanvas = document.createElement('canvas')
-        tempCanvas.width = canvas.width
-        tempCanvas.height = canvas.height
-        const tempCtx = tempCanvas.getContext('2d')
-        if (tempCtx) {
-          tempCtx.drawImage(canvas, 0, 0)
-        }
-
-        canvas.width = canvasDimensions.width
-        canvas.height = canvasDimensions.height
-
-        ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height)
-
-        ctx.strokeStyle = currentColor
-        ctx.lineWidth = brushSize[0]
-        ctx.lineCap = 'round'
-        ctx.lineJoin = 'round'
-      }
-    }
-  }, [canvasDimensions, currentColor, brushSize])
-
-  const startDrawing = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const rect = canvas.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-
-    const ctx = canvas.getContext('2d')
-    if (ctx) {
-      ctx.strokeStyle = currentColor
-      ctx.beginPath()
-      ctx.moveTo(x, y)
-      setIsDrawing(true)
-      setHasDrawn(true)
-    }
-  }
-
-  const draw = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    if (!isDrawing) return
-
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const rect = canvas.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-
-    const ctx = canvas.getContext('2d')
-    if (ctx) {
-      ctx.strokeStyle = currentColor
-      ctx.lineTo(x, y)
-      ctx.stroke()
-    }
-  }
-
-  const stopDrawing = () => {
-    setIsDrawing(false)
-  }
-
-  const clearCanvas = () => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const ctx = canvas.getContext('2d')
-    if (ctx) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      setHasDrawn(false)
-    }
-  }
-
-  const handleSubmit = () => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    canvas.toBlob((blob) => {
-      if (blob) {
-        const file = new File([blob], 'sketch.png', { type: 'image/png' })
-        submitSketchMutation({
-          sketchFile: file,
-          recipientUsername: params.username
-        })
-      }
-    }, 'image/png')
+    const file = new File([blob], 'sketch.png', { type: 'image/png' })
+    submitSketchMutation({
+      sketchFile: file,
+      recipientUsername: params.username
+    })
   }
 
   if (isRecipientLoading) {
@@ -262,8 +142,8 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
                   <Palette className="h-5 w-5" />
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-40">
-                <div className="grid grid-cols-3 gap-2">
+              <PopoverContent className="w-52">
+                <div className="grid grid-cols-4 gap-2">
                   {COLORS.map((color) => (
                     <button
                       key={color}
@@ -283,15 +163,16 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
                     </button>
                   ))}
                 </div>
-                <div className="mt-4">
+                <div className="mt-4 grid grid-cols-[1fr_0.5rem] items-center gap-1">
                   <Slider
                     className="w-full"
                     max={15}
                     min={3}
                     step={1}
                     value={brushSize}
-                    onValueChange={(value: number[]) => setBrushSize(value)}
+                    onValueChange={changeBrushSize}
                   />
+                  <span className="text-sm text-zinc-500">{brushSize[0]}</span>
                 </div>
               </PopoverContent>
             </Popover>
