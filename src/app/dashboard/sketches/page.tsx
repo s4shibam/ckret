@@ -33,7 +33,7 @@ const SketchDashboard = () => {
   } = useGetAllSketches()
 
   useEffect(() => {
-    const sketchLimit = sessionData?.user?.inbox_max_size ?? 0
+    const sketchLimit = sessionData?.user?.sketch_max_size ?? 0
     const sketchCount = sketches?.data?.length ?? 0
     const diff = sketchLimit - sketchCount
 
@@ -44,13 +44,13 @@ const SketchDashboard = () => {
     } else {
       setStorageStatus('ok')
     }
-  }, [sessionData?.user?.inbox_max_size, sketches?.data?.length])
+  }, [sessionData?.user?.sketch_max_size, sketches?.data?.length])
 
   return (
     <div className="flex flex-col gap-5">
       <Header
         title={`Sketches (${sketches?.data?.length ?? 0}/${
-          sessionData?.user?.inbox_max_size ?? 0
+          sessionData?.user?.sketch_max_size ?? 0
         })`}
       >
         <div className="flex gap-2">
@@ -75,7 +75,9 @@ const SketchDashboard = () => {
       </Header>
 
       {storageStatus !== 'ok' && (
-        <Alert variant="destructive">
+        <Alert
+          variant={storageStatus === 'almost_full' ? 'warning' : 'destructive'}
+        >
           <AlertTriangle className="h-4 w-4" />
           <AlertTitle className="flex justify-between">
             <p>
@@ -83,7 +85,7 @@ const SketchDashboard = () => {
               {storageStatus === 'full' && 'Sketch Limit Reached'}
             </p>
             <p className="text-right">
-              {sketches?.data?.length} / {sessionData?.user?.inbox_max_size}
+              {sketches?.data?.length} / {sessionData?.user?.sketch_max_size}
             </p>
           </AlertTitle>
           <AlertDescription>
@@ -98,11 +100,9 @@ const SketchDashboard = () => {
       {isLoadingSketches && <AnimatedLoader />}
 
       {sketches?.data?.length === 0 && (
-        <div className="grid w-full place-items-center pt-20 text-zinc-300">
-          <Eraser className="h-20 w-20" />
-          <p className="text-xl font-medium tracking-wide">
-            No sketches found!
-          </p>
+        <div className="mx-auto mt-[15%] grid w-fit place-items-center text-zinc-400">
+          <Eraser className="h-20 w-20 animate-shake" />
+          <p className="text-xl font-medium tracking-wide">Inbox is empty!</p>
         </div>
       )}
 

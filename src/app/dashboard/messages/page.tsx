@@ -52,7 +52,7 @@ const Messages = () => {
           data?.user?.inbox_max_size ?? 0
         })`}
       >
-        <div className="flex gap-3">
+        <div className="flex gap-2">
           <Button
             disabled={isMessagesLoading || isMessagesRefetching}
             onClick={() => messagesRefetch()}
@@ -74,7 +74,11 @@ const Messages = () => {
       </Header>
 
       {inboxStorageStatus !== 'ok' && (
-        <Alert variant="destructive">
+        <Alert
+          variant={
+            inboxStorageStatus === 'almost_full' ? 'warning' : 'destructive'
+          }
+        >
           <AlertTriangle className="h-4 w-4" />
           <AlertTitle className="flex justify-between">
             <p>
@@ -97,8 +101,8 @@ const Messages = () => {
       {isMessagesLoading && <AnimatedLoader />}
 
       {messages?.data?.length === 0 && (
-        <div className="grid w-full place-items-center pt-[15%] text-zinc-300">
-          <Eraser className="h-20 w-20" />
+        <div className="mx-auto mt-[15%] grid w-fit place-items-center text-zinc-400">
+          <Eraser className="h-20 w-20 animate-shake" />
           <p className="text-xl font-medium tracking-wide">Inbox is empty!</p>
         </div>
       )}
