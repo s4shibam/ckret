@@ -11,11 +11,13 @@ const ProfileMenu = () => {
     <div className="mt-auto flex w-full items-center gap-2 rounded-lg bg-gradient-to-br from-orange-100 to-rose-200 px-4 py-2">
       <Avatar>
         <AvatarImage alt="" src={data?.user?.image || ''} />
-        <AvatarFallback>{data?.user?.name?.[0] || '@/'}</AvatarFallback>
+        <AvatarFallback className="uppercase">
+          {data?.user?.name?.[0] || 'N/A'}
+        </AvatarFallback>
       </Avatar>
       <div className="w-full">
         <p
-          className="w-full max-w-[175px] truncate font-medium leading-4 tracking-wide"
+          className="w-full max-w-[175px] truncate font-medium leading-5 tracking-wide"
           title={data?.user?.name || 'Anonymous'}
         >
           {data?.user?.name}

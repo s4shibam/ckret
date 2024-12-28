@@ -56,7 +56,9 @@ const Profile = () => {
                 </span>
               </div>
               <p className="text-xl font-medium text-zinc-900">
-                {data?.user?.email || '-'}
+                {data?.user?.email?.endsWith('@anonymous.user')
+                  ? 'Email not available'
+                  : data?.user?.email || '-'}
               </p>
               <p className="text-base text-zinc-500">
                 This is your registered email address for this account

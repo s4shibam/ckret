@@ -77,7 +77,7 @@ const MyLink = () => {
     <div className="min-h-full w-full bg-zinc-50/50 pb-8">
       <Header title="My Links" />
 
-      <div className="m-6 mx-auto w-full max-w-4xl space-y-6 rounded-xl bg-white p-6 shadow-sm">
+      <div className="mx-auto w-full max-w-4xl space-y-6 rounded-xl bg-white p-6 shadow-sm">
         <Tabs
           defaultValue="Profile"
           onValueChange={(value) => setLinkType(value as ShareLinkType)}
