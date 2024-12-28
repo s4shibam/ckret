@@ -134,17 +134,19 @@ const SendMessage = ({ params }: { params: { username: string } }) => {
             >
               <Dice5 className="h-6 w-6 animate-spin-slow text-white group-hover:animate-pause" />
             </Button>
-
-            <p className="-translate-y-2 text-right text-sm text-white/80">
-              <span className="font-medium">{message.length}</span>
-              {' / '}
-              <span className="text-white/60">
-                {recipient?.data?.message_max_length || '-'}
-              </span>
-            </p>
           </>
         )}
       </div>
+
+      {!recipient?.data?.is_message_inbox_full && (
+        <p className="-translate-y-2 text-right text-sm text-white/80">
+          <span className="font-medium">{message.length}</span>
+          {' / '}
+          <span className="text-white/60">
+            {recipient?.data?.message_max_length || '-'}
+          </span>
+        </p>
+      )}
 
       <Button
         className="mt-6 h-14 w-full rounded-lg text-lg font-medium transition-all hover:scale-[1.02] disabled:opacity-50"
