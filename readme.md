@@ -52,6 +52,10 @@ Ckret is a comprehensive anonymous interaction platform that enables users to ex
 - Lucide React
 - React Hot Toast
 
+## 🔗 Backend Repository
+
+Check out the backend implementation for Ckret: [Ckret Backend](https://github.com/s4shibam/ckret-connect)
+
 ## 🎯 Goals
 
 - [x] Exploring `Next JS` and its core components such as App router, Caching, and SSR, while applying them in a project
