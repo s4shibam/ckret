@@ -6,7 +6,7 @@ import { TSketch } from '@/types/index'
 
 type TSubmitSketchPayload = {
   recipientUsername: string
-  sketchFile: File
+  sketchUrl: string
 }
 
 type TDeleteSingleSketchPayload = {
@@ -14,16 +14,12 @@ type TDeleteSingleSketchPayload = {
 }
 
 // Sketch Services
-const submitSketch = (payload: TSubmitSketchPayload): TApiPromise => {
-  const formData = new FormData()
-  formData.append('recipientUsername', payload.recipientUsername)
-  formData.append('sketch', payload.sketchFile)
+const getSignedUploadUrl = (): TApiPromise<{ signed_url: string }> => {
+  return ckretConnect.get('/sketch/signed-upload-url')
+}
 
-  return ckretConnect.post('/sketch/submit', formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
-  })
+const submitSketch = (payload: TSubmitSketchPayload): TApiPromise => {
+  return ckretConnect.post('/sketch/submit', payload)
 }
 
 const getAllSketches = (): TApiPromise<TSketch[]> => {
@@ -54,6 +50,18 @@ const toggleSketchVisibility = (payload: { sid: string }): TApiPromise => {
 }
 
 // Sketch Hooks
+
+export const useGetSignedUploadUrl = (
+  opts?: TQueryOpts<{ signed_url: string }>
+) => {
+  return useQuery({
+    queryKey: ['get-signed-upload-url'],
+    queryFn: getSignedUploadUrl,
+    enabled: false,
+    ...opts
+  })
+}
+
 export const useSubmitSketch = (opts?: TMutationOpts<TSubmitSketchPayload>) => {
   return useMutation({
     mutationFn: (payload) => submitSketch(payload),

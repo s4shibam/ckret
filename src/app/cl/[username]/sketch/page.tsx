@@ -1,5 +1,6 @@
 'use client'
 
+import axios from 'axios'
 import { Check, CircleCheck, Eraser, Loader, Palette, Send } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
@@ -18,7 +19,7 @@ import {
   PopoverTrigger
 } from '@/components/ui/popover'
 import { Slider } from '@/components/ui/slider'
-import { useSubmitSketch } from '@/hooks/api/sketch'
+import { useGetSignedUploadUrl, useSubmitSketch } from '@/hooks/api/sketch'
 import { useGetUserDetailsByUsername } from '@/hooks/api/user'
 import { useCanvas } from '@/hooks/use-canvas'
 import { COLORS } from '@/lib/constants'
@@ -53,6 +54,11 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
     username: params.username
   })
 
+  const {
+    isLoading: isSignedUploadUrlLoading,
+    refetch: refetchSignedUploadUrl
+  } = useGetSignedUploadUrl()
+
   const { mutate: submitSketchMutation, isPending: isSubmitSketchLoading } =
     useSubmitSketch({
       onError: (error) => toast.error(error.message),
@@ -67,11 +73,42 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
     const blob = await getCanvasBlob()
     if (!blob) return
 
-    const file = new File([blob], 'sketch.png', { type: 'image/png' })
-    submitSketchMutation({
-      sketchFile: file,
-      recipientUsername: params.username
-    })
+    try {
+      const { data: signedUrlData } = await refetchSignedUploadUrl()
+
+      if (!signedUrlData?.data?.signed_url) {
+        throw new Error('Failed to get signed upload URL')
+      }
+
+      const file = new File([blob], `user-${recipient?.data?._id}.png`, {
+        type: 'image/png'
+      })
+
+      const formData = new FormData()
+      formData.append('file', file)
+
+      const uploadResponse = await axios.post<{ secure_url: string }>(
+        signedUrlData.data.signed_url,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+      )
+
+      if (!uploadResponse.data?.secure_url) {
+        throw new Error('Failed to upload image')
+      }
+
+      submitSketchMutation({
+        sketchUrl: uploadResponse.data.secure_url,
+        recipientUsername: params.username
+      })
+    } catch (error) {
+      console.error('Upload error:', error)
+      toast.error('Failed to upload sketch')
+    }
   }
 
   if (isRecipientLoading) {
@@ -202,12 +239,14 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
 
       <Button
         className="mt-6 h-14 w-full rounded-lg text-lg font-medium transition-all hover:scale-[1.02] disabled:opacity-50"
-        disabled={isSubmitSketchLoading || !hasDrawn}
+        disabled={
+          !hasDrawn || isSignedUploadUrlLoading || isSubmitSketchLoading
+        }
         size="lg"
         variant="secondary"
         onClick={handleSubmit}
       >
-        {isSubmitSketchLoading ? (
+        {isSignedUploadUrlLoading || isSubmitSketchLoading ? (
           <Loader className="mr-2 h-5 w-5 animate-spin" />
         ) : (
           <Send className="mr-2 h-5 w-5" />
