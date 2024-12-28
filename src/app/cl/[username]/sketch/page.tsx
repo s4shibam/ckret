@@ -240,77 +240,84 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
         </p>
       </div>
 
-      <div
-        ref={containerRef}
-        className="relative flex flex-col items-center gap-2"
-      >
-        <div className="absolute bottom-3 right-3 z-10 flex gap-2">
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button
-                className="border-2"
-                size="icon"
-                style={{ borderColor: currentColor }}
-                variant="outline"
-              >
-                <Palette className="h-5 w-5" />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-40">
-              <div className="grid grid-cols-3 gap-2">
-                {COLORS.map((color) => (
-                  <button
-                    key={color}
-                    className="grid aspect-square size-full place-items-center rounded-full border border-black"
-                    style={{
-                      backgroundColor: color
-                    }}
-                    onClick={() => setCurrentColor(color)}
-                  >
-                    {color === currentColor && (
-                      <Check
-                        className={cn('h-5 w-5', {
-                          'text-white': currentColor === '#000000'
-                        })}
-                      />
-                    )}
-                  </button>
-                ))}
-              </div>
-              <div className="mt-4">
-                <Slider
-                  className="w-full"
-                  max={15}
-                  min={3}
-                  step={1}
-                  value={brushSize}
-                  onValueChange={(value: number[]) => setBrushSize(value)}
-                />
-              </div>
-            </PopoverContent>
-          </Popover>
-
-          <Button
-            className="border-2"
-            size="icon"
-            variant="outline"
-            onClick={clearCanvas}
-          >
-            <Eraser className="h-5 w-5" />
-          </Button>
+      {recipient?.data?.is_sketch_inbox_full && (
+        <div className="group relative cursor-not-allowed overflow-hidden rounded-lg bg-white/20 p-4 backdrop-blur-md">
+          <div className="text-center text-base sm:p-2 sm:text-xl">
+            {recipient?.message}
+          </div>
         </div>
+      )}
 
-        <canvas
-          ref={canvasRef}
-          className="w-full cursor-crosshair rounded-lg border-2 border-white/30 bg-white shadow-inner"
-          height={canvasDimensions.height || 464}
-          width={canvasDimensions.width || 464}
-          onMouseDown={startDrawing}
-          onMouseLeave={stopDrawing}
-          onMouseMove={draw}
-          onMouseUp={stopDrawing}
-        />
-      </div>
+      {!recipient?.data?.is_sketch_inbox_full && (
+        <div ref={containerRef} className="relative">
+          <div className="absolute bottom-3 right-3 z-10 flex gap-2">
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  className="border-2"
+                  size="icon"
+                  style={{ borderColor: currentColor }}
+                  variant="outline"
+                >
+                  <Palette className="h-5 w-5" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-40">
+                <div className="grid grid-cols-3 gap-2">
+                  {COLORS.map((color) => (
+                    <button
+                      key={color}
+                      className="grid aspect-square size-full place-items-center rounded-full border border-black"
+                      style={{
+                        backgroundColor: color
+                      }}
+                      onClick={() => setCurrentColor(color)}
+                    >
+                      {color === currentColor && (
+                        <Check
+                          className={cn('h-5 w-5', {
+                            'text-white': currentColor === '#000000'
+                          })}
+                        />
+                      )}
+                    </button>
+                  ))}
+                </div>
+                <div className="mt-4">
+                  <Slider
+                    className="w-full"
+                    max={15}
+                    min={3}
+                    step={1}
+                    value={brushSize}
+                    onValueChange={(value: number[]) => setBrushSize(value)}
+                  />
+                </div>
+              </PopoverContent>
+            </Popover>
+
+            <Button
+              className="border-2"
+              size="icon"
+              variant="outline"
+              onClick={clearCanvas}
+            >
+              <Eraser className="h-5 w-5" />
+            </Button>
+          </div>
+
+          <canvas
+            ref={canvasRef}
+            className="w-full cursor-crosshair rounded-lg border-2 border-white/30 bg-white shadow-inner"
+            height={canvasDimensions.height || 464}
+            width={canvasDimensions.width || 464}
+            onMouseDown={startDrawing}
+            onMouseLeave={stopDrawing}
+            onMouseMove={draw}
+            onMouseUp={stopDrawing}
+          />
+        </div>
+      )}
 
       <Button
         className="mt-6 h-14 w-full rounded-lg text-lg font-medium transition-all hover:scale-[1.02] disabled:opacity-50"

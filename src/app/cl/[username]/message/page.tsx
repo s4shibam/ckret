@@ -103,15 +103,18 @@ const SendMessage = ({ params }: { params: { username: string } }) => {
         className={cn(
           'group relative overflow-hidden rounded-lg bg-white p-4 backdrop-blur-md',
           {
-            'cursor-not-allowed bg-zinc-500/20': recipient?.data?.is_inbox_full
+            'cursor-not-allowed bg-white/20':
+              recipient?.data?.is_message_inbox_full
           }
         )}
       >
-        {recipient?.data?.is_inbox_full ? (
-          <div className="text-center text-xl text-white/90">
+        {recipient?.data?.is_message_inbox_full && (
+          <div className="text-center text-base sm:p-2 sm:text-xl">
             {recipient?.message}
           </div>
-        ) : (
+        )}
+
+        {!recipient?.data?.is_message_inbox_full && (
           <>
             <textarea
               className="h-[180px] w-full resize-none bg-transparent text-xl placeholder:text-zinc-400 focus:outline-none"
@@ -131,24 +134,22 @@ const SendMessage = ({ params }: { params: { username: string } }) => {
             >
               <Dice5 className="h-6 w-6 animate-spin-slow text-white group-hover:animate-pause" />
             </Button>
+
+            <p className="-translate-y-2 text-right text-sm text-white/80">
+              <span className="font-medium">{message.length}</span>
+              {' / '}
+              <span className="text-white/60">
+                {recipient?.data?.message_max_length || '-'}
+              </span>
+            </p>
           </>
         )}
       </div>
 
-      {!recipient?.data?.is_inbox_full && (
-        <p className="-translate-y-2 text-right text-sm text-white/80">
-          <span className="font-medium">{message.length}</span>
-          {' / '}
-          <span className="text-white/60">
-            {recipient?.data?.message_max_length || '-'}
-          </span>
-        </p>
-      )}
-
       <Button
         className="mt-6 h-14 w-full rounded-lg text-lg font-medium transition-all hover:scale-[1.02] disabled:opacity-50"
         disabled={
-          recipient?.data?.is_inbox_full ||
+          recipient?.data?.is_message_inbox_full ||
           isSubmitMessageLoading ||
           message.length === 0
         }
