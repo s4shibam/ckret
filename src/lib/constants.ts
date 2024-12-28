@@ -25,6 +25,25 @@ import { env } from './env'
 
 const { ckret_url } = env
 
+// Sketch & Canvas
+export const COLORS = [
+  '#000000',
+  '#FF3B30',
+  '#34C759',
+  '#007AFF',
+  '#5856D6',
+  '#FF9500',
+  '#FF2D55',
+  '#AF52DE',
+  '#5AC8FA',
+  '#FFCC00',
+  '#FF6B6B',
+  '#00BFA5'
+]
+
+export const DEFAULT_COLOR = COLORS[0]
+export const DEFAULT_BRUSH_SIZE = 9
+
 // Metadata
 export const META_TITLE = 'Ckret - Anonymous Interaction Platform'
 
