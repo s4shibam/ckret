@@ -32,6 +32,7 @@ const Hero = () => {
 
         <div className="bg-ckret-gradient group relative h-auto w-full animate-fade-up overflow-hidden rounded-3xl drop-shadow-lg backdrop-blur-[3px] sm:max-w-[28rem] md:w-[90%] md:max-w-[32rem]">
           <Image
+            priority
             alt="Ckret Hero Image"
             className="size-full transition-all duration-500 hover:scale-105"
             draggable={false}

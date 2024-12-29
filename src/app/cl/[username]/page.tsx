@@ -215,8 +215,8 @@ const PublicProfile = ({ params }: { params: { username: string } }) => {
           </div>
         )}
 
-        <div className="rounded-2xl bg-gradient-to-br from-zinc-600 to-zinc-800 p-5">
-          <div className="mx-auto w-full max-w-md">
+        <div className="mx-auto mt-10 w-full max-w-md rounded-2xl bg-gradient-to-br from-zinc-600 to-zinc-800 p-5">
+          <div className="mx-auto w-full">
             <CreateLink />
           </div>
         </div>
