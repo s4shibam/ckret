@@ -148,17 +148,16 @@ const CookiePolicy = () => {
         interact with one of the features you use on our site.
       </p>
 
-      <p>
-        However if you are still looking for more information then you can
-        contact us through one of our preferred contact methods:
-      </p>
-
-      <p className="mt-4 text-lg">
-        By clicking on this{' '}
-        <a className="text-blue-500" href={`mailto:${support_email}`}>
-          link
+      <p className="mb-4 mt-8">
+        If you require any further information or have any questions about the
+        website&apos;s disclaimer, please contact us by email at{' '}
+        <a
+          className="text-blue-500"
+          href={'mailto:' + support_email}
+          target="_blank"
+        >
+          {support_email}
         </a>
-        .
       </p>
     </div>
   )

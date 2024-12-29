@@ -10,7 +10,7 @@ const ProfileNotFound = () => {
         <Branding />
       </div>
 
-      <div className="w-full max-w-lg space-y-4 text-center">
+      <div className="flex w-full max-w-lg flex-1 flex-col items-center justify-center space-y-4 text-center">
         <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-red-50">
           <Frown className="h-10 w-10 text-red-500" />
         </div>

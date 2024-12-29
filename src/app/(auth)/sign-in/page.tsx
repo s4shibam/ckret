@@ -53,7 +53,7 @@ export default function SignInPage() {
     <Card className="w-full max-w-md">
       <CardHeader>
         <CardTitle className="text-2xl font-medium">Sign In</CardTitle>
-        <CardDescription className="text-lg">
+        <CardDescription className="text-lg/6">
           Sign in to send and receive anonymous messages
         </CardDescription>
       </CardHeader>

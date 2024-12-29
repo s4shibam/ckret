@@ -32,12 +32,13 @@ const Hero = () => {
 
         <div className="bg-ckret-gradient group relative h-auto w-full animate-fade-up overflow-hidden rounded-3xl drop-shadow-lg backdrop-blur-[3px] sm:max-w-[28rem] md:w-[90%] md:max-w-[32rem]">
           <Image
+            priority
             alt="Ckret Hero Image"
             className="size-full transition-all duration-500 hover:scale-105"
             draggable={false}
-            height={1500}
+            height={1272}
             src={HERO}
-            width={1500}
+            width={1131}
           />
 
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-b from-transparent to-ckret-secondary/20 px-2 py-3 text-center text-lg font-medium tracking-wide text-black opacity-0 transition-all duration-500 group-hover:opacity-100 md:text-xl">

@@ -49,7 +49,7 @@ const Guide = () => {
       </div>
 
       <div className="mt-16 text-center">
-        <p className="inline-block rounded-full bg-ckret-primary/5 px-6 py-3 text-xl font-medium text-zinc-800">
+        <p className="inline-block rounded-full bg-ckret-primary/5 px-6 py-4 text-xl font-medium text-zinc-800">
           {GUIDE_NOTE}
         </p>
       </div>

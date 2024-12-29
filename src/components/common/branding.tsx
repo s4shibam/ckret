@@ -12,13 +12,13 @@ const Branding = ({ className }: { className?: string }) => {
     >
       <Image
         alt="Logo"
-        className="-ml-0.5 aspect-square size-8 sm:ml-0 sm:size-12"
+        className="-ml-0.5 aspect-square size-10 sm:ml-0 sm:size-[3.25rem]"
         height={50}
         src={LOGO}
         width={50}
       />
-      <p className="text-[1.5rem] font-bold tracking-wider sm:text-[1.75rem]">
-        Ckret.
+      <p className="text-3xl font-bold tracking-wide sm:text-[2rem]">
+        Ckret<span className="text-ckret-secondary">.</span>
       </p>
     </Link>
   )

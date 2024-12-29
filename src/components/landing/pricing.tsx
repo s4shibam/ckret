@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import {
+  PRICING_BADGES,
   PRICING_FEATURES,
   PRICING_HEADING,
   PRICING_SUB_HEADING
@@ -27,7 +28,7 @@ const Pricing = () => {
 
         <div className="mt-16">
           <Card className="mx-auto max-w-4xl overflow-hidden">
-            <div className="flex flex-col items-center border-b p-8 sm:p-10">
+            <div className="flex flex-col items-center border-b p-6 sm:p-10">
               <h3 className="text-3xl font-bold">Free Forever Plan</h3>
               <div className="mt-4 flex items-baseline text-5xl font-bold">
                 $0
@@ -49,7 +50,7 @@ const Pricing = () => {
               </div>
             </div>
 
-            <div className="grid gap-8 p-8 sm:grid-cols-2 sm:p-10">
+            <div className="grid gap-8 p-6 sm:grid-cols-2 sm:p-10">
               {PRICING_FEATURES.map((feature) => (
                 <div key={feature.title} className="flex gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-orange-100">
@@ -66,16 +67,16 @@ const Pricing = () => {
             </div>
           </Card>
 
-          <div className="mt-8 flex justify-center gap-4">
-            <Badge className="px-4 py-1 text-sm" variant="outline">
-              No Ads
-            </Badge>
-            <Badge className="px-4 py-1 text-sm" variant="outline">
-              No Tracking
-            </Badge>
-            <Badge className="px-4 py-1 text-sm" variant="outline">
-              Open Source
-            </Badge>
+          <div className="mt-8 flex justify-center gap-2 sm:gap-4">
+            {PRICING_BADGES.map((text) => (
+              <Badge
+                key={text}
+                className="border-ckret-primary px-4 py-1 text-sm"
+                variant="outline"
+              >
+                {text}
+              </Badge>
+            ))}
           </div>
         </div>
       </div>

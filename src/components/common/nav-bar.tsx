@@ -40,19 +40,20 @@ const NavBar = () => {
         <Branding className="animate-fade-right animate-delay-150" />
 
         {session.status !== 'loading' && (
-          <div className="animate-fade-left">
-            {session.status === 'unauthenticated' && (
-              <Button asChild className="h-11 rounded-full px-6 text-lg">
-                <Link href="/sign-in">Sign In</Link>
-              </Button>
-            )}
-
-            {session.status === 'authenticated' && (
-              <Button asChild className="h-11 rounded-full px-6 text-lg">
-                <Link href="/dashboard/profile">Dashboard</Link>
-              </Button>
-            )}
-          </div>
+          <Button
+            asChild
+            className="animate-fade-left rounded-full px-6 text-base sm:h-11 sm:text-lg"
+          >
+            <Link
+              href={
+                session.status === 'authenticated'
+                  ? '/dashboard/profile'
+                  : '/sign-in'
+              }
+            >
+              {session.status === 'authenticated' ? 'Dashboard' : 'Sign In'}
+            </Link>
+          </Button>
         )}
       </div>
     </div>

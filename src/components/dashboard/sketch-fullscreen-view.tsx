@@ -1,16 +1,17 @@
 import { format, formatDistanceToNow } from 'date-fns'
-import html2canvas from 'html2canvas'
 import { ArrowDown, Eye, EyeOff, Loader, Send, Share2 } from 'lucide-react'
-import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import { useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 
-import LOGO_SECONDARY from '@/assets/logo-secondary.svg'
+import { env } from '../../lib/env'
+
+import Watermark from './watermark'
+
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { useReplyToSketch, useToggleSketchVisibility } from '@/hooks/api/sketch'
-import { env } from '@/lib/env'
+import { useImageActions } from '@/hooks/use-image-actions'
 import { invalidateQueries } from '@/lib/query-client'
 import { TSketch } from '@/types/index'
 
@@ -28,6 +29,11 @@ const SketchFullScreenView = ({ sketch, children }: Props) => {
   const { data: session } = useSession()
   const imageRef = useRef<HTMLDivElement>(null)
   const [reply, setReply] = useState(sketch.reply || '')
+
+  const { handleSaveImage, handleShareImage } = useImageActions({
+    fileName: FILE_NAME,
+    ref: imageRef
+  })
 
   const { mutate: replyToSketchMutation, isPending: isReplyLoading } =
     useReplyToSketch({
@@ -60,65 +66,10 @@ const SketchFullScreenView = ({ sketch, children }: Props) => {
     })
   }
 
-  const handleSaveImage = async () => {
-    if (imageRef.current) {
-      try {
-        await document.fonts.ready
-        const canvas = await html2canvas(imageRef.current, {
-          scale: 2,
-          useCORS: true
-        })
-        const dataUrl = canvas.toDataURL('image/png')
-        const a = document.createElement('a')
-        a.href = dataUrl
-        a.download = FILE_NAME
-        a.click()
-      } catch (err) {
-        toast.error('Unknown error occurred')
-      }
-    }
-  }
-
-  const handleShare = async () => {
-    if (imageRef.current) {
-      const canvas = await html2canvas(imageRef.current, {
-        scale: 2,
-        useCORS: true
-      })
-      const blobFile: Blob | null = await new Promise((resolve) => {
-        canvas.toBlob((blob) => {
-          resolve(blob)
-        }, 'image/png')
-      })
-
-      if (!blobFile) {
-        toast.error("Can't share, Download instead")
-        return
-      }
-
-      const data = {
-        files: [
-          new File([blobFile], FILE_NAME, {
-            type: blobFile.type
-          })
-        ]
-      }
-
-      try {
-        if (!navigator.canShare(data)) {
-          toast.error("Can't share, Download instead")
-        }
-        await navigator.share(data)
-      } catch (err) {
-        toast.error('Failed to share, Download instead')
-      }
-    }
-  }
-
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="h-[95vh] max-h-[60rem] max-w-4xl p-4 sm:p-6 md:p-8">
+      <DialogContent className="h-[95vh] max-h-[60rem] max-w-4xl px-5 py-10 md:px-8">
         <div className="flex h-full w-full flex-col gap-4">
           <div
             ref={imageRef}
@@ -141,14 +92,15 @@ const SketchFullScreenView = ({ sketch, children }: Props) => {
             </div>
 
             <div className="flex-1 space-y-6 overflow-y-auto p-4">
-              <div className="relative aspect-square h-3/4 max-h-[20rem] w-auto overflow-hidden rounded-2xl rounded-bl-none bg-gradient-to-r from-ckret-primary/10 to-ckret-secondary/10 p-2 shadow-sm">
-                <Image
+              <div className="relative aspect-square h-3/4 max-h-[20rem] overflow-hidden rounded-2xl rounded-bl-none bg-gradient-to-r from-ckret-primary/10 to-ckret-secondary/10 p-2 shadow-sm">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   alt={`Sketch ${sketch._id}`}
                   className="aspect-square size-full rounded-xl bg-white object-cover"
                   crossOrigin="anonymous"
-                  height={400}
+                  height={500}
                   src={sketch.sketch_url}
-                  width={400}
+                  width={500}
                 />
               </div>
 
@@ -164,23 +116,9 @@ const SketchFullScreenView = ({ sketch, children }: Props) => {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-between border-t border-zinc-200 p-2">
-              <div className="flex items-center gap-2">
-                <Image
-                  alt="Logo"
-                  className="size-5 rounded"
-                  height={16}
-                  src={LOGO_SECONDARY}
-                  width={16}
-                />
-                <span className="text-sm text-zinc-500">
-                  {`${env.ckret_url}/@${session?.user?.username}/skc`}
-                </span>
-              </div>
-              <div className="flex items-center gap-1.5 text-sm text-zinc-400">
-                Messages are encrypted.
-              </div>
-            </div>
+            <Watermark
+              url={`${env.ckret_url}/@${session?.user?.username}/skc`}
+            />
           </div>
 
           <div className="flex items-center justify-between gap-2">
@@ -196,7 +134,7 @@ const SketchFullScreenView = ({ sketch, children }: Props) => {
               <Button
                 className="bg-zinc-100 hover:bg-zinc-200"
                 variant="ghost"
-                onClick={handleShare}
+                onClick={handleShareImage}
               >
                 <Share2 className="size-4" />
                 <span className="ml-2 hidden sm:block">Share</span>

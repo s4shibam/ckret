@@ -95,7 +95,7 @@ const MyLink = () => {
           </TabsList>
 
           <TabsContent value={linkType}>
-            <div className="mt-4 flex flex-col items-center gap-2 rounded-lg border-2 border-zinc-500 p-4">
+            <div className="mt-5 flex flex-col items-center gap-2 rounded-lg border-2 border-zinc-500 p-3 sm:p-4">
               <p className="whitespace-pre-line text-center">{shareText}</p>
               <Link
                 className="hover:text-ckret-secondary"
@@ -118,7 +118,7 @@ const MyLink = () => {
             onClick={copyLinkToClipboard}
           >
             <ClipboardCopy />
-            <p className="ml-4 text-base">Copy Link to Clipboard</p>
+            <p className="ml-2 text-base">Copy Link to Clipboard</p>
           </Button>
           {SOCIAL_MEDIA_PLATFORMS.map((platform) => (
             <Button
@@ -128,12 +128,12 @@ const MyLink = () => {
               onClick={() => handleShare(platform.key)}
             >
               {platform.icon}
-              <p className="ml-4 text-base">Share on {platform.name}</p>
+              <p className="ml-2 text-base">Share on {platform.name}</p>
             </Button>
           ))}
         </div>
 
-        <div className="rounded-lg border-2 border-ckret-primary p-4 text-center">
+        <div className="rounded-lg border-2 border-ckret-primary p-3 text-center sm:p-4">
           Share the link on your social media handles and ask your friends,
           families, fans, and coworkers to send you secret messages or sketch
           with you. 🚀
