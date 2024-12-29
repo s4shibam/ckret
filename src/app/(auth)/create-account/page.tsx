@@ -74,7 +74,7 @@ const CreateAccountPage = () => {
     <Card className="w-full max-w-md">
       <CardHeader>
         <CardTitle className="text-2xl font-medium">Create Account</CardTitle>
-        <CardDescription className="text-lg">
+        <CardDescription className="text-lg/6">
           Create an account to receive secret messages
         </CardDescription>
       </CardHeader>

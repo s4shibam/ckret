@@ -1,10 +1,12 @@
 import { env } from '@/lib/env'
 
+const { support_email } = env
+
 const PrivacyPolicy = () => {
   return (
     <div className="[&>p]:my-1">
       <h1 className="text-3xl font-semibold">Privacy Policy for Ckret</h1>
-      <p className="!mb-8">Last updated: January 05, 2024</p>
+      <p className="!mb-8">Last updated: December 31, 2024</p>
       <p>
         This Privacy Policy describes Our policies and procedures on the
         collection, use and disclosure of Your information when You use the
@@ -593,11 +595,16 @@ const PrivacyPolicy = () => {
       </p>
       <h2 className="my-4 text-2xl font-medium">Contact Us</h2>
       <p>
-        If you have any questions about this Privacy Policy, You can contact us:
+        If you require any further information or have any questions about the
+        website&apos;s disclaimer, please contact us by email at{' '}
+        <a
+          className="text-blue-500"
+          href={'mailto:' + support_email}
+          target="_blank"
+        >
+          {support_email}
+        </a>
       </p>
-      <ul className="list-inside list-disc [&>*]:pl-4">
-        <li>By email: {env.support_email}</li>
-      </ul>
     </div>
   )
 }

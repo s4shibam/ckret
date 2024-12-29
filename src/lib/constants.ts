@@ -199,6 +199,8 @@ export const PRICING_FEATURES = [
   }
 ]
 
+export const PRICING_BADGES = ['No Ads', 'No Tracking', 'Open Source'] as const
+
 // FAQs
 export const FAQS = [
   {
