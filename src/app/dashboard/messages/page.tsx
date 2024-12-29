@@ -20,8 +20,9 @@ import { useGetAllMessages } from '@/hooks/api/message'
 import { TMessage, TStorageStatus } from '@/types/index'
 
 const Messages = () => {
-  const { data } = useSession()
-  const [storageStatus, setStorageStatus] = useState<TStorageStatus>('empty')
+  const { data: session } = useSession()
+  const [inboxStorageStatus, setInboxStorageStatus] =
+    useState<TStorageStatus>('empty')
 
   const {
     data: messages,
@@ -31,26 +32,26 @@ const Messages = () => {
   } = useGetAllMessages()
 
   useEffect(() => {
-    const messageLimit = data?.user?.inbox_max_size ?? 0
+    const messageLimit = session?.user?.inbox_max_size ?? 0
     const messageCount = messages?.data?.length ?? 0
     const diff = messageLimit - messageCount
 
     if (messageCount === 0) {
-      setStorageStatus('empty')
+      setInboxStorageStatus('empty')
     } else if (diff === 0) {
-      setStorageStatus('full')
+      setInboxStorageStatus('full')
     } else if (diff <= 5) {
-      setStorageStatus('almost_full')
+      setInboxStorageStatus('almost_full')
     } else {
-      setStorageStatus('ok')
+      setInboxStorageStatus('ok')
     }
-  }, [data?.user?.inbox_max_size, messages?.data?.length])
+  }, [session?.user?.inbox_max_size, messages?.data?.length])
 
   return (
     <div className="flex flex-col gap-5">
       <Header
         title={`Messages (${messages?.data?.length ?? 0}/${
-          data?.user?.inbox_max_size ?? 0
+          session?.user?.inbox_max_size ?? 0
         })`}
       >
         <div className="flex gap-2">
@@ -74,25 +75,29 @@ const Messages = () => {
         </div>
       </Header>
 
-      {(storageStatus === 'almost_full' || storageStatus === 'full') && (
+      {(inboxStorageStatus === 'almost_full' ||
+        inboxStorageStatus === 'full') && (
         <Alert
-          variant={storageStatus === 'almost_full' ? 'warning' : 'destructive'}
+          variant={
+            inboxStorageStatus === 'almost_full' ? 'warning' : 'destructive'
+          }
         >
           <AlertTriangle className="h-4 w-4" />
           <AlertTitle className="flex justify-between">
             <p>
-              {storageStatus === 'almost_full' && 'Inbox Almost Full'}
-              {storageStatus === 'full' && 'Inbox Full'}
+              {inboxStorageStatus === 'almost_full' &&
+                'Message Limit Almost Reached'}
+              {inboxStorageStatus === 'full' && 'Message Limit Reached'}
             </p>
-            <p className="text-right">
-              {messages?.data?.length} / {data?.user?.inbox_max_size}
+            <p className="whitespace-nowrap text-right">
+              {messages?.data?.length} / {session?.user?.inbox_max_size}
             </p>
           </AlertTitle>
           <AlertDescription>
-            {storageStatus === 'almost_full' &&
-              'Your inbox is almost full. Please delete some messages to save space.'}
-            {storageStatus === 'full' &&
-              'Your inbox is full. Please delete some messages to make space.'}
+            {inboxStorageStatus === 'almost_full' &&
+              'You are nearing your message limit. Please delete some messages to save space.'}
+            {inboxStorageStatus === 'full' &&
+              'You have reached your message limit. Please delete some messages to make space.'}
           </AlertDescription>
         </Alert>
       )}

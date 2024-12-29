@@ -20,7 +20,7 @@ import { useGetAllSketches } from '@/hooks/api/sketch'
 import { TSketch, TStorageStatus } from '@/types/index'
 
 const SketchDashboard = () => {
-  const { data: sessionData } = useSession()
+  const { data: session } = useSession()
   const [storageStatus, setStorageStatus] = useState<TStorageStatus>('empty')
 
   const {
@@ -31,7 +31,7 @@ const SketchDashboard = () => {
   } = useGetAllSketches()
 
   useEffect(() => {
-    const sketchLimit = sessionData?.user?.sketch_max_size ?? 0
+    const sketchLimit = session?.user?.sketch_max_size ?? 0
     const sketchCount = sketches?.data?.length ?? 0
     const diff = sketchLimit - sketchCount
 
@@ -44,13 +44,13 @@ const SketchDashboard = () => {
     } else {
       setStorageStatus('ok')
     }
-  }, [sessionData?.user?.sketch_max_size, sketches?.data?.length])
+  }, [session?.user?.sketch_max_size, sketches?.data?.length])
 
   return (
     <div className="flex flex-col gap-5">
       <Header
         title={`Sketches (${sketches?.data?.length ?? 0}/${
-          sessionData?.user?.sketch_max_size ?? 0
+          session?.user?.sketch_max_size ?? 0
         })`}
       >
         <div className="flex gap-2">
@@ -84,8 +84,8 @@ const SketchDashboard = () => {
               {storageStatus === 'almost_full' && 'Sketch Limit Almost Reached'}
               {storageStatus === 'full' && 'Sketch Limit Reached'}
             </p>
-            <p className="text-right">
-              {sketches?.data?.length} / {sessionData?.user?.sketch_max_size}
+            <p className="whitespace-nowrap text-right">
+              {sketches?.data?.length} / {session?.user?.sketch_max_size}
             </p>
           </AlertTitle>
           <AlertDescription>
