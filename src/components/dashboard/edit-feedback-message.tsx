@@ -70,7 +70,7 @@ const EditFeedbackMessage = ({ children }: { children: React.ReactNode }) => {
             onChange={(e) => setFeedbackMessage(e.target.value)}
           />
         </div>
-        <SheetFooter className="mt-10 flex sm:justify-start">
+        <SheetFooter className="mt-10 flex gap-3 sm:justify-start">
           <Button
             className="w-full"
             size="lg"

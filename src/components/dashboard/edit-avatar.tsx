@@ -52,14 +52,17 @@ const EditAvatar = ({ children }: { children: React.ReactNode }) => {
         <div className="my-2 flex w-full flex-col gap-2">
           <Label className="text-lg" htmlFor="avatar">
             <p className="mt-2 text-lg font-normal">
-              Selected Avatar: {avatar || session?.user?.avatar || 'None'}
+              Selected Avatar:{' '}
+              <span className="text-xl">
+                {avatar || session?.user?.avatar || 'None'}
+              </span>
             </p>
           </Label>
           <Picker
             data={data}
             icons="outline"
             maxFrequentRows={0}
-            perLine={10}
+            perLine={window?.innerWidth < 436 ? 8 : 10}
             previewPosition="none"
             skinTonePosition="none"
             theme="light"
@@ -69,7 +72,7 @@ const EditAvatar = ({ children }: { children: React.ReactNode }) => {
           />
         </div>
 
-        <SheetFooter className="mt-10 flex sm:justify-start">
+        <SheetFooter className="mt-10 flex gap-3 sm:justify-start">
           <Button
             className="w-full"
             size="lg"
