@@ -49,7 +49,7 @@ const EditAvatar = ({ children }: { children: React.ReactNode }) => {
           </SheetDescription>
         </SheetHeader>
 
-        <div className="my-2 flex w-full flex-col gap-2">
+        <div className="my-2 flex w-full flex-col items-center gap-2 sm:items-start">
           <Label className="text-lg" htmlFor="avatar">
             <p className="mt-2 text-lg font-normal">
               Selected Avatar:{' '}
