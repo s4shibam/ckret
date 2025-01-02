@@ -226,13 +226,16 @@ const SendSketch = ({ params }: { params: { username: string } }) => {
 
           <canvas
             ref={canvasRef}
-            className="w-full cursor-crosshair rounded-lg border-2 border-white/30 bg-white shadow-inner"
+            className="w-full cursor-crosshair touch-none rounded-lg border-2 border-white/30 bg-white shadow-inner"
             height={canvasDimensions.height || 464}
             width={canvasDimensions.width || 464}
             onMouseDown={startDrawing}
             onMouseLeave={stopDrawing}
             onMouseMove={draw}
             onMouseUp={stopDrawing}
+            onTouchEnd={stopDrawing}
+            onTouchMove={draw}
+            onTouchStart={startDrawing}
           />
         </div>
       )}

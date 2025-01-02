@@ -84,13 +84,32 @@ export const useCanvas = ({ containerRef }: UseCanvasProps) => {
     setBrushSize(value)
   }
 
-  const startDrawing = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const getCoordinates = (event: React.MouseEvent | React.TouchEvent) => {
+    const canvas = canvasRef.current
+    if (!canvas) return null
+
+    const rect = canvas.getBoundingClientRect()
+
+    if ('touches' in event) {
+      const touch = event.touches[0]
+      return {
+        x: touch.clientX - rect.left,
+        y: touch.clientY - rect.top
+      }
+    } else {
+      return {
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top
+      }
+    }
+  }
+
+  const startDrawing = (e: React.MouseEvent | React.TouchEvent) => {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const rect = canvas.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
+    const coords = getCoordinates(e)
+    if (!coords) return
 
     const ctx = canvas.getContext('2d')
     if (ctx) {
@@ -99,29 +118,25 @@ export const useCanvas = ({ containerRef }: UseCanvasProps) => {
       ctx.lineCap = 'round'
       ctx.lineJoin = 'round'
       ctx.beginPath()
-      ctx.moveTo(x, y)
+      ctx.moveTo(coords.x, coords.y)
       setIsDrawing(true)
       setHasDrawn(true)
     }
   }
 
-  const draw = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const draw = (e: React.MouseEvent | React.TouchEvent) => {
     if (!isDrawing) return
 
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const coords = getCoordinates(e)
+    if (!coords) return
 
-    const rect = canvas.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-
-    const ctx = canvas.getContext('2d')
+    const ctx = canvasRef.current?.getContext('2d')
     if (ctx) {
       ctx.strokeStyle = currentColor
       ctx.lineWidth = brushSize[0]
       ctx.lineCap = 'round'
       ctx.lineJoin = 'round'
-      ctx.lineTo(x, y)
+      ctx.lineTo(coords.x, coords.y)
       ctx.stroke()
     }
   }
