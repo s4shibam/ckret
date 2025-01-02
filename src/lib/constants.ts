@@ -210,7 +210,7 @@ export const FAQS = [
   },
   {
     question: 'How can I create my account on Ckret?',
-    answer: `Visit the website (<a href='${ckret_url}' class='text-blue-500'>${ckret_url}</a>) and choose between two options: sign in with your <span class='font-medium'>Google</span> account or create an <span class='font-medium'>anonymous account</span>. Once created, you'll get an auto-generated link assigned exclusively to you. Share this link with those you want to receive messages and sketches from.`
+    answer: `Visit <span class='font-medium'>Create Account</span> page (<a href='${ckret_url}/create-account' class='text-blue-500'>${ckret_url}/create-account</a>) and choose between two options: sign in with <span class='font-medium'>Google</span> account or create an <span class='font-medium'>anonymous account</span>. Once created, you'll get an auto-generated link assigned exclusively to you. Share this link with those you want to receive messages and sketches from.`
   },
   {
     question: 'What features does my profile page offer?',
@@ -230,7 +230,7 @@ export const FAQS = [
   {
     question: 'Can I have multiple accounts on Ckret?',
     answer:
-      "<span class='font-medium'>Yes</span>, you can have multiple accounts on Ckret. You can create multiple anonymous accounts or use different Gmail addresses. However, you can only create one account per Gmail address."
+      "<span class='font-medium'>Yes</span>, you can have multiple accounts on Ckret. You can create multiple anonymous accounts or use different Gmail addresses. However, you can only create one account per Gmail address. <span class='font-medium'>That said, it's not recommended</span> as managing multiple accounts can lead to confusion."
   },
   {
     question: 'I forgot my account details, how can I recover them?',
@@ -239,11 +239,11 @@ export const FAQS = [
   },
   {
     question: 'Where can I find my Ckret Link?',
-    answer: `Navigate to the <span class='font-medium'>My Links</span> page (<a href='${ckret_url}/dashboard/my-links' class='text-blue-500'>${ckret_url}/dashboard/my-links</a>) to find your <span class='font-medium'>Ckret Link</span>.`
+    answer: `Navigate to the <span class='font-medium'>My Links</span> page (<a href='${ckret_url}/dashboard/my-links' class='text-blue-500'>${ckret_url}/dashboard/my-links</a>) to find your <span class='font-medium'>Ckret Link</span> and also to send messages or sketches.`
   },
   {
     question: 'Can I change my Ckret Link?',
-    answer: `<span class='font-medium'>Yes</span>, you can. Go to the <span class='font-medium'>Profile</span> page (<a href='${ckret_url}/dashboard/profile' class='text-blue-500'>${ckret_url}/dashboard/profile</a>), where you'll find a <span class='font-medium'>Share Feedback</span> button. Clicking on it will open a Google form where you can share your thoughts.`
+    answer: `<span class='font-medium'>Yes</span>, you can change your Ckret Link by updating your <span class='font-medium'>username</span>. Simply navigate to the <span class='font-medium'>Profile</span> page (<a href='${ckret_url}/dashboard/profile' class='text-blue-500'>${ckret_url}/dashboard/profile</a>), where you'll find your username. Make your desired changes, and your Ckret Link will be updated!`
   },
   {
     question: 'Whom can I share my Ckret Link with?',
