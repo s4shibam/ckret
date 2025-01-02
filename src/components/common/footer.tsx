@@ -78,7 +78,9 @@ const Footer = () => {
           </a>
           .
         </p>
-        <p className="whitespace-nowrap">© 2024 Ckret. All Rights Reserved.</p>
+        <p className="whitespace-nowrap">
+          © {new Date().getFullYear()} Ckret. All Rights Reserved.
+        </p>
       </div>
     </footer>
   )
