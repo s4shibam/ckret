@@ -1,4 +1,7 @@
 import Image from 'next/image'
+import Link from 'next/link'
+
+import { env } from '../../lib/env'
 
 import HERO from '@/assets/ckret-hero-image.webp'
 import CreateLink from '@/components/common/create-link'
@@ -41,9 +44,13 @@ const Hero = () => {
             width={1131}
           />
 
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-b from-transparent to-ckret-secondary/20 px-2 py-3 text-center text-lg font-medium tracking-wide text-black opacity-0 transition-all duration-500 group-hover:opacity-100 md:text-xl">
+          <Link
+            className="absolute inset-x-0 bottom-0 bg-gradient-to-b from-transparent to-ckret-secondary/20 px-2 py-3 text-center text-base font-medium tracking-wide text-black underline-offset-2 opacity-0 transition-all duration-500 hover:underline group-hover:opacity-100 md:text-lg"
+            href={env.ckret_url + '/@secret_santa'}
+            target="_blank"
+          >
             Santa&apos;s Profile on Ckret.
-          </div>
+          </Link>
 
           <div className="absolute inset-x-5 bottom-0 h-px bg-gradient-to-r from-transparent via-ckret-secondary to-transparent" />
         </div>
