@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://ckret.xyz">
+    <a href="https://ckret.fun">
         <img alt="Ckret" width="100" src="./src/app/icon.ico">
     </a>
 </p>

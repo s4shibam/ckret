@@ -91,11 +91,11 @@ const PrivacyPolicy = () => {
           <span className="font-medium">Website</span> refers to Ckret,
           accessible from{' '}
           <a
-            href="https://ckret.xyz"
+            href={env.ckret_url}
             rel="external nofollow noopener"
             target="_blank"
           >
-            https://ckret.xyz
+            {env.ckret_url}
           </a>
         </li>
         <li>
